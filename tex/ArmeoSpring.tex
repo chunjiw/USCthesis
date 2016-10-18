@@ -57,10 +57,34 @@ This pointing test is put at the beginning and the end of each training session.
 
 For control group, all games are set to be the most difficult level. Specifically, the ladybug pointing test for control group is set at level 4. There are 48 ladybugs in total. Though the locations of ladybugs seem to be random, they are actually appearing in a specific sequence at specific locations. In this case, all ladybugs appear on a 6*8 grid, with the sequence shown in \ref{fig:48order}.
 
-As a result, the data consists movements that have various distances, various directions.
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{48order.png}
+	\centering
+	\caption{Ladybug appearing order and locations}
+	\medskip
+	\small The number indicates the order of the ladybug appearing at that location. The distance between adjacent targets are about 8 cm. Red stars indicate the center of the screen.
+	\label{fig:48order}
+\end{figure}
+
+As a result, the data consists movements that have various distances and various directions.
 
 \section{Data Acquisition: Post-Stroke Group}
 
-Data from post-stroke individuals is collected automatically when participants use ArmeoSpring under guidance from physical therapists. As a result, we have no control over the games difficulties and the arm length/ gravity compensation settings. However, all participants have similar schedules with the control group: there are 2 training sessions in a day, for 4 weeks, weekends excluded. As a result, each participant has 40 sessions, 80 ladybug pointing tests.
+Data from post-stroke individuals are collected automatically when participants use ArmeoSpring under guidance from physical therapists. As a result, we have no control over the game difficulties and the arm length/ gravity compensation settings. However, all participants have similar schedules as the control group: there are 2 training sessions in a day, for 4 weeks, weekends excluded. Therefore each participant has 40 sessions, 80 ladybug pointing tests.
 
 Now we have data from 41 post-stroke individuals; gender and affected side are balanced, shown in table \ref{tab:demog}. 
+
+\begin{table}[b]
+	\begin{tabular}{c c c c c c c c}
+	\hline
+	Group & No. & Age & Affected Side & Gender & FM(0-66) & Post Stroke Days & No. of Tests\\
+	\hline
+	Stroke & 41 & 61$\pm$14 & 21L, 20R & 16F, 25M & 26$\pm$9 to 41$\pm$ 14 & 21$\pm$10 & 80 in 4 weeks \\ 
+	Control & 11 & 23$\pm$2 & - & 4F, 7M & - & - & 20 in 1 weeks \\
+	\hline
+	\end{tabular}
+	\caption{Participants information}
+	\label{tab:demog}
+\end{table}
+
+Because participants have different difficulty settings from each other, and each participants may also have various difficulty settings throughout the training, it is important to see the test in different difficulty settings. The ladybug test under more difficult settings has larger number of ladybugs to catch, has shorter time to catch the bug before it disappears, and the workspace is bigger. In figure \ref{fig:48order}, configurations of all levels of difficulty are shown.
