@@ -37,10 +37,9 @@ The device records all joint angles (that is, the joints of the exoskeleton), an
 
 The ArmeoSpring claims to be the most widely used arm and hand rehabilitation exoskeleton. The lack of motors enables self-initiated movement therapy. The device records all joint angles and end effector trajectories, as long as task-specific variables, which can be used to provide assessments and document patient progress.
 
-\section{Data Collection: Control Group}
-\label{datacontrol}
+\section{Data Collection and Aquisition}
+\label{datacollect}
 
-We recruited 11 young (age 23 $\pm$ 2) healthy subjects (7 males) to play the games which are designed for rehabilitation.
 
 \subsection{Ladybug pointing test}
 
@@ -62,13 +61,15 @@ For control group, all games are set to be the most difficult level. Specificall
 	\centering
 	\caption{Ladybug test difficulty levels}
 	\medskip
-	\small The number indicates the order of the ladybug appearing at that location. The distance between adjacent targets are about 8 cm. Red stars indicate the center of the screen.
+	\small The number indicates the order of the ladybug appearing at that location. The distance between adjacent targets are about 8 cm.
 	\label{fig:48order}
 \end{figure}
 
 As a result, the data consists movements that have various distances and various directions.
 
-\section{Data Acquisition: Post-Stroke Group}
+\subsection{Control group and post-stroke group}
+
+We recruited 11 young (age 23 $\pm$ 2) healthy subjects (7 males) to play the games which are designed for rehabilitation.
 
 Data from post-stroke individuals are collected automatically when participants use ArmeoSpring under guidance from physical therapists. As a result, we have no control over the game difficulties and the arm length/ gravity compensation settings. However, all participants have similar schedules as the control group: there are 2 training sessions in a day, for 4 weeks, weekends excluded. Therefore each participant has 40 sessions, 80 ladybug pointing tests.
 
@@ -91,11 +92,71 @@ Because participants have different difficulty settings from each other, and eac
 
 \section{Performance in Task Space}
 
-The kinematics data collected by ArmeoSpring can be viewed as two folds: joint angle trajectories, and end point trajectories. However, these two subsets are not independent -- since the endpoint trajectories can be derived through forward kinematics from the joint trajectories. Indeed that is how the end point data is generated. Nevertheless, the end point trajectories give us valuable insights regarding to each individual's performance.
+The kinematics data collected by ArmeoSpring can be viewed as two folds: joint angle trajectories, and end point trajectories. However, these two subsets are not independent -- since the endpoint trajectories can be derived through forward kinematics from the joint trajectories. Indeed that is how the end effector data is generated. Nevertheless, the end effector trajectories give us valuable insights regarding to each individual's performance.
 
-The ladybug pointing test is a game rendered on a 2D vertical plane, namely the screen. So to move perpendicularly to the screen has no effect on the test performance. 
+The ladybug pointing test is a game rendered on a 2D vertical plane, namely the screen. So to move perpendicularly to the screen has no effect on the test performance. In this section, I present the performance of both groups on this 2D task space.
+
+The kinematics data are filtered with a seconed Butterworth filter with a cutoff frequency of 5 Hz.
+
+\subsection{Kinematics performance measures}
+
+Figure \ref{fig:controlTrajExamp} shows an example of end effector trajectories, from one participant (sb=2) in the control group. The green star indicates the first ladybug. The movement before the catch of the first ladybug is discarded. One can immediately see the differences: the trajectories at the last test are more straight and have less over-shooting. This will be confirmed in section \ref{}. In contrast, figure \ref{fig:improverTrajExamp} shows an example from one participant (sb=16) in the post-stroke group. It is worth to notice that participants in the control group never miss a target.
+
+We performed a variety of kinematics measures on this set of end effector trajectories data. They can be grouped in three groups: 1) Time and duration measure; 2) Curvature and smoothness measure; 3) Movement planning [and/or execution measure]. 
+
+\subsubsection{Time and duration measure}
+Movement duration (MD) is the time period for the execution of the reaching movement. The calculation of MD should be done carefully since the onset and offset of the movement is not readily available. A threshold is often used to determine the two, but in ArmeoSpring data, the user doesn't necessarily reach to zero velocity upon the target, so a threshold does not work very well. Instead we parse the movement according to the catch of the ladybug. 
+
+An equivalent measure to MD is average speed, defined as the distance between targets divided by MD. This is not to be confused with average tangential velocity, which is defined as the total length of traveled path divided by MD. The former is a measure of movement efficiency, while the latter of movement capacity. 
+
+Due to the fact that in ArmeoSpring data, the movements have different movement distances, and different level of tests have different average distances as well, we choose average speed as a measure of movement efficiency, and average velocity as a measure of movement capacity. 
+
+\subsubsection{Curvature and smoothness measure}
+Human movement is smooth to the extent of elegance [ref]. There are many approaches to measure curvature and smoothness.
+
+Path ratio (pr) is defined as the total length of traveled path divided by the distance between targets. Since the denominator is surely smaller or equal to the numerator, pr is larger than or equal to (though very rare) one. Note that pr is also the ratio between average speed and average velocity. We can also define other measures in similar spirit of pr, e.g. deviation index [ref], defined as the ... and deviation area index, defined as the ... . However, pr is simply defined, robust and is immune to special cases\footnote{both deviation index and deviation area index fail at special cases, such as...}. 
+
+Another way to evaluate movement smoothness is to look at velocity profile, which is the tangential velocity plotted against time. A well executed movement shows bell curve profile [ref], in which case there is only one peak. When the movement is not as smooth, more than one peaks can be identified. Therefore, number of peaks (nop) of velocity profile is also a measure of smoothness. However, This measure is very prune to data preprocessing, e.g. data filtered with different filter settings would give different nop. A similar measure is to look at number of sub modules [ref]. We choose nop for its simplicity.
+
+Yet another group of measures concerns the jerk of the movements. The jerk is defined as the third derivative of the trajectory against time. Similar to velocity profile, it is a time series. The famous minimum jerk model of movements [ref] minimize jerk, as an integration of jerk over movement period. Maximum jerk is also worth looking at. Since jerk is dependent on movement duration and distance in a nontrivial way, [ref] proposes normalized jerk which is normalized against duration and distance. Similar to nop, jerk also is prune to data preprocessing.
+
+\subsubsection{Movement planning and/or execution}
+It is not easy to infer the quality of movement planning solely through kinematics data. Still, some aspect of movement planning manifest itself in end effector trajectories. Initial direction error is defined as the angle between the line connecting targets, and the line connecting .... This measures how ...[ref]. Feedforward ratio is defind as .. [ref]
 
 
+
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{controlTrajExamp}
+	\centering
+	\caption{Example trajectories from control group}
+	\medskip
+	\small The green star is the start point
+	\label{fig:controlTrajExamp}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{improverTrajExamp}
+	\centering
+	\caption{Example trajectories from post-stroke group}
+	\medskip
+	\small circle is when the target is missed
+	\label{fig:improverTrajExamp}
+\end{figure}
+
+\subsection{Performance of the Control Group}
+
+In this section, I present the performance of the control group as measured by methods introduced in previous section. Overall, participants in the control group show less cross-subject variance, comparing to the stroke group \ref{}. 
+
+\subsubsection{Average speed and tangential velocity}
+results: speed and velocity highly correlated with each other; Male faster than Female(?); arm length play a role. Todo: determine 1) show individual plot or not 2) gender diff? 3) armlength? 4) speed/velocity correlation?
+
+\subsubsection{Smoothness}
+We choose path ratio (pr), number of peaks (nop) and normalized jerk (nj) as a measure of smoothness. The group average data is shown in figure \ref{}. Note that the variability across subject is not very big. nop can be very well captured by linear mixed effect model. exponential model is inferior. 
+
+\subsection{Performance of the Stroke Group}
+
+Compared with the control group,
 
 
 
