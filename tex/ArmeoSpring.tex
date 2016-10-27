@@ -88,7 +88,9 @@ Now we have data from 41 post-stroke individuals; gender and affected side are b
 	\label{tab:demog}
 \end{table}
 
-Because participants have different difficulty settings from each other, and each participants may also have various difficulty settings throughout the training, it is important to see the test in different difficulty settings. The ladybug test under more difficult settings has larger number of ladybugs to catch, has shorter time to catch the bug before it disappears, and the workspace is bigger. In figure \ref{fig:48order}, configurations of all levels of difficulty are shown.
+Because participants have different difficulty settings from each other, and each participants may also have various difficulty settings throughout the training, it is important to see the test in different difficulty settings. The ladybug test under more difficult settings has larger number of ladybugs to catch, has shorter time to catch the bug before it disappears, and the workspace is bigger. In figure \ref{fig:48order}, configurations of all levels of difficulty are shown. 
+
+The length of the exoskeleton and the strength of the springs also vary, both within and across participants.
 
 \section{Performance in Task Space}
 
@@ -107,7 +109,7 @@ We performed a variety of kinematics measures on this set of end effector trajec
 \subsubsection{Time and duration measure}
 Movement duration (MD) is the time period for the execution of the reaching movement. The calculation of MD should be done carefully since the onset and offset of the movement is not readily available. A threshold is often used to determine the two, but in ArmeoSpring data, the user doesn't necessarily reach to zero velocity upon the target, so a threshold does not work very well. Instead we parse the movement according to the catch of the ladybug. 
 
-An equivalent measure to MD is average speed, defined as the distance between targets divided by MD. This is not to be confused with average tangential velocity, which is defined as the total length of traveled path divided by MD. The former is a measure of movement efficiency, while the latter of movement capacity. 
+An equivalent measure to MD is average speed (SPE), defined as the distance between targets divided by MD. This is not to be confused with average tangential velocity (VEL), which is defined as the total length of traveled path divided by MD. The former is a measure of movement efficiency, while the latter of movement capacity. 
 
 Due to the fact that in ArmeoSpring data, the movements have different movement distances, and different level of tests have different average distances as well, we choose average speed as a measure of movement efficiency, and average velocity as a measure of movement capacity. 
 
@@ -148,18 +150,39 @@ It is not easy to infer the quality of movement planning solely through kinemati
 
 In this section, I present the performance of the control group as measured by methods introduced in previous section. The main purpose is to estimate a baseline performance learning curve, to be compared, as a standard, with stroke group. Overall, participants in the control group show less cross-subject variance, comparing to the stroke group \ref{}. 
 
-\subsubsection{Average speed and tangential velocity}
-The average speed and tangential velocity of each test for each subject, as well as control group average, is shown in figure \ref{}. Speed and velocity highly correlated with each other, but the gap between them decreases in time (which is also shown by path ratio in \ref{}). Hence we analyze only velocity here to avoid redundancy. 
-results: speed and velocity highly correlated with each other; Male faster than Female(?); arm length play a role. Todo: determine 1) show individual plot or not 2) gender diff? 3) armlength? 4) speed/velocity correlation?
+\textit{Method and Notations.} For each kinematics measure (take velocity $VEL$ for example), I first calculate the average $VEL$ and standard error within each test $\sigma_{VEL}$, and then calculate the group average $VEL_\textsf{group} = \textsf{mean}(VEL)$ and standard deviation $\sigma_{VEL_\textsf{group}} = \textsf{std}(VEL)$ aross participants.
+
+\subsubsection{Tangential velocity}
+The tangential velocity ($VEL_\textsf{control}$) and average speed ($SPE_\textsf{control}$) of the control group is shown in figure \ref{fig:velControlAve}. Speed and velocity are highly correlated with each other, but the gap between them decreases slightly in time (which is also shown by path ratio in \ref{}). Note that $VEL$ increases faster at the beginning, and slows down at later stage of training. This feature is also shown in the following measures.
+
+\begin{figure}
+	\includegraphics[width=0.7\textwidth]{velControlAve.jpg}
+	\centering
+	\caption{Tangential Velocity and Average Speed of control group}
+	\medskip
+	\small The shade represents standard deviation.
+	\label{fig:velControlAve}
+\end{figure}
 
 \subsubsection{Smoothness}
 We choose path ratio (pr), number of peaks (nop) and normalized jerk (nj) as a measure of smoothness. The group average data is shown in figure \ref{}. Note that the variability across subject is not very big. nop can be very well captured by linear mixed effect model. exponential model is inferior. 
 
 \subsection{Performance of the Stroke Group}
 
-Compared with the control group,
+Compared with the control group, data from the stroke group present much more variablity, both within and across participants. The data is made more complex by the fact that each participant may have different difficulty settings through out the training. So it is important to investigate the stroke group in more detail than the control group.
 
+\subsubsection{Test difficulty settings and successful rate}
 
+As shown above, there are 4 levels of difficulty setting available for stroke participants. Figure \ref{fig:diffLevel} shows two examples how this difficulty setting changes through the training. As shown, not every participants share the same pattern, some of them (17 participants) have no difficulty level changes, others have very small changes, as the second example in Figure \ref{fig:diffLevel}. Since the diffculty settings only have two effects: increased number of targets and enlarged workspace (shown in Figure \ref{fig:48order}), the former is accounted for when taking test average, the latter can be accounted by analysis on target locations. Hence we don't further investigate the effects of difficulty levels.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{diffLevel.jpg}
+	\centering
+	\caption{Example difficulty settings}
+	\medskip
+	\small 
+	\label{fig:diffLevel}
+\end{figure}
 
 
 
