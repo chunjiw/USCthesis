@@ -61,7 +61,7 @@ For control group, all games are set to be the most difficult level. Specificall
 	\centering
 	\caption{Ladybug test difficulty levels}
 	\medskip
-	\small The number indicates the order of the ladybug appearing at that location. The distance between adjacent targets are about 8 cm.
+	\small The number indicates the order of the ladybug appearing at that location. The distance between adjacent targets is about 8 cm.
 	\label{fig:48order}
 \end{figure}
 
@@ -171,9 +171,31 @@ We choose path ratio (pr), number of peaks (nop) and normalized jerk (nj) as a m
 
 Compared with the control group, data from the stroke group present much more variablity, both within and across participants. The data is made more complex by the fact that each participant may have different difficulty settings through out the training. So it is important to investigate the stroke group in more detail than the control group.
 
-\subsubsection{Test difficulty settings and successful rate}
+\subsubsection{Demographic data}
 
-As shown above, there are 4 levels of difficulty setting available for stroke participants. Figure \ref{fig:diffLevel} shows two examples how this difficulty setting changes through the training. As shown, not every participants share the same pattern, some of them (17 participants) have no difficulty level changes, others have very small changes, as the second example in Figure \ref{fig:diffLevel}. Since the diffculty settings only have two effects: increased number of targets and enlarged workspace (shown in Figure \ref{fig:48order}), the former is accounted for when taking test average, the latter can be accounted by analysis on target locations. Hence we don't further investigate the effects of difficulty levels.
+We have access to participants' age, gender, affected side, time of stroke and two clinical assessments before and after training: Fugal-Mayer score [ref] (upper extremity) and ARAT [ref]. The distribution of age, gender, affected side and time of stroke is shown in figure \ref{fig:demoData}. Figure \ref{fig:FMARAT} shows FM and ARAT of participants before and after training.
+
+\begin{figure} % /ArmeoSpring Project/user settings/plotDemographic.R
+	\includegraphics[width=\textwidth]{demoData.jpeg}
+	\centering
+	\caption{Demographic Distribution}
+	\medskip
+	\small 
+	\label{fig:demoData}
+\end{figure}
+
+\begin{figure} % /ArmeoSpring Project/user settings/plotDemographic.R
+	\includegraphics[width=\textwidth]{FMARAT.png}
+	\centering
+	\caption{FM and ARAT before and after training}
+	\medskip
+	\small 
+	\label{fig:FMARAT}
+\end{figure}
+
+\subsubsection{Test difficulty settings}
+
+As shown above, there are 4 levels of difficulty setting available for stroke participants. Figure \ref{fig:diffLevel} shows two examples how this difficulty setting changes through the training. As shown, not every participants share the same pattern, some of them (at least 17 participants) have no difficulty level changes, others have very small changes, as the second example in Figure \ref{fig:diffLevel}. Since the diffculty settings only have two effects: increased number of targets and enlarged workspace (shown in Figure \ref{fig:48order}), the former is accounted for by taking test average, the latter is accounted for by analysis of target locations. Hence we don't further investigate the effects of difficulty levels.
 
 \begin{figure}
 	\includegraphics[width=\textwidth]{diffLevel.jpg}
@@ -184,54 +206,6 @@ As shown above, there are 4 levels of difficulty setting available for stroke pa
 	\label{fig:diffLevel}
 \end{figure}
 
+\subsubsection{Successful rate}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Unlike the control group, participants in the stroke group don't usually achieve 100\% successful rate, which is defined as the percentage of targets that are successfully caught by the cursor. 
