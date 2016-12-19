@@ -1,12 +1,12 @@
 \chapter{Compensation and Restitution of Post-Stroke Movement Patterns}
 \label{cha:armeospring}
 
-In this chapter, I present my study on the armeospring kinematics data.
+In this chapter, I present my study on the ArmeoSpring kinematics data.
 
 \section{ArmeoSpring Overview}
 \label{sec:overview}
 
-The ArmeoSpring is a rehabilitation exoskeleton, designed for the purpose of ``functional arm and hand therapy''.\footnote{https://www.hocoma.com/usa/us/products/armeo/armeospring/} The device is based on research and development of David Reinkensmyer at the University of California, Irvine (UCI) and at the Rehabilitation Institute of Chicago (RIC). Shown in figure \ref{fig:armeo}, the exoskeleton has 7 degrees of freedom (DoF), summarized in table \ref{tab:devicedof}. It is attached to the arm by two or three velcro straps. The exoskeleton has two springs equipped, at the upper arm and forearm respectively. The springs can be adjusted to compensate the gravity force of the arm. The lengths of the exoskeleton are adjustable, as well as the strength of the springs. There are no motors at any joints, as a result, the user has to move actively to control the exoskeleton. The user's trunk is mildly constrained by the velcro strap at the upper arm. 
+The ArmeoSpring is a rehabilitation exoskeleton, designed for the purpose of ``functional arm and hand therapy''.\footnote{https://www.hocoma.com/usa/us/products/armeo/armeospring/, add date/time} [Here is another quote ``dont do that!"] The device is based on research and development of David Reinkensmyer at the University of California, Irvine (UCI) and the Rehabilitation Institute of Chicago (RIC). Shown in figure \ref{fig:armeo}, the exoskeleton has 7 degrees of freedom (DoF), summarized in table \ref{tab:devicedof}. It is attached to the arm by two or three velcro straps. The exoskeleton has two springs equipped, at the upper arm and forearm respectively. The springs can be adjusted to compensate the gravity force of the arm. The lengths of the exoskeleton are adjustable, as well as the strength of the springs. There are no motors at any joints, as a result, the user has to move actively to control the exoskeleton. The user's trunk is mildly constrained by the velcro strap at the upper arm. 
 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{armeo.jpg}
@@ -35,7 +35,7 @@ The ArmeoSpring is a rehabilitation exoskeleton, designed for the purpose of ``f
 
 The device records all joint angles (that is, the joints of the exoskeleton), and calculates the end effector location through a forward kinematics model of the exoskeleton. The end effector location then is used to control a cursor on a screen, often displayed vertically in front of the user. The stick at the end point is equipped with a force sensor. During a training session, the user plays several 2D or 3D games, and after a certain game, the user is often presented with performance feedbacks of that game. Most of the games have difficulty settings that the physical therapist can change at the beginning of a training session.
 
-The ArmeoSpring claims to be the most widely used arm and hand rehabilitation exoskeleton. The lack of motors enables self-initiated movement therapy. The device records all joint angles and end effector trajectories, as long as task-specific variables, which can be used to provide assessments and document patient progress.
+The ArmeoSpring claims to be the most widely used arm and hand rehabilitation exoskeleton [citation or ref or footnote]. The lack of motors enables self-initiated movement therapy. The device records all joint angles and end effector trajectories, as long as task-specific variables, which can be used to provide assessments and document patient progress.
 
 \section{Data Collection and Aquisition}
 \label{datacollect}
@@ -43,7 +43,7 @@ The ArmeoSpring claims to be the most widely used arm and hand rehabilitation ex
 
 \subsection{Ladybug pointing test}
 
-The ladybug pointing test (see figure \ref{fig:ladybug}) is a 2D game in which the user tries to catch ladybugs that appear one by one pseudo randomly. The game is 2D, so the direction that is perpendicular to the screen is ignored. To catch the ladybug, the user simply moves the cursor to its location. After a ladybug is caught, or a certain amount of time if not caught, the ladybug disappears and the next ladybug appears somewhere else. We choose this game as a test of performance because we know the beginning and end of each movement, namely from the current ladybug to the next.
+The ladybug pointing test (see figure \ref{fig:ladybug}) is a game in which the user tries to catch ladybugs that appear one by one pseudo randomly on the screen. The game is in 2D, so the direction perpendicular to the screen is ignored. To catch the ladybug, the user moves the cursor to its location. After a ladybug is caught, or a certain amount of time if not caught, the ladybug disappears and the next ladybug appears somewhere else. We choose this game as a test of performance because we have access to the time and location of the beginning and the end of each movement (if the ladybug is caught).%, namely from the current ladybug to the next.
 
 \begin{figure}
 	\includegraphics[width=0.5\textwidth]{ladybug.png}
@@ -52,9 +52,9 @@ The ladybug pointing test (see figure \ref{fig:ladybug}) is a 2D game in which t
 	\label{fig:ladybug}
 \end{figure}
 
-This pointing test is put at the beginning and the end of each training session. For subjects in control group, each session lasts about 20 minutes. There are 2 training sessions, one in the morning, the other in the afternoon, for 5 consecutive days. As a result, each subject has 10 sessions, 20 ladybug pointing tests. 
+This pointing test is scheduled at the beginning and the end of each training session. For the control group (see below), each session lasts about 20 minutes. Two training sessions are scheduled per day in the morning and the afternoon, for 5 consecutive days. As a result, each subject has 10 sessions, 20 ladybug pointing tests. 
 
-For control group, all games are set to be the most difficult level. Specifically, the ladybug pointing test for control group is set at level 4. There are 48 ladybugs in total. Though the locations of ladybugs seem to be random, they are actually appearing in a specific sequence at specific locations. In this case, all ladybugs appear on a 6*8 grid, with the sequence shown in \ref{fig:48order}.
+For the control group, all games are set to be at the most difficult level. Specifically, the ladybug pointing test is set at level 4 in which 48 ladybugs appears sequentially. Though the locations of ladybugs seem to be random, they actually appears in a specific sequence at specific locations. At level 4, all ladybugs appear on a 6*8 grid, in the sequence shown in \ref{fig:48order}. (the sequences at level 1,2 and 3 are also shown.) 
 
 \begin{figure}
 	\includegraphics[width=0.8\textwidth]{48order.png}
@@ -65,7 +65,7 @@ For control group, all games are set to be the most difficult level. Specificall
 	\label{fig:48order}
 \end{figure}
 
-As a result, the data consists movements that have various distances and various directions.
+As a result, the data consists movements that have various distances and directions.
 
 \subsection{Control group and post-stroke group}
 
@@ -209,3 +209,9 @@ As shown above, there are 4 levels of difficulty setting available for stroke pa
 \subsubsection{Successful rate}
 
 Unlike the control group, participants in the stroke group don't usually achieve 100\% successful rate, which is defined as the percentage of targets that are successfully caught by the cursor. 
+
+
+\section{[to-write]Joint Coordination}
+\subsection{[to-write](Attempt to)Get Joint Angles from Machine Joint Angle Recordings }
+\subsection{[to-write]Pros and Cons of Dimensionality Reduction Method for Synergy Abstraction}
+\subsection{[to-write]Relationship with Performance in Task Space}
