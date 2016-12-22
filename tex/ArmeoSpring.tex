@@ -37,7 +37,7 @@ The device records all joint angles (that is, the joints of the exoskeleton), an
 
 The ArmeoSpring claims to be the most widely used arm and hand rehabilitation exoskeleton [citation or ref or footnote]. The lack of motors enables self-initiated movement therapy. The device records all joint angles and end effector trajectories, as long as task-specific variables, which can be used to provide assessments and document patient progress.
 
-\section{Data Collection and Aquisition}
+\section{Data Collection, Aquisition and Preprocessing}
 \label{datacollect}
 
 
@@ -92,13 +92,14 @@ Because participants have different difficulty settings from each other, and eac
 
 The length of the exoskeleton and the strength of the springs also vary, both within and across participants.
 
+
 \section{Performance in Task Space}
 
 The kinematics data collected by ArmeoSpring can be viewed as two folds: joint angle trajectories, and end point trajectories. However, these two subsets are not independent -- since the endpoint trajectories can be derived through forward kinematics from the joint trajectories. Indeed that is how the end effector data is generated. Nevertheless, the end effector trajectories give us valuable insights regarding to each individual's performance.
 
 The ladybug pointing test is a game rendered on a 2D vertical plane, namely the screen. So to move perpendicularly to the screen has no effect on the test performance. In this section, I present the performance of both groups on this 2D task space.
 
-The kinematics data are filtered with a seconed Butterworth filter with a cutoff frequency of 5 Hz.
+The kinematics data are filtered with a second order Butterworth filter with a cutoff frequency of 5 Hz.
 
 \subsection{Kinematics performance measures}
 
@@ -211,7 +212,14 @@ As shown above, there are 4 levels of difficulty setting available for stroke pa
 Unlike the control group, participants in the stroke group don't usually achieve 100\% successful rate, which is defined as the percentage of targets that are successfully caught by the cursor. 
 
 
-\section{[to-write]Joint Coordination}
+\section{Joint Coordination}
+
+\subsection{Joint Angle Data Overview}
+Although the device has seven degrees of freedom (as shown in \ref{tab:devicedof}), the first two degrees of freedom both contributes to shoulder horizontal abduction/ adduction movement, therefore they essentially degenerate into one degree of freedom.
+
+The joints of the device do not represent anatomical joints, nevertheless, three device joints can be mapped to anatomical joints directly: Shoulder Angle $\,\to\,$ Shoulder Horizontal Ab-/Adduction, Upper Arm Angle -> Shoulder Flexion/ Extension, Wrist Flexion/ Extension Angle -> Wrist Flexion/ Extension. Pro-/Supination Angle of the device is not the anatomical pro-/supination angle, though they are highly correlated.
+
+
 \subsection{[to-write](Attempt to)Get Joint Angles from Machine Joint Angle Recordings }
 \subsection{[to-write]Pros and Cons of Dimensionality Reduction Method for Synergy Abstraction}
 \subsection{[to-write]Relationship with Performance in Task Space}
