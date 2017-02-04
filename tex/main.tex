@@ -1,5 +1,5 @@
 %-----------------------------------------------------------------------------
-%	PACKAGES AND DOCUMENT CONFIGURATION
+%%	PACKAGES AND DOCUMENT CONFIGURATION
 %-----------------------------------------------------------------------------
 
 % Use `report` class with `USCthesis` package (style file) by Brian P. Gerkey
@@ -17,16 +17,20 @@
 %\usepackage{blindtext}
 
 % Other packages
+% math
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bm}
+%% SI units
+\usepackage{siunitx}
+% graphic
 \usepackage{graphicx}
 \graphicspath{ {figures/}}
 
 \begin{document}
 
 %-----------------------------------------------------------------------------
-%	TITLE PAGE
+%%	TITLE PAGE
 %-----------------------------------------------------------------------------
 
 % Volume name could be added as option, e.g. `[Volume I]`.
@@ -44,7 +48,7 @@
 \submitdate{April 2017}
 
 %-----------------------------------------------------------------------------
-%	PREFACE
+%%	PREFACE
 %-----------------------------------------------------------------------------
 
 % The preface environment prints the title page.
@@ -73,7 +77,7 @@
 \end{preface}
 
 %-----------------------------------------------------------------------------
-%	CONTENT STRUCTURE
+%%	CONTENT STRUCTURE
 %-----------------------------------------------------------------------------
 
 % Better to separate LaTeX structure and content
@@ -97,7 +101,6 @@
 \begin{singlespace}
   % Bibliography
   \references{plain}{references}
-
   \appendix
   % Appendices
   \include{appendix}

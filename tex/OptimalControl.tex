@@ -14,9 +14,9 @@ If a task does not specifically (explicitely) have a varibility limit, then mini
 To test our hypothesis, we built an open-loop stochastic optimal control model with both SDN and CN, to investigate the relationship between movement duration and endpoint variability (and effort?).
 
 The reaching movement is simulated with a planar arm with a shoulder and an elbow, whose joint angles are represented by $\bm{q} = (q_1, q_2)^T$, controlled by the open-loop stochastic optimal controller. 
-The forward kinematics, inverse kinematics are formulated as in (Van Beers), and the dynamics equation is
+The forward and inverse kinematics are formulated as in (Van Beers), and the dynamics equation is
 
-\begin{equation} \label{dynamics}
+\begin{equation} \label{maindynamics}
 	\ddot{\bm{q}} = \bm{M}(\bm{q})^{-1} (\bm{\tau} - \bm{C}(\bm{q}, \dot{\bm{q}}) - \bm{B}\dot{\bm{q}})
 \end{equation}
 
@@ -33,14 +33,14 @@ where $\bm{u}$ is the motor command, $t_e$, $t_a$ are time constants for excitat
 
 The motor command $\bm{u}$ is corrupted with signal-dependent noise and constant noise:
 
-\begin{equation}
+\begin{equation}\label{cnsdn}
 u_t \rightarrow (1 + \epsilon\sigma_{\text{SDN}}) u_t + \xi\sigma_{\text{CN}}
 \end{equation}
 
 where $\epsilon$ and $\xi$ are random variables from the normal Gaussian distribution.
-$\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ represent the levels of the noise.
+$\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ represent the levels of noise.
 
-To circumvent the difficulty of solving a nonlinear optimal control problem, we discritize and linearize the dynamics equation with Newton's method [Newton] with 10 ms time step interval around an approximated solution (as in Li 2004, Appendix \ref{app:oc}), giving rise to a linear-quadratic problem with the following cost to minimize:
+To circumvent the difficulty of solving a nonlinear optimal control problem, we discritize and linearize the kinematics and dynamics equation with Newton's method [Newton] with 10 ms time step interval around an approximated solution (as in Li 2004, Appendix \ref{app:oc}), giving rise to a linear-quadratic problem with the following cost to minimize:
 
 \begin{equation}
 V = \bm{s}_T^T\bm{Q}_T\bm{s}_T + \sum_{t=1}^T\bm{u}_t^T\bm{Ru}_t
@@ -51,12 +51,58 @@ $\bm{Q}$ is arranged in such a way that the first term represents the square of 
 $\bm{R}$ is a diagonal matrix with a single value $w_r$ on the diagonal.
 $w_r$ is a free parameter.
 
+[Leave the discussion about linearize and Gaussian distribution propogation to appendix]
 
 
 \section{Estimation of SDN and CN in Reaching Movements}
-\subsection{Methods}
-\subsection{Results}
-\section{Simulated Cost vs Movement Duration Relationship}
-\subsection{Results}
+Although $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ (see equation \ref{cnsdn}) have previously been estimated {van Beers, 2004 }, these estimates were based on inverse dynamics control of a simulated arm with a viscosity parameter that was estimated at rest from restoring forces to small perturbations {Gomi, 1998 3}. 
+However, the amount of viscosity during movements is presumably substantially smaller during movement than at rest {Burdet, 2013 4}. 
+In addition, we found in simulations (Appendix \ref{app:oc}) that viscosity has a profound effect on the distribution of endpoints.  
+We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ with viscosity as a free parameter by fitting an optimal open-loop controller to reaching data described in Chapter \ref{cha:md}.
+
+As shown in equation \ref{cnsdn}, CN and SDN is assumed to be independent and Gaussian. 
+The endpoint distribution due to motor noise is generally not Gaussian because of nonlinearity of the kinematics and dynamics.
+However, since we linearized the system, endpoint distribution then becomes Gaussian, and therefore can be summarized through the first and second moments of the distribution. 
+Please see Appendix \ref{app:oc} for a comparison between endpoint distributions from the original dynamics and the linearized dynamics.
+
+We picked the $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ values that minimize the following fitting error function:
+
+\begin{equation}
+\sum_{t}\sum_{c} (\text{TE}_{\text{data},t,c} - \text{TE}_{\text{sim},t,c})^2
+\end{equation}
+
+where $t$ and $c$ are indexes for target and condition, and TE stands for Total Error defined as 
+
+\begin{equation}
+\text{TE}_{\text{data}} = \frac1N\sum_n(x - x^*)^2 + (y - y^*)^2
+\end{equation}
+
+where $n$ is index for trials;
+
+\begin{equation}
+\text{TE}_{\text{sim}} = (\bar{x} - x^*)^2 + (\bar{y} - y^*)^2 + \text{tr}(\bm{P})
+\end{equation}
+
+where $(\bar{x},\bar{y})$ and $\bm{P}$ are the first and second moment of the simulated endpoint distribution. 
+The expressions of TE for data and simulation are different because $\text{TE}_{\text{data}}$ is calculated from actual endpoint data, whereas $\text{TE}_{\text{sim}}$ is calculated from the first and second moment of endpoint distribution.
+		
+We found that for simulated movement that is longer than 1 second, the endpoint variability is very sensitive to CN.
+We assume $\sigma_{\text{CN}}$ depends on movement durations, but $\sigma_{\text{SDN}}$ is constant. [need rational and citation] 
+The minimization of the fitting error function yielded the following noise and viscosity parameters: $\sigma_{\text{SDN}} = 0.298$ (unit-less), $\sigma_{\text{CN}}$(fast, medium, preferred, slow) = (0.010, 0.037, 0.035, 0.031)(\si{N.m}), and $b=0.110$ (\si{kg.m^2/s}). 
+Note that our estimation of viscosity is significantly lower than Van Beers. 
+
+We interpolate $\sigma_{\text{CN}}$ as a function of movement duration using piecewise cubic Hermite interpolation [ref], shown in figure \ref{}.
+
+\section{Simulation of Cost vs. Movement Duration}
+
+For both the \ang{45} and the \ang{135} targets, the stochastic optimal control model with parameters estimated above produced a U-shape relationship between total error and movement duration (Figure \ref{}). The total error reached a minimum at an intermediate movement duration (approximately 600 ms for both targets), and increased either for faster or slower movements. 
+
+The total cost (equation \ref{}) also exhibited a U-shape characteristic. 
+For the left target, the total cost curve reached the minimum at (about) 1000 ms, very close to the average movement duration (1053ms)  that the subjects chose at the preferred condition. 
+However, for the right target, the total cost curve reached the minimum only a little longer than the movement duration that minimizes the total error, not enough to the average movement duration ( ms?) that the subjects chose at the preferred condition.
+The difference stems from the larger effort required for a movement to the target at \ang{135} (which involves both shoulder and elbow rotation) than the target at \ang{45} (which involves roughly to an elbow rotation).
+
+
+
 
 
