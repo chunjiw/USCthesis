@@ -45,7 +45,7 @@ $\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ represent the levels of noise.
 
 To circumvent the difficulty of solving a nonlinear optimal control problem, we discritize and linearize the kinematics and dynamics equations with 10 ms time step interval around an approximated solution (as in \cite{Li2004}, details shown in Supplimental Material \ref{ocformulation}), giving rise to a linear-quadratic problem with the following cost to minimize:
 
-\begin{equation}
+\begin{equation}\label{eqn:cost}
 V = \bm{s}_T^T\bm{Q}_T\bm{s}_T + \sum_{t=1}^T\bm{u}_t^T\bm{Ru}_t
 \end{equation}
 
@@ -103,6 +103,8 @@ In addition, we systematically varied $ w_r $ from $ 10^{-7} $ to 〖$ 10^{-5} $
 We found that for simulated movement that is longer than 1 second, the endpoint variability is very sensitive to CN.
 We therefore assume $\sigma_{\text{CN}}$ depends on movement durations, but $\sigma_{\text{SDN}}$ is constant. [need rational and citation] 
 
+With the estimated  $\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ as well as viscosity parameter $ b $, we simulated reaching movements to both targets with different movement duration.
+
 \section{Results}
 
 \subsection{Estimation of SDN and CN in Reaching Movements}
@@ -119,15 +121,35 @@ We interpolate $\sigma_{\text{CN}}$ as a function of movement duration using pie
 	\label{fig:interpcn}
 \end{figure}
 
+The model with estimated noise and viscosity parameters produces a Movement Duration - Total Error relationship that is very close to the data, shown in figure \ref{fig:total-error}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{"figures/total error"}
+	\caption[Model with estimated parameters reproduces U curve relationship between Movement Duration and Total Error]{Model with estimated parameters reproduces U curve relationship between Movement Duration and Total Error. The model has 6 free parameters: four $\sigma_{\text{CN}}$ values for four movement durations,  $\sigma_{\text{SDN}}$, viscosity $ b $.}
+	\label{fig:total-error}
+\end{figure}
+
+
 
 \subsection{Simulation of Cost vs. Movement Duration}
 
-For both the \ang{45} and the \ang{135} targets, the stochastic optimal control model with parameters estimated above produced a U-shape relationship between total error and movement duration (Figure \ref{}). The total error reached a minimum at an intermediate movement duration (approximately 600 ms for both targets), and increased either for faster or slower movements. 
+For both the \ang{45} and the \ang{135} targets, the stochastic optimal control model with parameters estimated above produced a U-shape relationship between total error and movement duration (Figure \ref{fig:variability---cost---minimum-shift}). 
+The total error reached a minimum at an intermediate movement duration (approximately 600 ms for both targets), and increased either for faster or slower movements. 
 
-The total cost (equation \ref{}) also exhibited a U-shape characteristic. 
-For the left target, the total cost curve reached the minimum at (about) 1000 ms, very close to the average movement duration (1053ms)  that the subjects chose at the preferred condition. 
-However, for the right target, the total cost curve reached the minimum only a little longer than the movement duration that minimizes the total error, not enough to the average movement duration ( ms?) that the subjects chose at the preferred condition.
-The difference stems from the larger effort required for a movement to the target at \ang{135} (which involves both shoulder and elbow rotation) than the target at \ang{45} (which involves roughly to an elbow rotation).
+The total cost (equation \ref{eqn:cost}) also exhibited a U-shape characteristic. 
+For the left target, the total cost curve reached the minimum at about 1000 ms, very close to the average movement duration (1053 ms) that the subjects chose at the preferred condition. 
+However, for the right target, the total cost curve reached the minimum at a movement duration only a little longer than the movement duration that minimizes the total error, not enough to the average movement duration (about 1000 ms) that the subjects chose at the preferred condition.
+The difference stems from the larger effort required for a movement to the target at \ang{135} (which involves both shoulder and elbow rotation) than the target at \ang{45} (which involves roughly to an elbow rotation), as shown by the yellow curve in figure \ref{fig:variability---cost---minimum-shift}. 
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{"figures/variability - cost - minimum shift"}
+	\caption[Simulation of Cost vs. Movement Duration Curve]{Simulation of Cost vs. Movement Duration Curve. The minimum of cost curve is at longer movement duration than the minimum of error curve, for both left and right target. The minimm of cost curve for the left target is at the "preferred" movement duration that the subjects choose in preferred condition (see Chapter \ref{cha:md}); However, for the right target, the minimum of cost curve is not at the "preferred" movement duration.}
+	\label{fig:variability---cost---minimum-shift}
+\end{figure}
+
 
 \section{Discussion}
 
@@ -358,11 +380,9 @@ I omit the mean of the variables for simplicity. Apply to the dynamics equation 
 \bm{P}_{t+1} = \bm{A}_t \bm{P}_t\bm{A}_t^T + \bm{B}\bm{Q}_t\bm{B}^T
 \end{equation}
 
-\subsection{The Effect of Linearization on Endpoint Distribution}
-
 \subsection{Results}\label{results}
 \subsubsection{Effects of Viscosity}
-In \cite{van2004role}, The viscosity matrix $\bm{B}$ in equation \ref{dynamics} is set to be diagonal with a value of 0.8 Nms/rad:
+In \cite{VanBeers2004}, The viscosity matrix $\bm{B}$ in equation \ref{dynamics} is set to be diagonal with a value of 0.8 Nms/rad:
 \begin{equation}
 \bm{B} = 
 \left(\begin{matrix}
@@ -370,7 +390,7 @@ In \cite{van2004role}, The viscosity matrix $\bm{B}$ in equation \ref{dynamics} 
 0 & 0.8 \\
 \end{matrix}\right)
 \end{equation}
-Here I compare simulation results with \cite{van2004role} value and a value of zero.
+Here I compare simulation results with \cite{VanBeers2004} value and a value of zero.
 
 For a movement to a 90 degree target, simulation with high viscosity value gives S-shaped trajectory and asymmetric velocity profile  (figure \ref{fig:0.8}), whereas simulation with zero viscosity gives bell shaped velocity profile (figure \ref{fig 0.0}).
 \begin{figure}[h]
