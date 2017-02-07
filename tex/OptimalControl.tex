@@ -11,9 +11,11 @@ If a task does not specifically (explicitely) have a varibility limit, then mini
 
 [paragraph about the second hypothesis] [from the published paper, need to add more/change] While minimizing end-point variability due to both signal- dependent and constant motor noise would be sufficient to determine the duration of movements, the results of Burdet et al. (2001) suggest that effort minimization contributes to movement planning in addition to noise. In that experiment, training arm reaching movements in a divergent force field led to reduced end-point variability by increasing cocontraction of antagonist muscles. If the CNS only minimized end-point variability, then it would use this energetically costly cocon- traction strategy to reduce end-point error (Osu et al. 2004). The fact that habitual movements (performed without force field) yield more relaxed muscle activity than in the experiment of Burdet et al. suggests that the CNS also minimizes effort. Minimization of effort independently from minimization of end-point variability due to signal-dependent and constant noise sources would lengthen movement duration.  -- -- Our second hypothesis is therefore that the CNS chooses intermediate durations that are longer than those minimizing variability. To test these two hypotheses and examine how humans select movement durations, we conducted an arm movement experiment without visual feedback and measured end-point variability in movements of four duration conditions, fast, medium, slow, and preferred, in which subjects choose to move at their preferred speed. The results verify our hypotheses, providing evidence for the concurrent minimization of effort and variability due to signal-dependent and constant motor noise.
 
-\section{Methods: Open-loop Stochastic Optimal Control Model}
-To test our hypothesis, we built an open-loop stochastic optimal control model with both SDN and CN, to investigate the relationship between movement duration and endpoint variability (and effort?).
 
+\section{Methods}
+To test our hypothesis, we built an open-loop stochastic optimal control model with both SDN and CN, estimated the levels of CN and SDN through the matching of the model with data in Chapter \ref{cha:md}, and simulated endpoint distributions and effort of movement with different movement durations.
+
+\subsection{Open-loop Stochastic Optimal Control Model}
 The reaching movement is simulated with a planar arm with a shoulder and an elbow, whose joint angles are represented by $\bm{q} = (q_1, q_2)^T$, controlled by the open-loop stochastic optimal controller. 
 The forward and inverse kinematics are formulated as in \cite{VanBeers2004}, and the dynamics equation is
 
@@ -30,7 +32,7 @@ We use a second-order linear filter as the muscle model (as in \cite{VanBeers200
 	\bm{u} = t_et_a\ddot{\bm{\tau}} + (t_e+t_a)\dot{\bm{\tau}} +\bm{\tau}
 \end{equation}
 
-where $\bm{u}$ is the motor command, $t_e$, $t_a$ are time constants for excitation and activation respectively. 
+where $\bm{u}$ is the motor command, $t_e = 30$ ms, $t_a = 40$ ms are time constants representing excitation and activation respectively \cite{VanDerHelm}. 
 
 The motor command $\bm{u}$ is corrupted with signal-dependent noise and constant noise:
 
@@ -48,27 +50,36 @@ V = \bm{s}_T^T\bm{Q}_T\bm{s}_T + \sum_{t=1}^T\bm{u}_t^T\bm{Ru}_t
 \end{equation}
 
 where $\bm{s_t}$ is the state vector. 
-$\bm{Q}$ is arranged in such a way that the first term represents the square of endpoint error in hand space (Supplimental Material \ref{app:ocformulation}). 
+$\bm{Q}$ is arranged in such a way that the first term represents the square of endpoint error in hand space (Supplimental Material \ref{app:cost}). 
 $\bm{R}$ is a diagonal matrix with a single value $w_r$ on the diagonal.
 $w_r$ is a free parameter.
+The second term, the integral of squared motor commands, are assumed to be the effort being considered in the process of determining movement duration. 
 
-[Leave the discussion about linearize and Gaussian distribution propogation to appendix]
+\subsection{Endpoint Distribution from Gaussian Execution Noise}
 
+As shown in equation \ref{cnsdn}, the execution noise (CN and SDN) are assumed to be independent and Gaussian. 
+The endpoint distribution due to execution noise is generally not Gaussian due to nonlinearity of the kinematics and dynamics. 
+Through linearization of the system, we essentially used Gaussian as an approximation of the actual endpoint distribution. 
+This approximation makes the algorithm much more efficient (thanks to the covariance propagation equation, see Supplemental Material \ref{app:covarProp}), than simulating large number of trials and calculating statistics over the endpoints (seen in \ref{VanBeers2004, Guigon2008}).
+In order to make sure this approximation is appropriate, we compared the distribution from the linearized system to the original nonlinear system. As shown in figure \ref{fig:linearizeddistributionapprox}, the Gaussian distributions given by the linearized system (the blue 95\% confidence ellipse) are good approximations of the actual distributions of the original nonlinear system (the 2-dimension histogram, from 6000 simulated endpoints).
 
-\section{Methods: Estimation of SDN and CN in Reaching Movements}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/linearizedDistributionApprox}
+	\caption[Endpoint distributions of linearized system approximates the original]{Endpoint distributions of linearized system approximates the original. On the left is the distribution of joint angles at the endpoint position; on the right is the distribution of endpoints in task space. The blue 95\% confidence ellipses are distributions of linearized system; the 2-dimension histogram are distributions of the original system.}
+	\label{fig:linearizeddistributionapprox}
+\end{figure}
+
+\subsection{Estimation of SDN and CN in Reaching Movements}
 Although $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ (see equation \ref{cnsdn}) have previously been estimated in \cite{VanBeers2004}, these estimates were based on inverse dynamics control of a simulated arm with a viscosity parameter that was estimated at rest from restoring forces to small perturbations \cite{Gomi1998}. 
 However, the amount of viscosity during movements is presumably substantially smaller during movement than at rest \cite{Burdet2013}. 
 In addition, we found in simulations (Supplimental Material \ref{app:oc}) that viscosity has a profound effect on the distribution of endpoints.  
 We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ with viscosity as a free parameter by fitting an optimal open-loop controller to reaching data described in Chapter \ref{cha:md}.
 
-As shown in equation \ref{cnsdn}, CN and SDN is assumed to be independent and Gaussian. 
-The endpoint distribution due to motor noise is generally not Gaussian because of nonlinearity of the kinematics and dynamics.
-However, since we linearized the system, endpoint distribution then becomes Gaussian, and therefore can be summarized through the first and second moments of the distribution. 
-Please see Supplimental Material \ref{app:oc} for a comparison between endpoint distributions from the original dynamics and the linearized dynamics.[Need to add]
-
 We picked the $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ values that minimize the following fitting error function:
 
 \begin{equation}
+\label{eqn:fiterror}
 \sum_{t}\sum_{c} (\text{TE}_{\text{data},t,c} - \text{TE}_{\text{sim},t,c})^2
 \end{equation}
 
@@ -86,15 +97,30 @@ where $n$ is index for trials;
 
 where $(\bar{x},\bar{y})$ and $\bm{P}$ are the first (mean) and second (covariance matrix) central moment of the simulated endpoint distribution. 
 The expressions of TE for data and simulation are different because $\text{TE}_{\text{data}}$ is calculated from actual endpoint data, whereas $\text{TE}_{\text{sim}}$ is calculated from the first and second moment of endpoint distribution.
+We used \textsf{patternsearch} in Matlab to determine $\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ as well as viscosity parameter $ b $ that minimize the fitting error function \ref{eqn:fiterror}. 
+In addition, we systematically varied $ w_r $ from $ 10^{-7} $ to 〖$ 10^{-5} $, but found that it had very little effect on both endpoint distributions and estimation of other three free parameters (at most 5\%). We therefore set $ w_r $ = $ 2\times 10^{-6} $ because larger values lead to inability of reaching to the target and smaller values decrease effect of effort minimization in movement generation. 
 		
 We found that for simulated movement that is longer than 1 second, the endpoint variability is very sensitive to CN.
 We therefore assume $\sigma_{\text{CN}}$ depends on movement durations, but $\sigma_{\text{SDN}}$ is constant. [need rational and citation] 
+
+\section{Results}
+
+\subsection{Estimation of SDN and CN in Reaching Movements}
+
 The minimization of the fitting error function yielded the following noise and viscosity parameters: $\sigma_{\text{SDN}} = 0.298$ (unit-less), $\sigma_{\text{CN}}$(fast, medium, preferred, slow) = (0.010, 0.037, 0.035, 0.031)(\si{N.m}), and $b=0.110$ (\si{kg.m^2/s}). 
 Note that our estimation of viscosity is significantly lower than \cite{VanBeers2004}. 
 
-We interpolate $\sigma_{\text{CN}}$ as a function of movement duration using piecewise cubic Hermite interpolation \cite{Fritsch1980}, shown in figure \ref{}.
+We interpolate $\sigma_{\text{CN}}$ as a function of movement duration using piecewise cubic Hermite interpolation \cite{Fritsch1980}, shown in figure \ref{fig:interpcn}.
 
-\section{Methods: Simulation of Cost vs. Movement Duration}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.75\linewidth]{figures/interpCN}
+	\caption[Interpolation of $\sigma_{\text{CN}}$]{The Interpolation of $\sigma_{\text{CN}}$ against movement duration using piecewise cubic Hermite interpolation. The constant noise level is low at fast movement, and increases with movement duration, until it reaches a plateau.}
+	\label{fig:interpcn}
+\end{figure}
+
+
+\subsection{Simulation of Cost vs. Movement Duration}
 
 For both the \ang{45} and the \ang{135} targets, the stochastic optimal control model with parameters estimated above produced a U-shape relationship between total error and movement duration (Figure \ref{}). The total error reached a minimum at an intermediate movement duration (approximately 600 ms for both targets), and increased either for faster or slower movements. 
 
@@ -103,7 +129,6 @@ For the left target, the total cost curve reached the minimum at (about) 1000 ms
 However, for the right target, the total cost curve reached the minimum only a little longer than the movement duration that minimizes the total error, not enough to the average movement duration ( ms?) that the subjects chose at the preferred condition.
 The difference stems from the larger effort required for a movement to the target at \ang{135} (which involves both shoulder and elbow rotation) than the target at \ang{45} (which involves roughly to an elbow rotation).
 
-\section{Results}
 \section{Discussion}
 
 \section{Supplimental Material on Stochastic Control Modeling}
@@ -259,6 +284,7 @@ Now the dynamics equation can be written as
 \end{equation}
 
 \subsubsection{Cost Function}
+\label{app:cost}
 Usually there are two terms in the cost function, one is the cost for motor command $\bm{u}$, the other is for endpoint error $\bm{x} - \bm{x}^*$. To make both of them representable in quadratic form, $\bm{x}^*$ has to be imbedded into the state vector, so the new state vector is now defined as
 \begin{equation}
 \bm{x}_t=\left[ \begin{matrix}\bm{q}_t \\ \dot{\bm{q}}_t \\ \bm{\tau}_t \\ \bm{e}_t \\
@@ -312,7 +338,7 @@ In conclusion, the result of linearization is the following LQR problem:
 \subsubsection{Iterative LQR}
 The solution to equation \ref{linlqr} is not the solution to the original nonlinear problem, since it's just a linear approximation around $\tilde{\bm{x}}_t$ and $\tilde{\bm{u}}_t$. But the solution can be taken as a new start point, and so on. When the iteration converges, the solution to equation \ref{linlqr} is $\tilde{\bm{u}}_t$ itself.
 
-\subsubsection{Covariance Matrix Propagation}
+\subsubsection{Covariance Matrix Propagation}\label{app:covarProp}
 Once we get the optimal solution $\tilde{\bm{u}}$ from iterative LQR, we can plug it back into equation \ref{linlqr} (the same as the dynamics equation \ref{dynam}) to get the optimal trajectory. We can also turn on SDN in a form that is consistent with equation \ref{optimprob}, and/ or any form of constant noise, to simulate arm movement with motor/ state noise. The statistics of multiple simulations then can be compared with experiment data.
 
 Many works look at the characters of endpoint distributions of arm reaching movement [reference needed Gordon Guigon van beers]. Instead of running repetively the simulations, there is another way to get the endpoint distribution, namely to calculate the covariance matrix of the state vector after each time step. Let us consider equation \ref{dynam} with motor command $\bm{u}_t$ corrupted with constant noise (CN) and signal dependent noise (SDN). That is,
