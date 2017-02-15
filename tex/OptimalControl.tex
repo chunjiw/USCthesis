@@ -19,16 +19,16 @@ The level of CN estimated in \cite{VanBeers2004} to account for endpoint distrib
 
 Optimal control theory assumes that movements can be understood as the solution of an optimization process.
 The cost function of this optimization process is generally composed of two parts: one encodes the goal of the movement, the other penalizes some inherent feature of the movement \cite{Diedrichsen2010}. 
-The first part can be formularized as the endpoint variance \cite{Harris1998}, or the endpoint error \cite{Todorov}; 
-the second part can be based on the integrated jerk (Diedrichsen2010: 11,12), integrated torque (need cite) or torque change (Diedrichsen2010, 13), or integrated squared motor commands\cite{Todorov}. 
-To our knowledge, The relationship between movement duration and the two parts of the cost function has not been thoroughly examined \cite{}. 
+The first part can be formularized as the endpoint variance \cite{Harris1998}, or the endpoint error \cite{Todorov2005}; 
+the second part can be based on the integrated jerk \cite{Flash1985}, integrated torque change \cite{Uno1989}, or integrated squared motor commands\cite{Todorov2002} (which was what we used in this work). 
+To our knowledge, The relationship between movement duration and the two parts of the cost function has not been systematically and thoroughly examined.
 Our hypothesis (2) provides insights on the distinct role of movement variability (first part of the cost function) and effort (second part of the cost function) for determining the duration of a movement.
 
-We tested our hypotheses in computer simulations using stochastic optimal control \cite{Todorov} model with CN and SDN as execution noise.  
-Although SDN and CN (see equation 1) have previously been estimated \cite{VanBeers2004}, these estimates were based on inverse dynamics control of a simulated arm with a viscosity parameter that was estimated at rest from restoring forces to small perturbations {Gomi, 1998 }. 
-However, the amount of viscosity during movements is presumably substantially smaller during movement than at rest {Burdet, 2013 }. 
+We tested our hypotheses in computer simulations using stochastic open-loop optimal control \cite{Todorov2005} model with CN and SDN as execution noise.  
+Although $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ (see equation \ref{eqn:cnsdn} have previously been estimated \cite{VanBeers2004}, these estimates were based on inverse dynamics control of a simulated arm with a viscosity parameter that was estimated at rest from restoring forces to small perturbations \cite{Gomi1998}. 
+However, the amount of viscosity during movements is presumably substantially smaller during movement than at rest \cite{Burdet2013}. 
 In addition, we found in simulations (results not shown) that viscosity has a profound effect on the distribution of endpoints.  
-We therefore re-estimated SDN and CN as well as a free viscosity parameter by fitting an optimal open-loop controller to endpoint reaching data in Chapter \ref{cha:md}.
+We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ as well as a free viscosity parameter by fitting an optimal open-loop controller to endpoint reaching data in Chapter \ref{cha:md}.
 
 We then used these parameters to simulate reaching movements, and investigated endpoint variability and effort of movement with different durations.
 %Our results reveal distinct roles of CN, SDN, and effort in planning movements.
@@ -57,7 +57,7 @@ where $\bm{u}$ is the motor command, $t_e = 30$ ms, $t_a = 40$ ms are time const
 
 The motor command $\bm{u}$ is corrupted with signal-dependent noise and constant noise:
 
-\begin{equation}\label{cnsdn}
+\begin{equation}\label{eqn:cnsdn}
 u_t \rightarrow (1 + \epsilon\sigma_{\text{SDN}}) u_t + \xi\sigma_{\text{CN}}
 \end{equation}
 
@@ -175,25 +175,32 @@ The difference stems from the larger effort required for a movement to the targe
 \section{Discussion}
 %If a task does not specifically (explicitely) have a varibility limit, then minimizing endpoint variance with SDN or minimizing effort inevitably leads to infinitely long movement duration. Therefore, additional mechanism is needed to reduce the movement duration. [Shadmehr 2010, 2016] proposes that the movement duration pose a discount of reward of the goal, which is called the "Cost of Time". Although Although this hypothesis has its base on physiological studies (Johnson  Bickel, 2002), but the discounting time constant is in the range of days or months. Whether discounting works within seconds remains to be confirmed. Another mechanism to reduce movement duration is to consider Constant Noise (CN). In Van Beers work, it has been shown that the effect of CN is not negligible ... and [authors] shows that CN in optimal control model, leads to larger variability at longer duration. Thus minimizing endpoint variability due to both signal-dependent and constant noise would yield a minimum that could determine movement duration. Correspondingly, our first hypothesis is that the CNS chooses intermediate reaching movement durations to minimize endpoint variability in the face of signal-dependent and constant noise.
 
-It has long been known that the duration of arm movements has an effect on endpoint variability  {Woodworth, 1899 }{Fitts, 1954 }(Woodworth, 1899; Fitts, 1954; Schmidt et al., 1979), but the relationship had not been systematically characterized. 
+It has long been known that the duration of arm movements has an effect on endpoint variability  \cite{Woodworth1899, Fitts1954}, but the relationship had not been systematically characterized. 
 Our modeling results showed that, in coherence with data \ref{cha:md}, an intermediate movement duration minimizes total endpoint error. 
-Such intermediate movement duration was predicted by the presence of SDN and CN in the motor command and was previously found in saccadic movements {van Beers, 2008}, but had not been observed in reaching movements. 
+Such intermediate movement duration was predicted by the presence of SDN and CN in the motor command and was previously found in saccadic movements \cite{vanBeers2008}, but had not been observed in reaching movements. 
 In addition, the model showed that the minimization of endpoint variability and effort yields longer movement duration than minimizing only endpoint variability.
 This behavior of the model, for a subset of movement direction (the \ang{135} target), is coherent with data in \ref{cha:md}; however, the movement duration to the \ang{45} target was not well accounted for by the model. The effort required for the \ang{45} target, compared to the \ang{135} target, is very small, because the movement involves mostly only the elbow joint rotation. 
 What's more, the use of squared motor command makes the effort decreases cubically with movement duration \cite{Shadmehr2016}, rendering the effect of effort very small to have an impact on the cost curve \ref{fig:variability---cost---minimum-shift}. 
 We plan to use an optimal control model with an effort term in the cost function defined as the integral of absolute value of motor commands (which decreases linearly with movement duration).
 It is reasonable to expect the effect of effort not so small at longer movement with a L1 norm effort term.
 Nevertheless, our model supports the notion that effort is a determinant of movement planning in the context of SDN and CN on the motor command. 
-Future work should aim at validating our estimate of effort e.g. via quantification of metabolic costs, e.g. {Huang, 2012 }. (Huang, Ahmed, 2014).
+Future work should aim at validating our estimate of effort e.g. via quantification of metabolic costs, e.g. \cite{Huang2012}.
 
-Although minimum motor variability and minimum effort models appear conceptually different, {O'Sullivan, 2009} pointed out that they are tightly related when only SDN is included: endpoint variance, which increases with SDN, corresponds to equation (2), i.e. the effort deployed during the movement {O'Sullivan, 2009 }. 
+Although minimum motor variability and minimum effort models appear conceptually different, \cite{OSullivan2009} pointed out that they are tightly related when only SDN is included: endpoint variance, which increases with SDN, corresponds to the effort deployed during the movement \cite{OSullivan2009}. 
 Therefore, when considering either of these two factors, an additional term has to be considered in the cost minimized by the CNS to prevent selection of the slowest possible movements. 
-It has for instance been proposed that subjects select such as the longest movement duration for which the hand is expected to land in the target with high probability {Hoff, 1994 ;Harris, 1998; Harris, 2006}, or use temporal discounting of reward {Shadmehr, 2010 } {Rigoux, 2012 }{Haith, 2012 }.  Our model does not require such additional factor to explain our data.
+It has for instance been proposed that subjects select such as the longest movement duration for which the hand is expected to land in the target with high probability \cite{Hoff1994,Harris1998,Harris2006}, or use temporal discounting of reward \cite{Shadmehr2010, Rigoux2012, Haith2012}. Our model does not require such additional factor to explain our data.
 Instead, using a combination of SDN and CN, with the standard deviations of these two noise sources directly identified from reaching data in the first experiment, the model provides a parsimonious mechanistic explanation for the overall pattern of errors across the fast, medium, and slow movement durations.  
 Future work will be needed to dissociate the effects of constant noise and discounting, in both movements with and without vision.
-A further contribution of our study is the re-estimation of the contributions of SDN and CN in reaching movements. SDN has been estimated according to the force produced during isometric muscle contraction {Jones, 2002;Slifkin, 1999} in saccadic movements, and in pointing movements without visual feedback {van Beers, 2004 }. CN has been estimated in saccadic movements {van Beers, 2008 } and pointing movements without visual feedback using a feedforward control model (van Beers et al. 2004). Here, re-estimation of the noise parameter in arm reaching movements by setting viscosity as a free parameter yielded greater SDN compared to CN than previously thought. We found SDN = 0.18 (no unit) and CN = 0.14 (N m), compared to SDN = 0.103 and CN= 0.185 (N m) in van Beers et al. (2004). 
 
-Van Beers et al. added to CN and SDN a third noise source called “temporal noise”, which was not needed in our model to account for the data. Note, however, that proprioceptive feedback was not taken into account both in van Beers’s and in our model, notably because the effect of such feedback on movements seem small for movements at normal speed (see e.g. Figure 4 in {Franklin, 2007 }). However, for slower movements the effect of such feedback on endpoint error may become more important – thus, the effect of such feedback would be to decrease the slope of the rightward portion of the U curves in simulations of Figure 3. As a result, the preferred movement times and the movement times that minimize variance in the model would be longer and, therefore, more in line with those of the experimental results. However, this would not modify the result that, in the context of SDN and CN, effort determines movement duration.
+A further contribution of our study is the re-estimation of the contributions of $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ in reaching movements. 
+$\sigma_{\text{SDN}}$ has been estimated according to the force produced during isometric muscle contraction \cite{Jones2002, Slifkin1999} in saccadic movements, and in pointing movements without visual feedback \cite{VanBeers2004}. $\sigma_{\text{CN}}$ has been estimated in saccadic movements \cite{VanBeers2008} and pointing movements without visual feedback using a feedforward control model \cite{VanBeers2004}. 
+Here, re-estimation of the noise parameter in arm reaching movements by setting viscosity as a free parameter yielded greater $\sigma_{\text{SDN}}$ compared to $\sigma_{\text{N}}$ than previously thought. We found $\sigma_{\text{SDN}}$ = 0.298 (unit-less) and $\sigma_{\text{CN}}$ ~ 0.01-0.04 (N m), compared to $\sigma_{\text{SDN}}$ = 0.103 and $\sigma_{\text{CN}}$= 0.185 (N m) in \cite{VanBeers2004}. 
+
+Van Beers et al. added to CN and SDN a third noise source called “temporal noise”, which was not needed in our model to account for the data. 
+Note, however, that proprioceptive feedback was not taken into account both in van Beers’s and in our model, notably because the effect of such feedback on movements seem small for movements at normal speed (see e.g. Figure 4 in \cite{Franklin2007}). 
+However, for slower movements the effect of such feedback on endpoint error may become more important – thus, the effect of such feedback would be to decrease the slope of the rightward portion of the U curves in simulations of Figure \ref{fig:variability---cost---minimum-shift}. 
+As a result, the preferred movement times and the movement times that minimize variance in the model would be longer and, therefore, more in line with those of the experimental results. 
+However, this would not modify the result that, in the context of SDN and CN, effort determines movement duration.
 
 
 \section{Supplimental Material on Stochastic Control Modeling}
