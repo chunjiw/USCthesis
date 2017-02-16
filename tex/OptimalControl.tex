@@ -12,7 +12,7 @@ Our previous work (Chapter \ref{cha:md}, published \cite{Wang2016}) demonstrated
 
 Hypothesis (1) expands previous works on effects of execution noise in motor planning and control.
 \cite{Harris1998, Harris2006} used SDN and minimum endpoint variance to account for reaching movement planning and kinematics. 
-However,their model cannot distinguish minimizing endpoint variability due to SDN from minimizing effort, because formulation of effort often\footnote{For example, when effort is defined as the integral of squared torque or motor commands} leads to equivalant mathmetical expressions as endpoint variance \cite{Wang2016, OSullivan2009}. 
+However, their model cannot distinguish minimizing endpoint variability due to SDN from minimizing effort, because formulation of effort often\footnote{For example, when effort is defined as the integral of squared torque or motor commands} leads to equivalent mathematical expressions as endpoint variance \cite{Wang2016, OSullivan2009}. 
 Moreover, since minimizing variability due to SDN slows down movement, they failed to explain subjects, given a specific task, do not move slower than they do to achieve smaller endpoint variability.
 Since movements with longer duration have larger endpoint variability with the presence of CN \cite{Todorov2005}, our hypotheses consider CN as another component of execution noise, such that minimizing variability would yield a compromise between SDN and CN, leading to a specific movement duration. 
 The level of CN estimated in \cite{VanBeers2004} to account for endpoint distributions was comparable with the level of SDN, showing that CN as an execution noise cannot be ignored.
@@ -208,7 +208,7 @@ However, this would not modify the result that, in the context of SDN and CN, ef
 
 \subsection{Kinematics and Dynamics}
 \label{app:kindyn}
-The forward kinematics, inverse kinematics and dynamics of this two-link arm model are widely used in the literature (e.g van Beers and ..):
+The forward kinematics, inverse kinematics and dynamics of this two-link arm model are widely used in the literature (e.g \cite{VanBeers2004}):
 
 \begin{equation}
 \bm{r} =\left(\begin{matrix} x\\y \end{matrix}\right) % = \text{FK}(\bm{q}) 
@@ -284,7 +284,7 @@ $\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ represent the levels of the noise
 We choose Linear Quadratic Regulator (LQR) \cite{Li2004} to formulate the optimal control problem. Since the plant is nonlinear, a generalized LQR called iterative LQR (iLQR) is adopted here.
 
 \subsubsection{LQR with signal dependent noise}
-Standard LQR deals with independent Gaussion noise. To generalize to signal dependent noise (SDN) is quite straightforward. I conclude the result here.
+Standard LQR deals with independent Gaussian noise. To generalize to signal dependent noise (SDN) is quite straightforward. I conclude the result here.
 
 Given the dynamics (linear) and cost function (sum of cost rate, quadratic), the problem is to get motor command $\bm{u}_t$ such that the cost function is minimized.
 \begin{equation}\label{optimprob}
