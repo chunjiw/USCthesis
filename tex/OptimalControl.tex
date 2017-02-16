@@ -53,7 +53,7 @@ We use a second-order linear filter as the muscle model (as in \cite{VanBeers200
 	\bm{u} = t_et_a\ddot{\bm{\tau}} + (t_e+t_a)\dot{\bm{\tau}} +\bm{\tau}
 \end{equation}
 
-where $\bm{u}$ is the motor command, $t_e = 30$ ms, $t_a = 40$ ms are time constants representing excitation and activation respectively \cite{VanDerHelm}. 
+where $\bm{u}$ is the motor command, $t_e = 30$ ms, $t_a = 40$ ms are time constants representing excitation and activation respectively \cite{VanderHelm2000}. 
 
 The motor command $\bm{u}$ is corrupted with signal-dependent noise and constant noise:
 
@@ -78,10 +78,10 @@ The second term, the integral of squared motor commands, are assumed to be the e
 
 \subsection{Endpoint Distribution from Gaussian Execution Noise}
 
-As shown in equation \ref{cnsdn}, the execution noise (CN and SDN) are assumed to be independent and Gaussian. 
+As shown in equation \ref{eqn:cnsdn}, the execution noise (CN and SDN) are assumed to be independent and Gaussian. 
 The endpoint distribution due to execution noise is generally not Gaussian due to nonlinearity of the kinematics and dynamics. 
 Through linearization of the system, we essentially used Gaussian as an approximation of the actual endpoint distribution. 
-This approximation makes the algorithm much more efficient (thanks to the covariance propagation equation, see Supplemental Material \ref{app:covarProp}), than simulating large number of trials and calculating statistics over the endpoints (seen in \ref{VanBeers2004, Guigon2008}).
+This approximation makes the algorithm much more efficient (thanks to the covariance propagation equation, see Supplemental Material \ref{app:covarProp}), than simulating large number of trials and calculating statistics over the endpoints (seen in \cite{VanBeers2004,Guigon2008}).
 In order to make sure this approximation is appropriate, we compared the distribution from the linearized system to the original nonlinear system. As shown in figure \ref{fig:linearizeddistributionapprox}, the Gaussian distributions given by the linearized system (the blue 95\% confidence ellipse) are good approximations of the actual distributions of the original nonlinear system (the 2-dimension histogram, from 6000 simulated endpoints).
 
 \begin{figure}
@@ -92,7 +92,7 @@ In order to make sure this approximation is appropriate, we compared the distrib
 \end{figure}
 
 \subsection{Estimation of SDN and CN in Reaching Movements}
-Although $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ (see equation \ref{cnsdn}) have previously been estimated in \cite{VanBeers2004}, these estimates were based on inverse dynamics control of a simulated arm with a viscosity parameter that was estimated at rest from restoring forces to small perturbations \cite{Gomi1998}. 
+Although $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ (see equation \ref{eqn:cnsdn}) have previously been estimated in \cite{VanBeers2004}, these estimates were based on inverse dynamics control of a simulated arm with a viscosity parameter that was estimated at rest from restoring forces to small perturbations \cite{Gomi1998}. 
 However, the amount of viscosity during movements is presumably substantially smaller during movement than at rest \cite{Burdet2013}. 
 In addition, we found in simulations (Supplimental Material \ref{app:oc}) that viscosity has a profound effect on the distribution of endpoints.  
 We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ with viscosity as a free parameter by fitting an optimal open-loop controller to reaching data described in Chapter \ref{cha:md}.
@@ -177,7 +177,7 @@ The difference stems from the larger effort required for a movement to the targe
 
 It has long been known that the duration of arm movements has an effect on endpoint variability  \cite{Woodworth1899, Fitts1954}, but the relationship had not been systematically characterized. 
 Our modeling results showed that, in coherence with data \ref{cha:md}, an intermediate movement duration minimizes total endpoint error. 
-Such intermediate movement duration was predicted by the presence of SDN and CN in the motor command and was previously found in saccadic movements \cite{vanBeers2008}, but had not been observed in reaching movements. 
+Such intermediate movement duration was predicted by the presence of SDN and CN in the motor command and was previously found in saccadic movements \cite{VanBeers2008}, but had not been observed in reaching movements. 
 In addition, the model showed that the minimization of endpoint variability and effort yields longer movement duration than minimizing only endpoint variability.
 This behavior of the model, for a subset of movement direction (the \ang{135} target), is coherent with data in \ref{cha:md}; however, the movement duration to the \ang{45} target was not well accounted for by the model. The effort required for the \ang{45} target, compared to the \ang{135} target, is very small, because the movement involves mostly only the elbow joint rotation. 
 What's more, the use of squared motor command makes the effort decreases cubically with movement duration \cite{Shadmehr2016}, rendering the effect of effort very small to have an impact on the cost curve \ref{fig:variability---cost---minimum-shift}. 
@@ -194,7 +194,7 @@ Future work will be needed to dissociate the effects of constant noise and disco
 
 A further contribution of our study is the re-estimation of the contributions of $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ in reaching movements. 
 $\sigma_{\text{SDN}}$ has been estimated according to the force produced during isometric muscle contraction \cite{Jones2002, Slifkin1999} in saccadic movements, and in pointing movements without visual feedback \cite{VanBeers2004}. $\sigma_{\text{CN}}$ has been estimated in saccadic movements \cite{VanBeers2008} and pointing movements without visual feedback using a feedforward control model \cite{VanBeers2004}. 
-Here, re-estimation of the noise parameter in arm reaching movements by setting viscosity as a free parameter yielded greater $\sigma_{\text{SDN}}$ compared to $\sigma_{\text{N}}$ than previously thought. We found $\sigma_{\text{SDN}}$ = 0.298 (unit-less) and $\sigma_{\text{CN}}$ ~ 0.01-0.04 (N m), compared to $\sigma_{\text{SDN}}$ = 0.103 and $\sigma_{\text{CN}}$= 0.185 (N m) in \cite{VanBeers2004}. 
+Here, re-estimation of the noise parameter in arm reaching movements by setting viscosity as a free parameter yielded greater $\sigma_{\text{SDN}}$ compared to $\sigma_{\text{N}}$ than previously thought. We found $\sigma_{\text{SDN}}$ = 0.298 (unit-less) and $\sigma_{\text{CN}}$ $\sim$ 0.01-0.04 (N m), compared to $\sigma_{\text{SDN}}$ = 0.103 and $\sigma_{\text{CN}}$= 0.185 (N m) in \cite{VanBeers2004}. 
 
 Van Beers et al. added to CN and SDN a third noise source called “temporal noise”, which was not needed in our model to account for the data. 
 Note, however, that proprioceptive feedback was not taken into account both in van Beers’s and in our model, notably because the effect of such feedback on movements seem small for movements at normal speed (see e.g. Figure 4 in \cite{Franklin2007}). 
@@ -281,7 +281,7 @@ $\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ represent the levels of the noise
 \subsection{Optimal Control Formulation}
 \label{ocformulation}
 
-We choose Linear Quadratic Regulator (LQR) \cite{todorov2006optimal} to formulate the optimal control problem. Since the plant is nonlinear, a generalized LQR called iterative LQR (iLQR) is adopted here.
+We choose Linear Quadratic Regulator (LQR) \cite{Li2004} to formulate the optimal control problem. Since the plant is nonlinear, a generalized LQR called iterative LQR (iLQR) is adopted here.
 
 \subsubsection{LQR with signal dependent noise}
 Standard LQR deals with Gaussion noise that is independent. To generalize to signal dependent noise (SDN) is quite straight forward. I conclude the result here.
