@@ -50,7 +50,7 @@ Some games have difficulty settings that physical therapists can change at the b
 
 The ArmeoSpring claims to be the ``preferred therapy choice for arm and hand rehabilitation of the widest range of patients"\footnotemark[\ref{aowebsite}]. 
 The lack of motors enables self-initiated movement therapy. 
-The device records all joint angles and end effector trajectories, as long as task-specific variables, which helps provide assessments and document patient progress.
+The device records all joint angles and cursor trajectories, as long as task-specific variables, which helps provide assessments and document patient progress.
 
 \section{Data Collection, Acquisition and Preprocessing}
 \label{datacollect}
@@ -94,7 +94,8 @@ As a result, the data consists movements that have various starting positions, d
 We recruited 11 young (age 23 $\pm$ 2) healthy subjects (7 males) to play the games which are designed for rehabilitation.
 
 Data from post-stroke individuals are collected automatically when participants use ArmeoSpring under guidance from physical therapists. 
-We have no control over game difficulty, arm length and gravity compensation settings. 
+Besides ArmeoSpring-aided rehabilitation, participants also receive conventional rehabilitation.
+% We have no control over game difficulty, arm length and gravity compensation settings. 
 All participants have similar schedules as the control group: there are two training sessions in a day, for four weeks, weekends excluded. Therefore each participant has 40 sessions, 80 ladybug pointing tests.
 
 We have access to data from 52 post-stroke individuals; gender and affected side are balanced, shown in table \ref{tab:demog} [need update after new subjects added]. 
@@ -118,13 +119,35 @@ In figure \ref{fig:48order}, configurations of all levels of difficulty are show
 
 The length of the exoskeleton and the strength of the springs also vary, both within and across participants.
 
+\subsubsection{Demographic data}
+
+We have access to participants' age, gender, affected side, time of stroke and two clinical assessments before and after training: Fugal-Mayer score [ref] (upper extremity) and ARAT [ref]. The distribution of age, gender, affected side and time of stroke is shown in figure \ref{fig:demoData}. Figure \ref{fig:FMARAT} shows FM and ARAT of participants before and after training.
+
+\begin{figure} % /ArmeoSpring Project/user settings/plotDemographic.R
+	\includegraphics[width=\textwidth]{demoData.jpeg}
+	\centering
+	\caption{Demographic Distribution}
+	\medskip
+	\small 
+	\label{fig:demoData}
+\end{figure}
+
+\begin{figure} % /ArmeoSpring Project/user settings/plotDemographic.R
+	\includegraphics[width=\textwidth]{FMARAT.png}
+	\centering
+	\caption{FM and ARAT before and after training}
+	\medskip
+	\small 
+	\label{fig:FMARAT}
+\end{figure}
+
 
 \section{Performance in Task Space}
 
 The kinematics data collected by ArmeoSpring can be viewed as two folds: joint angle trajectories, and end point trajectories. 
-However, these two subsets are not independent since the endpoint trajectories can be derived through forward kinematics from the joint trajectories. 
-Indeed that is how the end effector data is generated. 
-Nevertheless, the end effector trajectories give us valuable insights regarding to each individual's performance.
+However, these two subsets are not independent since the cursor trajectories can be derived through forward kinematics from the joint trajectories. 
+Indeed that is how the cursor trajectory data is generated. 
+Nevertheless, the cursor trajectories give us valuable insights regarding to each individual's performance.
 
 The ladybug pointing test is a game rendered on a 2D vertical screen. 
 To move perpendicularly to the screen has no effect on the test performance. 
@@ -132,9 +155,9 @@ In this section, I present the performance of both groups on this 2D task space.
 
 The kinematics data are filtered with a second order Butterworth filter with a cutoff frequency of 5 Hz.
 
-\subsection{Kinematics performance measures}
+\subsection{Endpoint kinematics performance measures}
 
-Figure \ref{fig:controlTrajExamp} shows an example of end effector trajectories before and after training, from one representative participant [sb=2] in the control group. 
+Figure \ref{fig:controlTrajExamp} shows an example of cursor trajectories before and after training, from one representative participant [sb=2] in the control group. 
 The green star indicates the first ladybug of that test. 
 The movement that leads to the catch of the first ladybug is discarded. 
 One can immediately see the differences: the trajectories at the last test are more straight and have less over-shooting. 
@@ -142,8 +165,13 @@ This will be confirmed in section \ref{}.
 Participants in the control group never miss a target.
 In contrast, figure \ref{fig:improverTrajExamp} shows an example from one participant [sb=16] in the post-stroke group. 
 
-We performed a variety of kinematics measures on this set of end effector trajectories data. 
+We performed a variety of kinematics measures on this set of cursor trajectories data. 
 They can be grouped in three groups: 1) Time and duration measure; 2) Curvature and smoothness measure; 3) Movement planning [and/or execution measure]. 
+
+Note that these kinematics measures can reflect both motor learning and motor recovery. There are no obvious way to differentiate the two [ref].
+
+Note that "
+However, the end point measurements do not confirm whether such improvement is a genuine motor recovery or due to the appearance of compensation," [Nordin2014]
 
 
 
@@ -165,34 +193,50 @@ They can be grouped in three groups: 1) Time and duration measure; 2) Curvature 
 	\label{fig:improverTrajExamp}
 \end{figure}
 
-\subsubsection{Time and duration measure}
-Movement duration (MD) is the time period for the execution of the reaching movement. 
-The calculation of MD should be done carefully since the onset and offset of the movement is not readily available. 
-A threshold is often used to determine the two, but in ArmeoSpring data, the user doesn't necessarily reach to zero velocity upon the target, so a threshold does not work very well. 
-Instead we parse the movement according to the catch of the ladybug. 
+\subsubsection{Movement efficacy}
+We take the percentage of successful trials as movement efficacy measure \cite{Nordin2014}. 
+A successful trial starts from previously caught target and leads to the catch of the next target. 
+If the previous target is not caught, then this trial is considered a failure.
+Successful rate of a test is the number of successful trials divided by the total number of trials in that test.
+The following kinematics measures are only applied to successful trials, if not clarified otherwise.
 
-An equivalent measure to MD is average speed (SPE), defined as the distance between targets divided by MD. 
-This is not to be confused with average tangential velocity (VEL), which is defined as the total length of traveled path divided by MD. 
-The former is a measure of movement efficiency, while the latter of movement capacity. 
+\subsubsection{Movement planning}
+We calculate initial direction deviation and percentage time to peak velocity as a measure of movement planning \cite{Nordin2014}. 
+Initial direction deviation is defined as the angle difference between target direction and travel direction (from starting point to peak velocity point).
+\cite{Zollo2011} showed that initial direction deviation significantly decreases with robot-aided rehabilitation, and it correlates with Fugal Meyer Assessment Score.
+Percentage of time to peak velocity is the percentage of time used from starting point to peak velocity point.
+\cite{Chang2007} showed that percentage of time to peak velocity decreases with robot-aided rehabilitation together with conventional rehabilitation.
 
-Due to the fact that in ArmeoSpring data, the movements have different movement distances, and different level of tests have different average distances as well, we choose average speed as a measure of movement efficiency, and average velocity as a measure of movement capacity. 
+\subsubsection{Temporal efficiency}
+The time taken to complete a task is expected to reduce with motor learning and recovery.
+For each successful trial, we calculate the movement duration, the average velocity (distance between targets divided by movement duration) and the average tangential velocity (total length of traveled path divided by movement duration).
+Following these definitions, the ratio of average tangential velocity to average velocity is exactly the path-length ratio mentioned above.
 
-\subsubsection{Curvature and smoothness measure}
-Human movement is smooth to the extent of elegance [ref]. 
-There are many approaches to measure curvature and smoothness.
+To account for failed trials, we also use test completion time to measure temporal efficiency. 
+Test completion time is the total time period used for the entire test.
+To compare across different test levels, we normalize test completion time by the number of targets in that test.
 
-Path ratio (pr) is defined as the total length of traveled path divided by the distance between targets. 
-Since the denominator is surely smaller or equal to the numerator, pr is larger than or equal to (though very rare) one. 
-Note that pr is also the ratio between average speed and average velocity. 
-We can also define other measures in similar spirit of pr, e.g. deviation index [ref], defined as the ... and deviation area index, defined as the ... . However, pr is simply defined, robust and is immune to special cases\footnote{both deviation index and deviation area index fail at special cases, such as...}. 
+\subsubsection{Movement accuracy}
+The accuracy of movement is measured by path-length ratio, which is the total length of traveled path divided by the distance between targets \cite{Cirstea2000}. 
+The minimum value of path-length ratio is one, achieved when the cursor travels along a straight line. 
+Similar measurements are area enclosed by the straight line and the trajectory \cite{Kim16 from Nordin2014}, and maximum or mean deviation of the trajectory from the straight line \cite{Colombo61 from Nordin2014}. 
+We only report path-length ratio because the other two measures produced similar results.
+% we didn't measure error because we don't have exact location of target (except for healthy subjects)
 
+
+
+\subsubsection{Movement smoothness}
+Post-stroke participants usually present jagged movements, appearing as a series of short and rapid sub-movements \cite{Rohrer1 from Nordin2014}.
+
+Number of Peaks:
 Another way to evaluate movement smoothness is to look at velocity profile, which is the tangential velocity plotted against time. 
 A well executed movement shows bell curve profile [ref], in which case there is only one peak. 
 When the movement is not as smooth, more than one peaks can be identified. 
 Therefore, number of peaks (nop) of velocity profile is also a measure of smoothness. 
 However, This measure is very prune to data preprocessing, e.g. data filtered with different filter settings would give different nop. 
-A similar measure is to look at number of sub modules [ref]. We choose nop for its simplicity.
+A similar measure is to look at number of sub-modules [ref]. We choose nop for its simplicity.
 
+normalized jerk
 Yet another group of measures concerns the jerk of the movements. 
 The jerk is defined as the third derivative of the trajectory against time. 
 Similar to velocity profile, it is a time series. 
@@ -201,14 +245,33 @@ Maximum jerk is also worth looking at.
 Since jerk is dependent on movement duration and distance in a nontrivial way, [ref] proposes normalized jerk which is normalized against duration and distance. 
 Similar to nop, jerk also is prune to data preprocessing.
 
-\subsubsection{Movement planning and/or execution}
-It is not easy to infer the quality of movement planning solely through kinematics data.
-Still, some aspect of movement planning manifest itself in end effector trajectories.
-Initial direction error is defined as the angle between the line connecting targets, and the line connecting .... This measures how ...[ref]. 
-Feedforward ratio is defind as .. [ref]
+\subsection{Results}
 
+Participants in the control group achieved 99.86\% successful trials, with at most 3 failed trials in about 1000 trials for each individual.
+Participants in the stroke group achieved lower successful rate. 
+21 out of 52 participants keep a high successful rate ($>$90\%) through all tests;
+23 participants show significant improvement;
+9 participants have relatively low successful rates ($\sim$80\%) that depend on the test difficulty level setting (see \ref{}).
+Figure \ref{fig:efficacy} shows examples of participants' successful rate.
 
+Because of differences in test difficulty settings across different tests, successful rate by itself is not sufficient to evaluate participants' learning or recovery. 
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{figures/efficacy}
+	\caption[Movement efficacy measured by successful rate.]{Movement efficacy measured by successful rate. Different color indicates difficulty settings. Panel A shows a participant who keeps a high successful rate; Panel B shows a participant who significantly improves; Panel C and D show participants whose successful rates depend on difficulty levels. Shaded area represents standard deviation.}
+	\label{fig:efficacy}
+\end{figure}
+
+As shown in figure \ref{fig:planning}, Participants in the control group show significant improvement in initial direction deviation and percentage of time to peak velocity. 
+In comparison, post-stroke participants improve much slower. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{figures/planning}
+	\caption[Movement planning measured by initial direction deviation and percentage of time to peak velocity.]{Movement planning measured by initial direction deviation and percentage of time to peak velocity. Shaded area represents standard deviation.}
+	\label{fig:planning}
+\end{figure}
 
 \subsection{Performance of the Control Group}
 
@@ -235,27 +298,7 @@ We choose path ratio (pr), number of peaks (nop) and normalized jerk (nj) as a m
 
 Compared with the control group, data from the stroke group present much more variablity, both within and across participants. The data is made more complex by the fact that each participant may have different difficulty settings through out the training. So it is important to investigate the stroke group in more detail than the control group.
 
-\subsubsection{Demographic data}
 
-We have access to participants' age, gender, affected side, time of stroke and two clinical assessments before and after training: Fugal-Mayer score [ref] (upper extremity) and ARAT [ref]. The distribution of age, gender, affected side and time of stroke is shown in figure \ref{fig:demoData}. Figure \ref{fig:FMARAT} shows FM and ARAT of participants before and after training.
-
-\begin{figure} % /ArmeoSpring Project/user settings/plotDemographic.R
-	\includegraphics[width=\textwidth]{demoData.jpeg}
-	\centering
-	\caption{Demographic Distribution}
-	\medskip
-	\small 
-	\label{fig:demoData}
-\end{figure}
-
-\begin{figure} % /ArmeoSpring Project/user settings/plotDemographic.R
-	\includegraphics[width=\textwidth]{FMARAT.png}
-	\centering
-	\caption{FM and ARAT before and after training}
-	\medskip
-	\small 
-	\label{fig:FMARAT}
-\end{figure}
 
 \subsubsection{Test difficulty settings}
 
