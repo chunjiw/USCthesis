@@ -78,6 +78,22 @@ Specifically, the ladybug pointing test is set at level 4 in which 48 ladybugs a
 Though the locations of ladybugs seem to be random, they actually appears in a specific sequence at specific locations. 
 At level 4, all ladybugs appear on a $6\times8$ grid, in the sequence shown in \ref{fig:48order}. (the sequences at level 1,2 and 3 are also shown.) 
 
+Post-stroke participants received the tests in all 4 levels. 
+Each participant might receive different levels through the training.
+Figure \ref{fig:diffLevel} shows two examples of how this difficulty setting changes through the training. 
+As shown, not every participants share the same pattern, some of them (at least 17 participants) have no difficulty level changes, others have very small changes, as the second example in Figure \ref{fig:diffLevel}. 
+The difficulty settings determine the number of targets, the size of workspace (shown in Figure \ref{fig:48order}), and the length of time limit to catch targets.
+We report the effects of test difficulty settings in Section \ref{sec:pertaskspace}.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{diffLevel.jpg}
+	\centering
+	\caption{Example difficulty settings}
+	\medskip
+	\small 
+	\label{fig:diffLevel}
+\end{figure}
+
 \begin{figure}
 	\includegraphics[width=0.8\textwidth]{48order.png}
 	\centering
@@ -87,9 +103,9 @@ At level 4, all ladybugs appear on a $6\times8$ grid, in the sequence shown in \
 	\label{fig:48order}
 \end{figure}
 
-As a result, the data consists movements that have various starting positions, distances and directions.
+% As a result, the data consists movements that have various starting positions, distances and directions.
 
-\subsection{Control group and post-stroke group}
+\subsection{Participants}
 
 We recruited 11 young (age 23 $\pm$ 2) healthy subjects (7 males) to play the games which are designed for rehabilitation.
 
@@ -98,14 +114,14 @@ Besides ArmeoSpring-aided rehabilitation, participants also receive conventional
 % We have no control over game difficulty, arm length and gravity compensation settings. 
 All participants have similar schedules as the control group: there are two training sessions in a day, for four weeks, weekends excluded. Therefore each participant has 40 sessions, 80 ladybug pointing tests.
 
-We have access to data from 52 post-stroke individuals; gender and affected side are balanced, shown in table \ref{tab:demog} [need update after new subjects added]. 
+We have access to data from 53 post-stroke individuals; gender and affected side are balanced, shown in table \ref{tab:demog}. 
 
 \begin{table}[b]
 	\begin{tabular}{c c c c c c c c}
 	\hline
 	Group & No. & Age & Affected Side & Gender & FM(0-66) & Post Stroke Days & No. of Tests\\
 	\hline
-	Stroke & 41 & 61$\pm$14 & 21L, 20R & 16F, 25M & 26$\pm$9 to 41$\pm$ 14 & 21$\pm$10 & 80 in 4 weeks \\ 
+	Stroke & 53 & 59$\pm$14 & 29L, 24R & 19F, 30M & 25$\pm$9 to 39$\pm$ 14 & 56$\pm$21 & 80 in 4 weeks \\ 
 	Control & 11 & 23$\pm$2 & - & 4F, 7M & - & - & 20 in 1 weeks \\
 	\hline
 	\end{tabular}
@@ -113,13 +129,12 @@ We have access to data from 52 post-stroke individuals; gender and affected side
 	\label{tab:demog}
 \end{table}
 
-Because participants have different difficulty settings from each other, and each participants may also has various difficulty settings throughout the training, it is important to see the test in different difficulty settings. 
+
+[need relocate]Because participants have different difficulty settings from each other, and each participants may also has various difficulty settings throughout the training, it is important to see the test in different difficulty settings. 
 The ladybug test under more difficult settings has larger number of ladybugs to catch, shorter time to catch the bug before it disappears, and bigger the workspace. 
 In figure \ref{fig:48order}, configurations of all levels of difficulty are shown. 
 
-The length of the exoskeleton and the strength of the springs also vary, both within and across participants.
-
-\subsubsection{Demographic data}
+[need relocate]The length of the exoskeleton and the strength of the springs also vary, both within and across participants.
 
 We have access to participants' age, gender, affected side, time of stroke and two clinical assessments before and after training: Fugal-Mayer score [ref] (upper extremity) and ARAT [ref]. The distribution of age, gender, affected side and time of stroke is shown in figure \ref{fig:demoData}. Figure \ref{fig:FMARAT} shows FM and ARAT of participants before and after training.
 
@@ -142,7 +157,7 @@ We have access to participants' age, gender, affected side, time of stroke and t
 \end{figure}
 
 
-\section{Performance in Task Space}
+\section{Performance in Task Space}\label{sec:pertaskspace}
 
 The kinematics data collected by ArmeoSpring can be viewed as two folds: joint angle trajectories, and end point trajectories. 
 However, these two subsets are not independent since the cursor trajectories can be derived through forward kinematics from the joint trajectories. 
@@ -207,43 +222,28 @@ Initial direction deviation is defined as the angle difference between target di
 Percentage of time to peak velocity is the percentage of time used from starting point to peak velocity point.
 \cite{Chang2007} showed that percentage of time to peak velocity decreases with robot-aided rehabilitation together with conventional rehabilitation.
 
-\subsubsection{Temporal efficiency}
+\subsubsection{Temporal efficiency and movement efficiency}
 The time taken to complete a task is expected to reduce with motor learning and recovery.
 For each successful trial, we calculate the movement duration, the average velocity (distance between targets divided by movement duration) and the average tangential velocity (total length of traveled path divided by movement duration).
-Following these definitions, the ratio of average tangential velocity to average velocity is exactly the path-length ratio mentioned above.
+Following these definitions, the ratio of average tangential velocity to average velocity is exactly the path-length ratio mentioned below.
 
 To account for failed trials, we also use test completion time to measure temporal efficiency. 
 Test completion time is the total time period used for the entire test.
 To compare across different test levels, we normalize test completion time by the number of targets in that test.
 
-\subsubsection{Movement accuracy}
-The accuracy of movement is measured by path-length ratio, which is the total length of traveled path divided by the distance between targets \cite{Cirstea2000}. 
+The efficiency of movement is measured by path-length ratio, which is the total length of traveled path divided by the distance between targets \cite{Cirstea2000}. 
 The minimum value of path-length ratio is one, achieved when the cursor travels along a straight line. 
 Similar measurements are area enclosed by the straight line and the trajectory \cite{Kim16 from Nordin2014}, and maximum or mean deviation of the trajectory from the straight line \cite{Colombo61 from Nordin2014}. 
 We only report path-length ratio because the other two measures produced similar results.
-% we didn't measure error because we don't have exact location of target (except for healthy subjects)
-
-
 
 \subsubsection{Movement smoothness}
+
 Post-stroke participants usually present jagged movements, appearing as a series of short and rapid sub-movements \cite{Rohrer1 from Nordin2014}.
+The number of peaks in the velocity profile is an natural measure of jagged movements, as seen in many studies \cite{}. 
+However, the number of peaks of a certain velocity profile depends greatly on how the data is preprocessed, for example, date preprocessed with different filter can report different number of peaks.
 
-Number of Peaks:
-Another way to evaluate movement smoothness is to look at velocity profile, which is the tangential velocity plotted against time. 
-A well executed movement shows bell curve profile [ref], in which case there is only one peak. 
-When the movement is not as smooth, more than one peaks can be identified. 
-Therefore, number of peaks (nop) of velocity profile is also a measure of smoothness. 
-However, This measure is very prune to data preprocessing, e.g. data filtered with different filter settings would give different nop. 
-A similar measure is to look at number of sub-modules [ref]. We choose nop for its simplicity.
-
-normalized jerk
-Yet another group of measures concerns the jerk of the movements. 
-The jerk is defined as the third derivative of the trajectory against time. 
-Similar to velocity profile, it is a time series. 
-The famous minimum jerk model of movements [ref] minimize jerk, as an integration of jerk over movement period. 
-Maximum jerk is also worth looking at. 
-Since jerk is dependent on movement duration and distance in a nontrivial way, [ref] proposes normalized jerk which is normalized against duration and distance. 
-Similar to nop, jerk also is prune to data preprocessing.
+[] proposed a minimum jerk model of human reaching movement.
+We used a dimensionless jerk definition \cite{HOgan92 in Nordin2014} to measure movement smoothness, because it does not depend on movement duration and distance.
 
 \subsection{Results}
 
@@ -268,10 +268,21 @@ In comparison, post-stroke participants improve much slower.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.9\linewidth]{figures/planning}
+	\includegraphics[width=\linewidth]{figures/planning}
 	\caption[Movement planning measured by initial direction deviation and percentage of time to peak velocity.]{Movement planning measured by initial direction deviation and percentage of time to peak velocity. Shaded area represents standard deviation.}
 	\label{fig:planning}
 \end{figure}
+
+Participants in both groups show a decrease in averaged movement duration, as shown in figure \ref{fig:efficiency}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/efficiency}
+	\caption[Averaged movement duration and path-length ratio]{Averaged movement duration and Averaged path-length ratio both decreases through the training.}
+	\label{fig:temporalefficiency}
+\end{figure}
+
+
 
 \subsection{Performance of the Control Group}
 
@@ -300,22 +311,7 @@ Compared with the control group, data from the stroke group present much more va
 
 
 
-\subsubsection{Test difficulty settings}
 
-As shown above, there are 4 levels of difficulty setting available for stroke participants. Figure \ref{fig:diffLevel} shows two examples how this difficulty setting changes through the training. As shown, not every participants share the same pattern, some of them (at least 17 participants) have no difficulty level changes, others have very small changes, as the second example in Figure \ref{fig:diffLevel}. Since the diffculty settings only have two effects: increased number of targets and enlarged workspace (shown in Figure \ref{fig:48order}), the former is accounted for by taking test average, the latter is accounted for by analysis of target locations. Hence we don't further investigate the effects of difficulty levels.
-
-\begin{figure}
-	\includegraphics[width=\textwidth]{diffLevel.jpg}
-	\centering
-	\caption{Example difficulty settings}
-	\medskip
-	\small 
-	\label{fig:diffLevel}
-\end{figure}
-
-\subsubsection{Successful rate}
-
-Unlike the control group, participants in the stroke group don't usually achieve 100\% successful rate, which is defined as the percentage of targets that are successfully caught by the cursor. 
 
 
 \section{Joint Coordination}
