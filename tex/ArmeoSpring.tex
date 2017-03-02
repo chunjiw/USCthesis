@@ -97,7 +97,7 @@ A trial is considered successful if it starts from previously caught target and 
 We characterize task space performance via number of peaks in the velocity profile \cite{}.
 For participants in the control group, we model the number of peaks ($ p $) with an exponential model
 
-\begin{equation}
+\begin{equation}\label{eqn:singleexp}
 p = a e^{-b t} + c
 \end{equation}
 
@@ -105,17 +105,58 @@ where $ t $ is test number, $ b $ is learning rate.
 
 For participants in the stroke group, we assume that two components are necessary to model the number of peaks
 
-\begin{equation}
+\begin{equation}\label{doubleexp}
 p = a_1 e^{-b_1 t} + a_2 e^{-b_2 t} + c
 \end{equation}
 
+We fit a nonlinear mixed effect model to equation \ref{eqn:singleexp} and \ref{eqn:doubleexp} via Matlab 2016a function \textsf{nlmefit}.
+
 \textbf{Joint Space Variability.}
-We measure joint space variability approximately by 
+To quantify joint space variability and its relevance to the task space, we use a nonlinear forward kinematics model of the exoskeleton (cite company?)
+	\begin{equation}\label{eqn:nonlinearForwardKinematics}
+	\bm{r} = f(\bm{\theta})
+	\end{equation}
+where $ \bm{r} = (x,y)^T $ is the location of the end effector, $ \bm{\theta} $ is joint angles (see table \ref{tab:devicedof} for details). 
+The distribution of variability is calculated for the last 10 tests at the moment of catching ladybugs. 
+The mean joint configuration at one specific ladybug ($ b $) is denoted by $ \bar{\bm{\theta}}_b $.
+We will omit index $ b $ for convenience.
+The Jacobian matrix at configuration $ \bar{\bm{\theta}} $ is obtained through forward kinematics (equation \ref{eqn:nonlinearForwardKinematics})
+	\begin{equation}
+	\bm{J}(\bar{\bm{\theta}}) = \frac{\partial f(\bm{\theta})}{\partial \bm{\theta}} \Big\rvert_{\bar{\bm{\theta}}}
+	\end{equation}
+and $ \bm{J} $ is a 2 by 6 matrix.
+The null space of Jacobian $ \bm{J} $ can be represented by basis of the space $ \bm{\xi}_i $, $ i= 1,2,3,4 $ which satisfy
+	\begin{equation}
+	\bm{J}(\bar{\bm{\theta}}) \bm{\xi}_i = 0
+	\end{equation}
+For a specific trial, the deviation of joint angles from $ \bar{\bm{\theta}} $ is
+	\begin{equation}
+	\Delta\bm{\theta} = \bm{\theta} - \bar{\bm{\theta}}
+	\end{equation}
+The component in $ \Delta\bm{\theta} $ that lies in the null space is
+	\begin{equation}
+	\bm{\theta}_{\text{null}} = \sum_i^m \langle \Delta\bm{\theta}, \bm{\xi}_i \rangle \bm{\xi}_i, m=6
+	\end{equation}
+In the end, we quantify the null space variability by calculating the mean of squared $ \bm{\theta}_{\text{null}} $
+	\begin{equation}
+	V_{\text{null}} = \mathbb{E}_{t,b} (\bm{\theta}_{\text{null}}^T\bm{\theta}_{\text{null}})
+	\end{equation}
+where $ t,b $ index tests and targets (ladybugs).
+
+[Add orthogonal space variability and task space variability if needed]
 
 
 \outline{2}{Results}
 \section{Results}
 
+\textbf{Task Space Performance.}
+Figure \ref{fig:nopcontrol} shows the number of peaks modeled by a single exponential function.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/nopControl}
+	\caption[Number of Peaks of Control Group]{Number of Peaks of Control Group}
+	\label{fig:nopcontrol}
+\end{figure}
 
 
 \outline{2}{Discussion}
