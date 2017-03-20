@@ -34,7 +34,7 @@ Participants receive conventional rehabilitation besides robot-aided rehabilitat
 
 \textbf{Device.}
 Our robot-aided rehabilitation uses ArmeoSpring exoskeleton \cite{} for therapy training. 
-Shown in figure \ref{}, the exoskeleton has 7 degrees of freedom, summarized in table \ref{tab:devicedof}. 
+Shown in figure \ref{fig:1setupschedule}, the exoskeleton has 6 degrees of freedom, summarized in table \ref{tab:devicedof}. 
 It is attached to the arm by two or three velcro straps. 
 The exoskeleton has two springs equipped, at the upper arm and forearm respectively. 
 The springs can be adjusted to compensate the gravity force of the arm. 
@@ -127,13 +127,13 @@ For a specific trial, the deviation of joint angles from $ \bar{\bm{\theta}} $ i
 	\begin{equation}
 	\Delta\bm{\theta} = \bm{\theta} - \bar{\bm{\theta}}
 	\end{equation}
-The component in $ \Delta\bm{\theta} $ that lies in the null space is
+The projection of $ \Delta\bm{\theta} $ to the null space is
 	\begin{equation}
-	\bm{\theta}_{\text{null}} = \sum_i^m \langle \Delta\bm{\theta}, \bm{\xi}_i \rangle \bm{\xi}_i, m=6
+	\Delta\bm{\theta}_{\text{null}} = \sum_i^m \langle \Delta\bm{\theta}, \bm{\xi}_i \rangle \bm{\xi}_i, m=6
 	\end{equation}
-In the end, we quantify the null space variability by calculating the mean of squared $ \bm{\theta}_{\text{null}} $
+In the end, we quantify the null space variability by calculating the mean of squared $ \Delta\bm{\theta}_{\text{null}} $
 	\begin{equation}
-	V_{\text{null}} = \mathbb{E}_{t,b} (\bm{\theta}_{\text{null}}^T\bm{\theta}_{\text{null}})
+	V_{\text{null}} = \mathbb{E}_{t,b} (\Delta\bm{\theta}_{\text{null}}^T\Delta\bm{\theta}_{\text{null}})
 	\end{equation}
 where $ t,b $ index tests and targets (ladybugs).
 
@@ -154,14 +154,21 @@ Figure \ref{fig:nopcontrol} shows the number of peaks modeled by a single expone
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/1setup&schedule}
-	\caption[Experiment Setup and Schedule]{Experiment Setup, Ladybug Test and Schedule. C: Two ladybug tests are administered at beginning and end of one session, two sessions are administered in morning and afternoon. Control group receives 5 days training, whereas stroke group receives 20 consecutive weekdays training.}
+	\caption[Experiment Setup and Schedule]
+	{Experiment Setup, ARMEO Spring and Schedule. 
+		A: Participants sit in front of a vertical screen on which the training games are displayed. In the ladybug test, the cursor responds to movements on a vertical plane. 
+		B: Joints of ARMEO Spring. Summation of 1a and 1b is Shoulder Horizontal (SH) angle; 2 is Shoulder Elevation (SE) angle; 3a (only activated for right arm) and 3b (left arm) are elbow (EL) angles; 4 is ForeArm (FA) angle; 5 is pronation and supination angle; 6 is wrist angle.
+		C: Two ladybug tests are administered at beginning and end of one session, two sessions are administered in morning and afternoon. Control group receives 5 days training, whereas stroke group receives 20 consecutive weekdays training.}
 	\label{fig:1setupschedule}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/2strokeTrajExamp}
-	\caption[Short Caption]{Long Caption}
+	\caption[Example trajectories]
+	{Representative trajectories. 
+		Top row: example cursor trajectories.
+		Bottom row: example joint angle trajectories. Only the first four joints are shown.}
 	\label{fig:2stroketrajexamp}
 \end{figure}
 
@@ -169,28 +176,36 @@ Figure \ref{fig:nopcontrol} shows the number of peaks modeled by a single expone
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/3nopFixRan}
-	\caption[short]{long}
+	\caption[Double Exponential Model]
+	{Double Exponential Model of Number of Peaks in Velocity Profile. 
+		A,B: The fixed effect
+		C: representative participants who show fast learning rate and large null variability,..
+		D: }
 	\label{fig:3nopfixran}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/4slowComponentIsRecovery}
-	\caption[short]{long}
+	\caption[Slow component corresponds to recovery as meaured by FM]
+	{Slow component corresponds to recovery as meaured by FM. 
+		A: The number of peaks post training is correlated with FM post training;
+		B: The change of number of peaks is correlated with the change of FM, prior and post training.}
 	\label{fig:4slowcomponentisrecovery}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/5learnRateVSnullVar}
-	\caption[short]{long}
+	\caption[Exploration of Joint Redundancy facilitates learning]
+	{Exploration of Joint Redundancy facilitates learning. (The log of) null space variability is correlated with learning rate}
 	\label{fig:5learnratevsnullvar}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/6synergy}
-	\caption[short]{long}
+	\caption[Abnormal Synergies]{}
 	\label{fig:6synergy}
 \end{figure}
 
