@@ -36,11 +36,11 @@ Participants receive conventional rehabilitation besides robot-aided rehabilitat
 Our robot-aided rehabilitation uses ArmeoSpring exoskeleton \cite{} for therapy training. 
 Shown in figure \ref{fig:1setupschedule}, the exoskeleton has 6 degrees of freedom, summarized in table \ref{tab:devicedof}. 
 It is attached to the arm by two or three velcro straps. 
-The exoskeleton has two springs equipped, at the upper arm and forearm respectively. 
+The exoskeleton has two springs equipped, at the upper arm and the forearm respectively. 
 The springs can be adjusted to compensate the gravity force of the arm. 
-Lengths of the exoskeleton are adjustable, as well as the strength of springs. 
-There are no motors at any joints, the user has to move actively to control the exoskeleton. 
-The user's trunk is mildly constrained by the velcro strap at the upper arm.  
+Lengths of the exoskeleton are also adjustable to adapt to user's arm length.
+There are no motors at any joints, user has to move actively to control the exoskeleton. 
+User's trunk is mildly constrained by the velcro strap at the upper arm.
 
 
 \begin{table}
@@ -48,8 +48,8 @@ The user's trunk is mildly constrained by the velcro strap at the upper arm.
 		\hline
 		Joint No. & Joint Name & Anatomical Counterpart & Direction \\
 		\hline
-		1(1) & Inner Shoulder Angle & Shoulder Horizontal Ab-/Adduction & Left/Right \\
-		1(2) & Outer Shoulder Angle & Shoulder Horizontal Ab-/Adduction & Left/Right \\
+		1(a) & Inner Shoulder Angle & Shoulder Horizontal Ab-/Adduction & Left/Right \\
+		1(b) & Outer Shoulder Angle & Shoulder Horizontal Ab-/Adduction & Left/Right \\
 		2 & Upper Arm Angle & Shoulder Flex-/Extension & Up/Down \\
 		3 & Elbow Angle & - & Left/Right \\
 		4 & Forearm Angle & - & Up/Down \\
@@ -62,12 +62,12 @@ The user's trunk is mildly constrained by the velcro strap at the upper arm.
 \end{table}
 
 The device records all joint angles (that is, the joints of the exoskeleton), and calculates the end effector location through a forward kinematics model of the exoskeleton. 
-The end effector location then is used to control a cursor on a screen, often displayed vertically in front of the user. 
+The end effector location then is used to control a cursor on a screen, displayed vertically in front of the user. 
 All joint angles and end effector locations are recorded.
 
 \textbf{Training and Test.}
 Participants in the control group receive two training sessions (morning and afternoon) for five consecutive days in a week.
-Post-stroke participants receive the same amount of training per day every weekday for 4 consecutive weeks.
+Post-stroke participants receive the same amount of training per day every weekday for 4 consecutive weeks (Figure \ref{fig:1setupschedule} C).
 
 One training session consists of several games, each lasts at most 3 minutes (with the exception of the ladybug pointing test mentioned below); after a certain game, the user is often presented with performance feedbacks of that game. 
 One training session typically lasts about 20 minutes for young healthy adults.
@@ -90,20 +90,19 @@ A trial is considered successful if it starts from previously caught target and 
 \textbf{Task Space Performance.}
 We characterize task space performance via number of peaks in the velocity profile \cite{}.
 For participants in the control group, we model the number of peaks ($ p $) with an exponential model
-
 \begin{equation}\label{eqn:singleexp}
-p = a e^{-b t} + c
+p = a e^{-b t} + 1
 \end{equation}
-
 where $ t $ is test number, $ b $ is learning rate.
+We choose an asymptote of 1 because it is the theoretical limit of number of peaks.
 
 For participants in the stroke group, we assume that two components are necessary to model the number of peaks
-
-\begin{equation}\label{doubleexp}
-p = a_1 e^{-b_1 t} + a_2 e^{-b_2 t} + c
+\begin{equation}\label{eqn:doubleexp}
+p = a_1 e^{-b_1 t} + a_2 e^{-b_2 t} + 1
 \end{equation}
-
-We fit a nonlinear mixed effect model to equation \ref{eqn:singleexp} and \ref{eqn:doubleexp} via Matlab 2016a function \textsf{nlmefit}.
+$ a_1, a_2, b_1 $ and $ b_2 $ are constraint to be positive.
+We fit a nonlinear mixed effect model \cite{} to equation \ref{eqn:singleexp} and \ref{eqn:doubleexp} via Matlab 2016a function \textsf{nlmefit}.
+The results of mixed effect model include the fixed effect $ \hat{a} $ and $ \hat{b} $ that represents group average, and the random effect for each participant $ a_s $ and $ b_s, s = 1, ..., N_\text{sb} $.
 
 \textbf{Joint Space Variability.}
 To quantify joint space variability and its relevance to the task space, we use a nonlinear forward kinematics model of the exoskeleton (cite company?)
@@ -129,7 +128,7 @@ For a specific trial, the deviation of joint angles from $ \bar{\bm{\theta}} $ i
 	\end{equation}
 The projection of $ \Delta\bm{\theta} $ to the null space is
 	\begin{equation}
-	\Delta\bm{\theta}_{\text{null}} = \sum_i^m \langle \Delta\bm{\theta}, \bm{\xi}_i \rangle \bm{\xi}_i, m=6
+	\Delta\bm{\theta}_{\text{null}} = \sum_i^m \langle \Delta\bm{\theta}, \bm{\xi}_i \rangle \bm{\xi}_i, m=4
 	\end{equation}
 In the end, we quantify the null space variability by calculating the mean of squared $ \Delta\bm{\theta}_{\text{null}} $
 	\begin{equation}
@@ -137,7 +136,34 @@ In the end, we quantify the null space variability by calculating the mean of sq
 	\end{equation}
 where $ t,b $ index tests and targets (ladybugs).
 
-[Add orthogonal space variability and task space variability if needed]
+To obtain variability in the orthogonal space, we simply replace $ \bm{\xi}_i $ with the basis of the orthogonal space, $ \bm{\psi}_i $, $ i= 1,2 $  :
+	\begin{equation}
+	\Delta\bm{\theta}_{\text{orth}} = \sum_i^m \langle \Delta\bm{\theta}, \bm{\psi}_i \rangle \bm{\psi}_i, m=2
+	\end{equation}
+and the orthogonal space variability is
+	\begin{equation}
+	V_{\text{orth}} = \mathbb{E}_{t,b} (\Delta\bm{\theta}_{\text{orth}}^T\Delta\bm{\theta}_{\text{orth}})
+	\end{equation}
+
+\textbf{Synergy Extraction and Analysis.}
+We use Principal Component Analysis (PCA) to extract joint synergies from each ladybug test. 
+In this study, we only look at the first two synergies.
+On average, the first two synergies account for 83.9\% joint angle variance for control group, 83.1\% for stroke group.
+Joint synergies of healthy participants are quite stable across individuals.
+We calculate the averaged synergies shown in figure \ref{fig:6synergy}-C.
+To measure the synergy pattern of stroke participant, we use the Dihedral angle between subspaces that are spanned by synergies \cite{}.
+
+Specifically, given two $ 4 \times 2 $ matrices representing two sets of synergies (or subspaces) $ U $ and $ V $, the Dihedral angle between them is defined as
+	\begin{equation}\label{eqn:dihedral}
+	\phi(U,V) = \arccos(s_\text{min}(U^TV))
+	\end{equation}
+where $ s_\text{min}(U^TV) $ represents the minimum singular value of matrix $ U^TV $.
+
+We investigate this Dihedral angle between the average healthy synergies and synergies of stroke participants from every test.
+
+We fit a linear mixed effect model to this angle with a random effect on the intercept.
+
+We then correlate this intercept with 
 
 
 \outline{2}{Results}
