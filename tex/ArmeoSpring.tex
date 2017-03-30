@@ -192,14 +192,16 @@ Instead of removing them, we adopt robust regression method with the bisquare we
 \section{Results}
 
 Stroke participants show significant changes after training in kinematics performance.
-Fig. \ref{fig:2stroketrajexamp} shows representative trajectories. After training, the trajectories in task space are straighter, and the joint trajectories also seem smoother. In this particular trial in Fig. \ref{fig:2stroketrajexamp}B, the movement time is also shorter.
+Fig. \ref{fig:2stroketrajexamp} shows representative trajectories in both task space and joint space. 
+After training, the trajectories in task space are straighter, and the joint trajectories also seem smoother. 
+%In this particular trial in Fig. \ref{fig:2stroketrajexamp}B, the movement time is also shorter.
 
 \textbf{Task Space Performance.}
-Figure \ref{fig:3nopfixran} shows the number of peaks modeled by exponential functions.
+Fig. \ref{fig:3nopfixran} shows the number of peaks modeled by exponential functions.
 Control subjects show much fewer number of peaks on average (Fig. \ref{fig:3nopfixran}A).
 Stroke participants show significant improvement (Fig. \ref{fig:3nopfixran}B), although still more than control group at the end of training.
 
-The double exponential mixed effect model (equation \ref{eqn:doubleexp}) gives two learning rates $ b_1 $ and $ b_2 $. 
+The double exponential mixed effect model (Eqn. \ref{eqn:doubleexp}) gives two learning rates $ b_1 $ and $ b_2 $. 
 We refer the smaller of the two, $ b_2 $ as the slow learning rate, the bigger, $ b_1 $ the fast learning rate.
 Fig. \ref{fig:3nopfixran}C shows examples of individual fitting.
 The slow component, due to small learning rate, is essentially linear; but the fast component usually goes to asymptote during the training.
@@ -209,20 +211,23 @@ The post training number of peaks and post training FM are significantly correla
 This indicates that the number of peaks is a good measurement of abnormal synergy patterns.
 In addition, the change of number of peaks before and after training due to the slow process (term $ a_2e^{-b_2t} $ in Eqn. \ref{eqn:doubleexp}), correlates significantly ($ p<0.0001 $) with the change of FM (Fig. \ref{fig:4slowcomponentisrecovery}B).
 This further indicates that the slow learning process, rather than the fast one, reflects a recovery of synergy patterns.
+We therefore refer to $ b_2 $ as the recovery rate, and $ b_1 $ as the learning rate.
 
-\textbf{Joint Space Variability}
+\textbf{Joint Space Variability.}
 Both control group and stroke group display much larger task-irrelevant variability than task-relevant variability.
-For example, for the control group, the task-irrelevant variability on average is $ \ang{18.3} \pm \ang{19.4} $ (measured by standard deviation, $ \sqrt{V_\text{null}} $); whereas the task-relevant variability ($ \sqrt{V_\text{orth}} $) on average is $ \ang{3.1} \pm \ang{2.9} $
+For example, for the control group, the task-irrelevant variability on average is $ \ang{18.3} \pm \ang{19.4} $ (measured by standard deviation, $ \sqrt{V_\text{null}} $); whereas the task-relevant variability ($ \sqrt{V_\text{orth}} $) on average is $ \ang{3.1} \pm \ang{2.9} $.
 
-Task-irrelevant variability positively correlates with the learning rate $ b_1 $ (see Eqn. \ref{eqn:doubleexp}), as shown in Fig.\ref{fig:5learnratevsnullvar}.
+Task-irrelevant variability positively correlates with the learning rate $ b_1 $ (see Eqn. \ref{eqn:doubleexp}), as shown in Fig. \ref{fig:5learnratevsnullvar}.
+Participants with small task-irrelevant variability learn slower (such as SB 46, see Fig. \ref{fig:3nopfixran}C: SB 46);
+participants with large tasl-irrelevant variability learn faster (such as SB 46, see Fig. \ref{fig:3nopfixran}C: SB 53);
 
-\textbf{Synergy Analysis}
-The two synergies we identify from control group are shown in Fig. \ref{fig:6synergy}C.
+\textbf{Synergy Analysis.}
+We identify two synergies from control group, as shown in Fig. \ref{fig:6synergy}C.
 The first synergy is composed of Shoulder Horizontal (SH) rotation and Elbow (EL) angle, and it is responsible for horizontal movements.
 The second synergy is composed of Shoulder Elevation (SE) angle and Forearm (FA) angle, and it is responsible for vertical movements.
 
-Synergies from stroke participants are less organized.
-They can share a similar structure (\ref{fig:6synergy}B), or have different structure (\ref{fig:6synergy}A).
+We are not able to identify stable synergies from stroke participants due to large differences across different participants.
+They can share a similar structure as the control group (Fig. \ref{fig:6synergy}B), or have different structure (Fig. \ref{fig:6synergy}A).
 
 The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see Eqn. \ref{eqn:doubleexp}) as shown in Fig. \ref{fig:6synergy}D.
 
@@ -237,9 +242,9 @@ The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see E
 	\includegraphics[width=1\linewidth]{figures/1setup&schedule}
 	\caption[Experiment Setup and Schedule]
 	{Experiment Setup, ARMEO Spring and Schedule. 
-		A: Participants sit in front of a vertical screen on which the training games are displayed. In the ladybug test, the cursor responds to movements on a vertical plane. 
-		B: Joints of ARMEO Spring. Summation of 1a and 1b is Shoulder Horizontal (SH) angle; 2 is Shoulder Elevation (SE) angle; 3a (only activated for right arm) and 3b (left arm) are elbow (EL) angles; 4 is ForeArm (FA) angle; 5 is pronation and supination angle; 6 is wrist angle.
-		C: Two ladybug tests are administered at beginning and end of one session, two sessions are administered in morning and afternoon. Control group receives 5 days training, whereas stroke group receives 20 consecutive weekdays training.}
+		A. Participants sit in front of a vertical screen on which the training games are displayed. In the ladybug test, the cursor responds to movements on a vertical plane. 
+		B. Joints of ARMEO Spring. Summation of 1a and 1b is Shoulder Horizontal (SH) angle; 2 is Shoulder Elevation (SE) angle; 3a (only activated for right arm) and 3b (left arm) are elbow (EL) angles; 4 is ForeArm (FA) angle; 5 is pronation and supination angle; 6 is wrist angle.
+		C. Two ladybug tests are administered at beginning and end of one session, two sessions are administered in morning and afternoon. Control group receives 5 days training, whereas stroke group receives 20 consecutive weekdays training.}
 	\label{fig:1setupschedule}
 \end{figure}
 
@@ -249,19 +254,23 @@ The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see E
 	\caption[Example trajectories]
 	{Representative trajectories. 
 		A. Representative task space trajectories. Trajectories after training are straighter.
-		B. Representative joint space trajectories. Only the first four joints are shown.}
+		B. Representative joint space trajectories, correspond to the red part trajectories in panel A. Only the first four joints are shown.}
 	\label{fig:2stroketrajexamp}
 \end{figure}
-
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/3nopFixRan}
 	\caption[Double Exponential Model]
 	{Double Exponential Model of Number of Peaks in Velocity Profile. 
-		A,B: The fixed effect
-		C: representative participants who show fast learning rate and large null variability,..
-		D: }
+		A,B: The fixed effect (group average) of the fitted exponential model of number of peaks. 
+			Shaded area represents standard deviation;
+		C: Representative participants.
+			SB 53: fast learning rate and large task-irrelevant variability; 
+			SB 46: slow learning rate and small task-irrelevant variability (see Fig. \ref{fig:5learnratevsnullvar} for task-irrelevant variability);
+			SB 7: fast recovery rate and small initial synergy abnormality;
+			SB 43: slow recovery rate and large initial synergy abnormality (see Fig. \ref{fig:6synergy} for initial synergy abnormality).
+	}
 	\label{fig:3nopfixran}
 \end{figure}
 
@@ -269,9 +278,12 @@ The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see E
 	\centering
 	\includegraphics[width=1\linewidth]{figures/4slowComponentIsRecovery}
 	\caption[Slow component corresponds to recovery as meaured by FM]
-	{Slow component corresponds to recovery as meaured by FM. 
+	{Slow component corresponds to recovery as measured by FM. 
 		A: The number of peaks post training is correlated with FM post training;
-		B: The change of number of peaks is correlated with the change of FM, prior and post training.}
+		B: The change of number of peaks due to the slow process is correlated with the change of FM, prior and post training.
+		The cyan regression line is normal least square regression; whereas the red regression line is robust regression with bisquare weight function. 
+		Data points indicated by cyan crosses are outliers detected by Cook's distance.
+	}
 	\label{fig:4slowcomponentisrecovery}
 \end{figure}
 
@@ -279,14 +291,26 @@ The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see E
 	\centering
 	\includegraphics[width=1\linewidth]{figures/5learnRateVSnullVar}
 	\caption[Exploration of Joint Redundancy facilitates learning]
-	{Exploration of Joint Redundancy facilitates learning. (The log of) null space variability is correlated with learning rate}
+	{Exploration of Joint Redundancy facilitates learning. 
+		(The log of) null space variability is correlated with learning rate.
+		SB 53 and 46 are representative participants, whose learning curves are shown in Fig.\ref{fig:3nopfixran}C.
+		The cyan regression line is normal least square regression; whereas the red regression line is robust regression with bisquare weight function. 
+		Data points indicated by cyan crosses are outliers detected by Cook's distance.}
 	\label{fig:5learnratevsnullvar}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/6synergy}
-	\caption[Abnormal Synergies]{}
+	\caption[Synergy Analysis]
+	{Synergy Abnormality hinders recovery. 
+		A-C. Radar plot of synergies. Dashed black line indicates zero. Blue and red lines are synergies.
+		A. Representative participant with abnormal synergies;
+		B. Representative participant with normal synergies. See Fig.\ref{fig:3nopfixran}C for their learning curves;
+		C. Averaged synergies of participants in the control group;
+		D. Synergy abnormality reduces recovery rate. SB 7 and 43 are representative participants, whose initial synergy patterns are shown in panel A and B, learning curves are shown in Fig.\ref{fig:3nopfixran}C.
+		The cyan regression line is normal least square regression; whereas the red regression line is robust regression with bisquare weight function. 
+		Data points indicated by cyan crosses are outliers detected by Cook's distance.}
 	\label{fig:6synergy}
 \end{figure}
 
