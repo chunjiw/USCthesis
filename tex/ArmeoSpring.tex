@@ -80,6 +80,18 @@ To catch the ladybug, the user moves the cursor to its location.
 The user has limited time to catch the ladybug.
 After a ladybug is caught, or the time limit is reached, the ladybug disappears and the next ladybug appears somewhere else. 
 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/1setup&schedule}
+	\caption[Experiment Setup and Schedule]
+	{Experiment Setup, ARMEO Spring and Schedule. 
+		A. Participants sit in front of a vertical screen on which the training games are displayed. In the ladybug test, the cursor responds to movements on a vertical plane. 
+		B. Joints of ARMEO Spring. Summation of 1a and 1b is Shoulder Horizontal (SH) angle; 2 is Shoulder Elevation (SE) angle; 3a (only activated for right arm) and 3b (left arm) are elbow (EL) angles; 4 is ForeArm (FA) angle; 5 is pronation and supination angle; 6 is wrist angle.
+		C. Two ladybug tests are administered at beginning and end of one session, two sessions are administered in morning and afternoon. Control group receives 5 days training, whereas stroke group receives 20 consecutive weekdays training.}
+	\label{fig:1setupschedule}
+\end{figure}
+
 \subsection{Data Analysis}
 
 \textbf{Preprocessing.}
@@ -94,23 +106,29 @@ We characterize task space performance of a ladybug test via the average number 
 To calculate the number of peaks in a velocity profile of a trial, we take the derivative of velocity (tangential acceleration) and count the number of times it goes from positive to negative.
 We then take the average of number of peaks ($ p $) of all successful trials in the test.
 
-We model the dynamics of number of peaks $ p $ as exponential functions of time $ t $ represented by task number.
-For participants in the control group, we consider a single exponential function
+We model the dynamics of number of peaks $ p $ as exponential functions of time $ t $ represented by task number, with mixed effects.
+For participants in the control group, we consider a single exponential formulation
 \begin{equation}\label{eqn:singleexp}
-p = a e^{-b t} + 1
+p_{i,j} = A_i \exp(-B_i t_{j}) + 1 + \epsilon_{i,j}
 \end{equation}
-where $ t $ is test number, $ b $ is learning rate.
+where $ t_{j} = j $ is the test number $ j $, 
+$ A_i $ is the mixed-effect coefficient representing the amplitude of the exponential for participant $ i $,
+$ B_i $ is the mixed-effect coefficient representing the learning rate,
+and $ \epsilon_{i,j} $ is the residual. 
 We choose an asymptote of 1 because it is the theoretical limit of number of peaks.
 
-For participants in the stroke group, we consider two exponential components to model the number of peaks
+For participants in the stroke group, we consider two exponential components to formulate the number of peaks
 \begin{equation}\label{eqn:doubleexp}
-p = a_1 e^{-b_1 t} + a_2 e^{-b_2 t} + 1
+p_{i,j} = A^f_{i,j} \exp(-B^f_{i,j} t_j) + A^s_{i,j} \exp(-B^s_{i,j} t_j) + 1 + \epsilon_{i,j}
 \end{equation}
-$ a_1, a_2, b_1 $ and $ b_2 $ are constraint to be positive.
-For convenience, we assume $ b_1 > b_2 $.
+where $ A^f, A^s, B^f $ and $ B^s $ are constraint to be positive, and $ B^f > B^s $, therefore the first term represents a fast component, the second a slow component.
 
-We fit nonlinear mixed effect models \cite{} to equation \ref{eqn:singleexp} and \ref{eqn:doubleexp} via Matlab 2016a function \textsf{nlmefit}.
-The results of mixed effect model include the fixed effect $ \hat{a} $ and $ \hat{b} $ that represents group average, and the random effect for each participant $ a_s $ and $ b_s, s = 1, ..., N_\text{sb} $.
+Mixed effect model coefficients are estimated via Matlab 2016a function \textsf{nlmefit}.
+
+\textbf{Conversion of Joint Angles}
+The recordings from ARMEO Spring are joint angles of the exoskeleton, different from anatomical joint angles.
+It is therefore important to infer anatomical joint angles from exoskeleton joint angles. 
+[here goes how we did it]
 
 \textbf{Joint Space Variability.}
 Because the last two joints (pronation/supination and wrist angle) have relatively small variance (control 12.4\%, stroke 4.6\%), we ignore them during joint space variability analysis and synergy analysis.
@@ -196,10 +214,39 @@ Fig. \ref{fig:2stroketrajexamp} shows representative trajectories in both task s
 After training, the trajectories in task space are straighter, and the joint trajectories also seem smoother. 
 %In this particular trial in Fig. \ref{fig:2stroketrajexamp}B, the movement time is also shorter.
 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/2strokeTrajExamp}
+	\caption[Example trajectories]
+	{Representative trajectories. 
+		A. Representative task space trajectories. Trajectories after training are straighter.
+		B. Representative joint space trajectories, correspond to the red part trajectories in panel A. Only the first four joints are shown.}
+	\label{fig:2stroketrajexamp}
+\end{figure}
+
 \textbf{Task Space Performance.}
 Fig. \ref{fig:3nopfixran} shows the number of peaks modeled by exponential functions.
 Control subjects show much fewer number of peaks on average (Fig. \ref{fig:3nopfixran}A).
 Stroke participants show significant improvement (Fig. \ref{fig:3nopfixran}B), although still more than control group at the end of training.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{figures/3nopFixRan}
+	\caption[Double Exponential Model]
+	{Double Exponential Model of Number of Peaks in Velocity Profile. 
+		A,B: The fixed effect (group average) of the fitted exponential model of number of peaks. 
+		Shaded area represents standard deviation;
+		C: Representative participants.
+		SB 53: fast learning rate and large task-irrelevant variability; 
+		SB 46: slow learning rate and small task-irrelevant variability (see Fig. \ref{fig:5learnratevsnullvar} for task-irrelevant variability);
+		SB 7: fast recovery rate and small initial synergy abnormality;
+		SB 43: slow recovery rate and large initial synergy abnormality (see Fig. \ref{fig:6synergy} for initial synergy abnormality).
+	}
+	\label{fig:3nopfixran}
+\end{figure}
+
 
 The double exponential mixed effect model (Eqn. \ref{eqn:doubleexp}) gives two learning rates $ b_1 $ and $ b_2 $. 
 We refer the smaller of the two, $ b_2 $ as the slow learning rate, the bigger, $ b_1 $ the fast learning rate.
@@ -213,66 +260,6 @@ In addition, the change of number of peaks before and after training due to the 
 This further indicates that the slow learning process, rather than the fast one, reflects a recovery of synergy patterns.
 We therefore refer to $ b_2 $ as the recovery rate, and $ b_1 $ as the learning rate.
 
-\textbf{Joint Space Variability.}
-Both control group and stroke group display much larger task-irrelevant variability than task-relevant variability.
-For example, for the control group, the task-irrelevant variability on average is $ \ang{18.3} \pm \ang{19.4} $ (measured by standard deviation, $ \sqrt{V_\text{null}} $); whereas the task-relevant variability ($ \sqrt{V_\text{orth}} $) on average is $ \ang{3.1} \pm \ang{2.9} $.
-
-Task-irrelevant variability positively correlates with the learning rate $ b_1 $ (see Eqn. \ref{eqn:doubleexp}), as shown in Fig. \ref{fig:5learnratevsnullvar}.
-Participants with small task-irrelevant variability learn slower (such as SB 46, see Fig. \ref{fig:3nopfixran}C: SB 46);
-participants with large tasl-irrelevant variability learn faster (such as SB 46, see Fig. \ref{fig:3nopfixran}C: SB 53);
-
-\textbf{Synergy Analysis.}
-We identify two synergies from control group, as shown in Fig. \ref{fig:6synergy}C.
-The first synergy is composed of Shoulder Horizontal (SH) rotation and Elbow (EL) angle, and it is responsible for horizontal movements.
-The second synergy is composed of Shoulder Elevation (SE) angle and Forearm (FA) angle, and it is responsible for vertical movements.
-
-We are not able to identify stable synergies from stroke participants due to large differences across different participants.
-They can share a similar structure as the control group (Fig. \ref{fig:6synergy}B), or have different structure (Fig. \ref{fig:6synergy}A).
-
-The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see Eqn. \ref{eqn:doubleexp}) as shown in Fig. \ref{fig:6synergy}D.
-
-
-\outline{2}{Discussion}
-\section{Discussion}
-
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1\linewidth]{figures/1setup&schedule}
-	\caption[Experiment Setup and Schedule]
-	{Experiment Setup, ARMEO Spring and Schedule. 
-		A. Participants sit in front of a vertical screen on which the training games are displayed. In the ladybug test, the cursor responds to movements on a vertical plane. 
-		B. Joints of ARMEO Spring. Summation of 1a and 1b is Shoulder Horizontal (SH) angle; 2 is Shoulder Elevation (SE) angle; 3a (only activated for right arm) and 3b (left arm) are elbow (EL) angles; 4 is ForeArm (FA) angle; 5 is pronation and supination angle; 6 is wrist angle.
-		C. Two ladybug tests are administered at beginning and end of one session, two sessions are administered in morning and afternoon. Control group receives 5 days training, whereas stroke group receives 20 consecutive weekdays training.}
-	\label{fig:1setupschedule}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1\linewidth]{figures/2strokeTrajExamp}
-	\caption[Example trajectories]
-	{Representative trajectories. 
-		A. Representative task space trajectories. Trajectories after training are straighter.
-		B. Representative joint space trajectories, correspond to the red part trajectories in panel A. Only the first four joints are shown.}
-	\label{fig:2stroketrajexamp}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1\linewidth]{figures/3nopFixRan}
-	\caption[Double Exponential Model]
-	{Double Exponential Model of Number of Peaks in Velocity Profile. 
-		A,B: The fixed effect (group average) of the fitted exponential model of number of peaks. 
-			Shaded area represents standard deviation;
-		C: Representative participants.
-			SB 53: fast learning rate and large task-irrelevant variability; 
-			SB 46: slow learning rate and small task-irrelevant variability (see Fig. \ref{fig:5learnratevsnullvar} for task-irrelevant variability);
-			SB 7: fast recovery rate and small initial synergy abnormality;
-			SB 43: slow recovery rate and large initial synergy abnormality (see Fig. \ref{fig:6synergy} for initial synergy abnormality).
-	}
-	\label{fig:3nopfixran}
-\end{figure}
 
 \begin{figure}
 	\centering
@@ -287,6 +274,15 @@ The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see E
 	\label{fig:4slowcomponentisrecovery}
 \end{figure}
 
+\textbf{Joint Space Variability.}
+Both control group and stroke group display much larger task-irrelevant variability than task-relevant variability.
+For example, for the control group, the task-irrelevant variability on average is $ \ang{18.3} \pm \ang{19.4} $ (measured by standard deviation, $ \sqrt{V_\text{null}} $); whereas the task-relevant variability ($ \sqrt{V_\text{orth}} $) on average is $ \ang{3.1} \pm \ang{2.9} $.
+
+Task-irrelevant variability positively correlates with the learning rate $ b_1 $ (see Eqn. \ref{eqn:doubleexp}), as shown in Fig. \ref{fig:5learnratevsnullvar}.
+Participants with small task-irrelevant variability learn slower (such as SB 46, see Fig. \ref{fig:3nopfixran}C: SB 46);
+participants with large tasl-irrelevant variability learn faster (such as SB 46, see Fig. \ref{fig:3nopfixran}C: SB 53);
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{figures/5learnRateVSnullVar}
@@ -298,6 +294,22 @@ The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see E
 		Data points indicated by cyan crosses are outliers detected by Cook's distance.}
 	\label{fig:5learnratevsnullvar}
 \end{figure}
+
+\textbf{Synergy Analysis.}
+We identify two synergies from control group, as shown in Fig. \ref{fig:6synergy}C.
+The first synergy is composed of Shoulder Horizontal (SH) rotation and Elbow (EL) angle, and it is responsible for horizontal movements.
+The second synergy is composed of Shoulder Elevation (SE) angle and Forearm (FA) angle, and it is responsible for vertical movements.
+
+We are not able to identify stable synergies from stroke participants due to large differences across different participants.
+They can share a similar structure as the control group (Fig. \ref{fig:6synergy}B), or have different structure (Fig. \ref{fig:6synergy}A).
+
+The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see Eqn. \ref{eqn:doubleexp}) as shown in Fig. \ref{fig:6synergy}D.
+
+
+
+
+
+
 
 \begin{figure}
 	\centering
@@ -313,4 +325,9 @@ The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see E
 		Data points indicated by cyan crosses are outliers detected by Cook's distance.}
 	\label{fig:6synergy}
 \end{figure}
+
+
+
+\outline{2}{Discussion}
+\section{Discussion}
 
