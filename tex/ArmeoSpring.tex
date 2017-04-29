@@ -1,13 +1,30 @@
-\outline{1}{Learning, Not Recovery, is Modulated by Joint Synergies and Redundancy Exploration in Robotic Training Post-Stroke}
-\chapter{Learning, Not Recovery, is Modulated by Joint Synergies and Redundancy Exploration in Robotic Training Post-Stroke}
+\outline{1}{Learning is Modulated by Joint Synergies, Whereas Recovery is Modulated by Redundancy Exploration in Robotic Training Post-Stroke}
+\chapter{Learning is Modulated by Joint Synergies, Whereas Recovery is Modulated by Redundancy Exploration in Robotic Training Post-Stroke}
 \label{cha:armeospring}
 
 
 
 \outline{2}{Introduction}
 \section{Introduction}
-
-
+Stoke is one of the leading cause of death and disability globally today (Benjamin et al., 2017).
+Movement impairment due to stroke affects quality of life of stroke survivors (cite).
+Stroke survivors usually display atypical movement patterns, referred to as abnormal “synergies” (Brunnström, 1970). 
+It is not clear how abnormal synergies interact with the recovery of function. 
+On the one hand, abnormal joint coordination may serve as compensation mechanism for functional daily use (Levin, Kleim,  Wolf, 2009); 
+on the other hand, it is not clear how this compensation mechanisms helps or hinders recovery. 
+To improve rehabilitation effectiveness, a better understanding of how joint coordination patterns affect recovery of functional abilities is required.
+ 
+The challenging of stroke rehabilitation also stems from a character of high variability in lesion, impairment, spontaneous recovery, and responsiveness to therapy (Cramer, 2008a, 2008b). 
+It is therefore crucial to recognize individual differences and identify key factors that play important role for recovery.
+ 
+Due to the redundant nature of upper extremity kinematics, healthy individuals exploit redundancy (Kutch  Valero-Cuevas, 2011) or control the task relevant part of the redundancy to achieve a certain task (Scholz  Schöner, 1999). 
+(Singh, Jana, Ghosal,  Murthy, 2016) shows that redundancy in joint space is exploited by healthy individuals to facilitate learning. 
+For individuals post-stroke however, it is unclear what roles redundancy might play in motor learning and recovery.
+ 
+In this study, we investigate the effect of abnormal synergy patterns and redundancy exploitation on motor learning and recovery. 
+We use Principal Component Analysis (PCA) to quantify joint synergies (van Kordelaar, van Wegen,  Kwakkel, 2012) and measure similarities between synergies with principle angles between subspaces (Björck  Golub, 1973). 
+We adapt the method in (Singh et al., 2016) to estimate redundancy exploitation.
+ 
 
 \outline{2}{Methods}
 \section{Methods}
@@ -33,7 +50,7 @@ Participants receive conventional rehabilitation besides robot-aided rehabilitat
 \end{table}
 
 \textbf{Device.}
-Our robot-aided rehabilitation uses ArmeoSpring exoskeleton \cite{} for therapy training. 
+Our robot-aided rehabilitation uses Armeo@Spring exoskeleton from Hocoma\footnote{https://www.hocoma.com/us/} for therapy training. 
 Shown in figure \ref{fig:1setupschedule}, the exoskeleton has 6 degrees of freedom, summarized in table \ref{tab:devicedof} and Fig. \ref{fig:1setupschedule}B. 
 It is attached to the arm by two or three velcro straps. 
 The exoskeleton has two springs equipped, at the upper arm and the forearm respectively. 
@@ -128,7 +145,6 @@ Mixed effect model coefficients are estimated via Matlab 2016a function \textsf{
 \textbf{Conversion of Joint Angles}
 The recordings from ARMEO Spring are joint angles of the exoskeleton, different from anatomical joint angles.
 It is therefore important to infer anatomical joint angles from exoskeleton joint angles. 
-[here goes how we did it]
 
 \textbf{Joint Space Variability.}
 Because the last two joints (pronation/supination and wrist angle) have relatively small variance (control 12.4\%, stroke 4.6\%), we ignore them during joint space variability analysis and synergy analysis.
@@ -203,8 +219,8 @@ We fit a linear mixed effect model to $ \phi(t) $ with a fixed effect on the int
 To investigate how joint synergies affects task space learning, we correlate $ \phi(0) $ with task space (fast and slow) learning rate.
 
 \textbf{Linear Regression}
-In this study, when doing linear regression, we identify outliers through Cook's Distance \cite{}.
-Instead of removing them, we adopt robust regression method with the bisquare weight function \cite{}.
+In this study, when doing linear regression, we identify outliers through Cook's Distance (Cook, 1977).
+Instead of removing them, we adopt robust regression method with the bisquare weight function (Hoaglin, Mosteller, 1983).
 
 \outline{2}{Results}
 \section{Results}
@@ -304,9 +320,7 @@ We are not able to identify stable synergies from stroke participants due to lar
 They can share a similar structure as the control group (Fig. \ref{fig:6synergy}B), or have different structure (Fig. \ref{fig:6synergy}A).
 
 The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see Eqn. \ref{eqn:doubleexp}) as shown in Fig. \ref{fig:6synergy}D.
-
-
-
+Participants with large abnormality recovers slower (such as SB 43, see Fig.\ref{fig:3nopfixran}C); while participants with small abnormality recovers faster (such as SB 7, see Fig.\ref{fig:3nopfixran}C).
 
 
 
@@ -330,4 +344,22 @@ The initial synergy abnormality correlates with the recovery rate $ b_2 $ (see E
 
 \outline{2}{Discussion}
 \section{Discussion}
+We characterize kinematics performance with a double exponential model of number of peaks, and show evidence that the two components link to motor learning and recovery respectively. 
+The mixed effect estimation of parameters allow us to obtain estimations of individual learning rates.
+
+Task-irrelevant variability, or variance in the UnControlled Manifold (UCM), is a source of variability that doesn’t affect the execution of a task, which can be represented by variables. 
+In the original study, (Scholz  Schöner, 1999) demonstrated that during a functional task, certain relevant variables are not controlled.
+The redundancy of human arm kinematics dictates that there must be task-irrelevant variability (the variability that does not affect endpoint trajectories) in the joint space. 
+We measure this task-irrelevant variability with adapted method from (Singh et al., 2016). 
+Although this variability is task irrelevant, it is not unnecessary since it brings flexibility and allow versatile joint coordination for some specific task. 
+However, how task-irrelevant variability affects learning (in healthy subjects) or recovery (in stroke survivors) is a question worth investigating. 
+(Singh et al., 2016) suggested that this variability, as a form of redundancy exploitation, helps motor adaptation and learning. 
+In our study, we found a correlation between task-irrelevant variability and learning rate of post-stroke individuals, suggesting that it also helps stroke individuals to learn a novel task.
+
+Joint synergies are extracted through Principal Component Analysis (PCA). 
+As a dimension reduction method, PCA provides components that explain the most variability in joint angle space. 
+Along with other dimension reduction methods, PCA has been used to extract joint synergies (van Kordelaar et al., 2012). 
+Similarities between synergies can be measured through the angle between two synergies in joint angle space, and similarities between groups of synergies can be measured through the angle between two subspaces (Bockemhl, 2010). 
+We couldn’t verify the method used in (Bockemhl, 2010), instead we use numerical method in (Björck  Golub, 1973) to calculate angles between subspaces. 
+A correlation between joint synergy abnormality and recovery rate may suggest that joint coordination patterns are important for functional recovery.
 
