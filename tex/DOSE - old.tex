@@ -1,0 +1,74 @@
+\chapter{DOSE}
+\label{dosechapter}
+
+In this chapter, I present my work on the data from the DOSE clinic trial.
+
+\section{Method: Mixed Effect Model of Differential Equations}
+
+We model the dose effect via ordinary differential equations (ODE). For any response variable $x(t)$, its first order time derivative $dx/dt$ depends on the current state $x$ and input (dose) $u$:
+
+\begin{equation}
+\label{ode}
+dx(t)/dt = -ax(t) + bu(t) + c
+\end{equation}
+
+The goal is to estimate coefficients $a$, $b$ and $c$ along with initial value $x_0=x(0)$, given the form of $u(\cdot)$ and observation data $y(t) = x(t) + \text{noise}$. If the data comes from multiple individuals, one may desire to estimate the random effects of the coefficients. The most simple case is when $a=0$ and $b=0$ (or $u=0$), the model reduces to $x(t) = x(0) + ct$ and can be easily handled by linear mixed effect model. Generally, the solution to equation \ref{ode} is 
+
+\begin{equation}
+\label{odesolution}
+	\begin{split}
+		x(t) &= x_0 e^{-at} + \int_0^t e^{-a(t-\tau)} (bu(\tau) + c) d\tau \\
+		     &= x_0 e^{-at} + e^{-at}\int_0^t e^{a\tau} (bu(\tau) + c) d\tau\\
+		     &= x_0 e^{-at} + \frac{c}{a}(1-e^{-at}) + b e^{-at}\int_0^t e^{a\tau} u(\tau) d\tau
+	\end{split}
+\end{equation}
+
+If the integration has a closed form, \ref{odesolution} is essentially a nonlinear function, and random effects of coefficients can be estimated via Nonlinear Mixed Effect Model (e.g. \textsf{nlme} package in R). Otherwise, numerical methods can be applied to evaluate $x(t)$ numerically.
+
+Note that when coefficient $a$ is very small, the term $\frac{c}{a}(1-e^{-at})$ becomes numerically unstable, although theoretically it reduces to a linear term $ct$. Simultaneously, the term $x_0e^{-at}$ also reduces to linear term $x_0(1-at)$. In this case, coefficient $a$ is redundant with coefficient $c$, and equation \ref{odesolution} is equivalent with the following equation with $a$ set to be 0:
+
+\begin{equation}
+	x(t) = x_0 + ct +  b \int_0^t u(\tau)d\tau
+\end{equation}
+
+
+\subsection{Piecewise constant function as the input}
+The closed form solution when the input $u(\cdot)$ is a piecewise constant function is as following. Assume
+\begin{equation}
+	\begin{split}
+u(t) = \sum_k u_k  \mathbb{I}(t_{ki}\leqslant t < t_{kf}) \\ 
+0 < t_{1i} < t_{1f} < t_{2i} < t_{2f} \cdots
+	\end{split}
+\end{equation}
+where $\mathbb{I}(\textsf{true}) = 1$, $\mathbb{I}(\textsf{false}) = 0$, then equation \ref{odesolution} becomes
+
+\begin{equation}
+	x(t) = x_0 e^{-at} + \frac{c}{a}(1-e^{-at}) + \frac{b}{a} \sum_k u(t) - u_k\bigg(e^{-a(t-t_{ki})}\mathbb{I}(t\geqslant t_{ki}) - e^{-a(t-t_{kf})}\mathbb{I}(t\geqslant t_{kf})\bigg)
+\end{equation}
+
+In the case when $a=0$, the solution becomes
+\begin{equation}
+	x(t) = x_0 + ct +  b \sum_k u_k\big( (t-t_{ki}) \mathbb{I}(t\geqslant t_{ti}) - (t-t_{kf}) \mathbb{I}(t\geqslant t_{tf})\big)
+\end{equation}
+
+\subsection{Time-dependent coefficient $b$}
+
+Sometimes the evolution of coefficients are of interest. Assume $b$ depends on $t$ linearly:
+\begin{equation}
+	b(t) = b_0 + b_1 t
+\end{equation}
+
+Now equation \ref{ode} has one more term ($a$ set to $0$):
+\begin{equation}
+dx(t)/dt = b_0u(t) + b_1tu(t) + c
+\end{equation}
+
+It also introduces one extra term into the solution:
+\begin{equation}
+\begin{split}
+	x(t) = x_0 &+ ct \\
+	&+ b_0 \sum_k u_k\big( (t-t_{ki}) \mathbb{I}(t\geqslant t_{ti}) - (t-t_{kf}) \mathbb{I}(t\geqslant t_{tf})\big) \\
+	&+ \frac{1}{2} b_1 \sum_k u_k\big( (t^2-t^2_{ki}) \mathbb{I}(t\geqslant t_{ti}) - (t^2-t^2_{kf}) \mathbb{I}(t\geqslant t_{tf})\big)
+\end{split}
+\end{equation}
+

@@ -50,7 +50,7 @@ Participants receive conventional rehabilitation besides robot-aided rehabilitat
 \end{table}
 
 \textbf{Device.}
-Our robot-aided rehabilitation uses Armeo@Spring exoskeleton from Hocoma\footnote{https://www.hocoma.com/us/} for therapy training. 
+Our robot-aided rehabilitation uses Armeo@==Spring exoskeleton from Hocoma\footnote{https://www.hocoma.com/us/} for therapy training. 
 Shown in figure \ref{fig:1setupschedule}, the exoskeleton has 6 degrees of freedom, summarized in table \ref{tab:devicedof} and Fig. \ref{fig:1setupschedule}B. 
 It is attached to the arm by two or three velcro straps. 
 The exoskeleton has two springs equipped, at the upper arm and the forearm respectively. 
@@ -220,6 +220,8 @@ To investigate how joint synergies affects task space learning, we correlate $ \
 
 \textbf{Linear Regression}
 In this study, when doing linear regression, we identify outliers through Cook's Distance (Cook, 1977).
+Cook's Distance $ D $ uses a data point's residual and leverage \cite{Chatterjee1986} to estimate the influence of a data point on least-square regression.
+We label data point $ i $ as an outlier if $ D_i > 4/n $ ($ n $ is the number of observations)\cite{Bollen1985}.
 Instead of removing them, we adopt robust regression method with the bisquare weight function (Hoaglin, Mosteller, 1983).
 
 \outline{2}{Results}
