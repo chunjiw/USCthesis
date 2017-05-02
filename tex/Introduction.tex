@@ -1,14 +1,84 @@
+\outline{1}{Introduction}
 \chapter{Introduction}
 \label{cha:introduction}
-\outline{1}{Introduction}
 
-This chapter talks about motivation and applications of my work, and reviews previous research in the field.
 
 \section{Motivations}
 \label{sec:motivations}
+Human upper extremity movement is an essential component that is necessary for everyday life.
+Many, if not all, activities cannot be completed without fluent upper extremity movement control.
+Study of upper extremity movement sheds light on the interesting subject of how humans control the body to move around and perform certain tasks, and has attracted many researchers’ attention. 
+As a major subset of upper extremity movement, the study of reaching movement is approached via many techniques including kinematics analysis (Hogan  Sternad, 2009), optimal control (Todorov  Jordan, 2002), synergy analysis (Bockemühl, Troje,  Dürr, 2010), uncontrolled manifold (Domkin, Laczko, Djupsjöbacka, Jaric, Latash, 2005) etc. 
+The study of rehabilitation and recovery of reaching movement of post-stroke individuals, in parallel with studies of healthy subjects, also provides valuable insights about the cause of pathological movement and recovery mechanisms, and can help understand the pattern and structure of recovery hence facilitate it (Liebermann, Berman, Weiss, Levin, 2012). 
 
-%Previous research\cite{Fisher:1954} \cite{Robbins:1951aa} \cite{Knight:1921} in the field of X has established that method A is very useful.
-%Another branch of researchers\cite{Wright:1921aa} \cite{Caratheodory:1909aa} \cite{Gibbs:1902} \cite{Clausius:1857} have figured out that method B could be better in certain occasions.
-%Here I propose a new method that gives results better than both types.
+
+\section{Motor Control of Reaching Movement}
+Humans quickly choose a movement duration for a reaching movement, and the decision usually works very well with the specific goal and the context (Tanaka, Krakauer,  Qian, 2006). 
+This decision of movement duration, or of any movement, is poorly understood. 
+The first prominent work on this topic was by Fitts whose work was referred as “Fitts’ law” (Fitts, 1954), which formulize the relationship between movement duration and task difficulty. 
+Works by R. Schmidt in 1980s (Urbin, Stodden, Fischman,  Weimar, 2011) focused on ballistic movement, and reached to the conclusion that, movement variability was smaller at longer movement, when the movement duration was in the range from 100 to 200 milliseconds. 
+However, none of these studies gave theory of how and why a certain movement duration is determined. 
+There are several competing theories about how the duration of a movement is determined. 
+One of the hypotheses is “time discounting” of reward, based on the idea that reward in the future is discounted comparing an immediate reward (Shadmehr et al., 2010).
+Although this hypothesis has its base on physiological studies (Johnson  Bickel, 2002), but the discounting time constant is in the range of days or months, much longer than the time scale of reaching movement, which is in seconds. 
+Whether discounting works within seconds remains to be confirmed. 
+
+To understand the decision process therefore appears to be an interesting question. 
+This work propose an alternative mechanism by looking at endpoint variance induced by two kinds of motor noise: constant noise (CN) and signal dependent noise (SDN).
+We show strong evidence that effort, together with CN and SDN, determined movement duration.
+
+In the first two chapters of this thesis, I investigate how the duration might be determined, how this decision process can be traced through the endpoint variability of reaching movement. I then demonstrate this decision process through an stochastic optimal control model. 
+In Chapter \ref{cha:movementtime}, I present an experiment looking at how endpoint distributions depend on the duration of movement. 
+In this experiment, we investigate the relationship between endpoint variability and movement duration, as well as the movement duration that is chosen by subjects.
+In Chapter \ref{cha:optimalcontrol}, I present the development of a stochastic, open-loop optimal control model that demonstrate a possible mechanism of how movement variability, together with effort, determines movement duration.
+
+The significance of this work is threefold. First, we re-estimated the levels of CN and SDN in reaching movements using optimal control model. 
+CN and SDN have been estimated in several works about saccadic (R. J. van Beers, 2007) and reaching movements (Robert J van Beers, Haggard, Wolpert, 2004), but our result yields better fit with data, and requires no extra noise parameters comparing with (Robert J van Beers et al., 2004). 
+Second, we show that in reaching movement, there exists an intermediate movement duration that minimizes endpoint variance. 
+This gains our understanding of the relationship between movement duration and variability, and serves as an extension to the famous Fitts’ law (Fitts, 1954) and similar studies on saccadic movement (R. J. van Beers, 2007). 
+This work also extends the impulse variability theory (Urbin et al., 2011) to longer movement duration. 
+Third, by showing that subjects chose durations of reaching movements that are longer than those minimizing endpoint variance, we gave a clear evidence that effort plays a role to determine movement duration in reaching movements.
 
 
+\section{Recovery of Kinematics Performance}
+The same reaching task may have different ways to perform, since the degrees of freedom of the arm may be larger than that of the task. 
+For example, the trajectory from home to target can be straight or curved. 
+Even the same trajectory can be achieved with different joint coordination patterns, from different populations, i.e. healthy subjects and post-stroke individuals (Cirstea  Levin, 2000). 
+This is important because the efficiency of different patterns of joint coordination can be different, and therefore can be correlated with performance (Sibindi et al., 2013). 
+In this project, we look at joint coordination patterns during a vertical pointing task, in both healthy and post-stroke individuals, and its relevance to movement performance.
+
+A lot of work (Laura Dipietro, Krebs, Fasoli, Volpe,  Hogan, 2009) focus on motor learning and recovery in hand space, which is usually the space of planned activity and experiment design. 
+However, motor learning and recovery can also be investigated in joint space, which involves coordination of different joint angles. 
+Because the dimension of hand space or task space is often smaller than the degree of freedom of joint space, the same hand position, orientation and velocity can be achieved by different combinations of joint angles. 
+Thus, the improvements of performance in hand space can due to either compensatory movement or true recovery (Cirstea  Levin, 2000; Levin, Michaelsen, Cirstea,  Roby-Brami, 2002; Shaikh, Goussev, Feldman,  Levin, 2013) of normal movement patterns.
+The notion of compensatory mechanism and true recovery can be confusing (Levin, Kleim,  Wolf, 2009). 
+Here we do not consider recovery in a neural level, but rather the performance level (Levin et al., 2009), which is essentially in the language of kinematics and dynamics. 
+For example, one common compensatory movement during reaching forward movement is trunk movement. 
+Levin and colleague have many works investigating how trunk and shoulder movements serve as compensatory mechanism for severe impaired individuals (Cirstea  Levin, 2000). 
+It is shown that with compensatory movement of the trunk, the performance in hand space is worse than that without. 
+However, even though the trunk is constrained and does not contributes any compensatory movements, the arm by itself can have compensatory movements. 
+How the performance of a reaching movement in hand space is related to compensatory movements of the arm is still unclear. 
+A better understanding on this topic can help clinical practice to plan a rehabilitation strategy to maximize performance.
+
+In Chapter \ref{cha:armeospring}, I looked into joint coordination patterns of both healthy subjects and post-stroke individuals, with kinematics data at both endpoint and joint space. 
+We used Principal Component Analysis (PCA) to measure motor synergies.
+We also looked at redundancy exploitation in the reaching movements \cite{singh}.
+
+\section{Dynamic Mixed Effect Model of Stroke Rehabilitation}
+Observational rehabilitation studies are important as they shed light on effective factors in rehabilitation.
+Among the multi-variate techniques used to analyze data from these studies are regression models, including mixed effect models that account for individual variations. 
+Regression models have been used to predict stroke recovery \cite{19-22} and response to interventions {23,24,25}. 
+Such models exhibit room for improvement because they are based on aggregate clinical scales, but also, we hypothesize, because they do not model the time-varying processes of recovery. 
+In contrast, dynamical models naturally encode time in differential equations that model “changes in states”. 
+
+State Space Model (SSM) is a dynamic model that describes a dynamic process via state vectors in state space \cite{}.
+The field of motor adaptation and learning constantly uses SSM to model motor learning and adaptation data.
+Unlike regression models, state-space models can describe processes that respond, simultaneously or with a latency, to time-varying inputs or stimuli.
+This approach will allow us to test for causal relationships between training, learning, and recovery. 
+In addition, the model will allow us to obtain a detailed time course of time window of plasticity. 
+Although never applied to stroke recovery, such models have been applied successful to model the action of drugs on a range of diseases \cite{80,81}. 
+
+One of the challenges of using SSM is to incorporate random effects into SSM, which is computationally not trivial and offered by few statistics toolboxes \cite{}.
+Random effects in SSM is desirable especially in observational rehabilitation studies because of the high variability in stroke rehabilitation.
+In Chapter \ref{cha:dose}, we show that under certain conditions, state space equation is equivalent to differential equation, and therefore share the same solution, which is a nonlinear function.
+We then use nonlinear mixed effect model to estimate the parameters in this nonlinear solution.

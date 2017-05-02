@@ -1,9 +1,10 @@
-\chapter{Movement Duration Minimizes Variability and Effort Concurrently: An Optimal Control Model}
-\label{cha:ocmd}
 \outline{1}{Movement Duration Minimizes Variability and Effort Concurrently}
+\chapter{Movement Duration Minimizes Variability and Effort Concurrently: An Optimal Control Model}
+\label{cha:optimalcontrol}
 
+\outline{2}{Introduction}
 \section{Introduction}
-Our previous work (Chapter \ref{cha:md}, published \cite{Wang2016}) demonstrated through experimental data that 
+Our previous work (Chapter \ref{cha:movementtime}, published \cite{Wang2016}) demonstrated through experimental data that 
 (1) in arm reaching movement without visual feedback, an intermediate movement duration minimizes endpoint variability; 
 (2) the durations of reaching movements chosen by our subjects were longer than the durations minimizing endpoint variance. 
 \cite{Wang2016} proposed that 
@@ -33,6 +34,7 @@ We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ as well
 We then used these parameters to simulate reaching movements, and investigated endpoint variability and effort of movement with different durations.
 %Our results reveal distinct roles of CN, SDN, and effort in planning movements.
 
+\outline{2}{Methods}
 \section{Methods}
 To test our hypothesis, we built an open-loop stochastic optimal control model with both SDN and CN, estimated the levels of CN and SDN through the matching of the model with data in Chapter \ref{cha:md}, and simulated endpoint distributions and effort of movement with different movement durations.
 
@@ -126,6 +128,7 @@ We therefore assume $\sigma_{\text{CN}}$ depends on movement durations, but $\si
 
 With the estimated  $\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ as well as viscosity parameter $ b $, we simulated reaching movements to both targets with different movement duration.
 
+\outline{2}{Results}
 \section{Results}
 
 \subsection{Estimation of SDN and CN in Reaching Movements}
@@ -171,7 +174,7 @@ The difference stems from the larger effort required for a movement to the targe
 	\label{fig:variability---cost---minimum-shift}
 \end{figure}
 
-
+\outline{2}{Discussion}
 \section{Discussion}
 %If a task does not specifically (explicitely) have a varibility limit, then minimizing endpoint variance with SDN or minimizing effort inevitably leads to infinitely long movement duration. Therefore, additional mechanism is needed to reduce the movement duration. [Shadmehr 2010, 2016] proposes that the movement duration pose a discount of reward of the goal, which is called the "Cost of Time". Although Although this hypothesis has its base on physiological studies (Johnson  Bickel, 2002), but the discounting time constant is in the range of days or months. Whether discounting works within seconds remains to be confirmed. Another mechanism to reduce movement duration is to consider Constant Noise (CN). In Van Beers work, it has been shown that the effect of CN is not negligible ... and [authors] shows that CN in optimal control model, leads to larger variability at longer duration. Thus minimizing endpoint variability due to both signal-dependent and constant noise would yield a minimum that could determine movement duration. Correspondingly, our first hypothesis is that the CNS chooses intermediate reaching movement durations to minimize endpoint variability in the face of signal-dependent and constant noise.
 
