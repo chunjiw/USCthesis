@@ -7,18 +7,18 @@
 \section{Introduction}
 Observational rehabilitation studies are important as they shed light on effective factors in rehabilitation.
 Among the multi-variate techniques used to analyze data from these studies are regression models, including mixed effect models that account for individual variations. 
-Regression models have been used to predict stroke recovery \cite{19-22} and response to interventions {23,24,25}. 
+Regression models have been used to predict stroke recovery  and response to interventions. 
 Such models exhibit room for improvement because they are based on aggregate clinical scales, but also, we hypothesize, because they do not model the time-varying processes of recovery. 
 In contrast, dynamical models naturally encode time in differential equations that model “changes in states”. 
 
-State Space Model (SSM) is a dynamic model that describes a dynamic process via state vectors in state space \cite{}.
+State Space Model (SSM) is a dynamic model that describes a dynamic process via state vectors in state space.
 The field of motor adaptation and learning constantly uses SSM to model motor learning and adaptation data.
 Unlike regression models, state-space models can describe processes that respond, simultaneously or with a latency, to time-varying inputs or stimuli.
 This approach will allow us to test for causal relationships between training, learning, and recovery. 
 In addition, the model will allow us to obtain a detailed time course of time window of plasticity. 
-Although never applied to stroke recovery, such models have been applied successful to model the action of drugs on a range of diseases \cite{80,81}. 
+Although never applied to stroke recovery, such models have been applied successful to model the action of drugs on a range of diseases . 
 
-One of the challenges of using SSM is to incorporate random effects into SSM, which is computationally not trivial and offered by few statistics toolboxes \cite{}.
+One of the challenges of using SSM is to incorporate random effects into SSM, which is computationally not trivial and offered by few statistics toolboxes .
 Random effects in SSM is desirable especially in observational rehabilitation studies because of the high variability in stroke rehabilitation.
 In this work, we circumvent this challenge by converting state space model to ordinary differential equation.
 We show that under certain conditions, state space equation is equivalent to differential equation, and therefore share the same solution, which is a nonlinear function.

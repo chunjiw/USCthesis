@@ -6,7 +6,8 @@
 \outline{2}{Introduction}
 \section{Introduction}
 Stoke is one of the leading cause of death and disability globally today (Benjamin et al., 2017).
-Movement impairment due to stroke affects quality of life of stroke survivors (cite).
+Movement impairment due to stroke affects quality of life of stroke survivors. 
+%(cite).
 Stroke survivors usually display atypical movement patterns, referred to as abnormal “synergies” (Brunnström, 1970). 
 It is not clear how abnormal synergies interact with the recovery of function. 
 On the one hand, abnormal joint coordination may serve as compensation mechanism for functional daily use (Levin, Kleim,  Wolf, 2009); 
@@ -41,7 +42,7 @@ Participants receive conventional rehabilitation besides robot-aided rehabilitat
 		Group & No. & Age & Affected Side & Gender & FM(0-66) & Post Stroke Days & No. of Tests\\
 		\hline
 		Stroke & 53 & 59$\pm$14 & 29L, 24R & 19F, 30M & 25$\pm$9 to 39$\pm$ 14 & 56$\pm$21 & 80 in 4 weeks \\ 
-		Control & 11 & 23$\pm$2 & - & 4F, 7M & - & - & 20 in 1 weeks \\
+		Healthy & 11 & 23$\pm$2 & - & 4F, 7M & - & - & 20 in 1 weeks \\
 		\hline
 	\end{tabular}
 	\caption{Participants information}
@@ -49,7 +50,7 @@ Participants receive conventional rehabilitation besides robot-aided rehabilitat
 \end{table}
 
 \textbf{Device.}
-Our robot-aided rehabilitation uses Armeo@==Spring exoskeleton from Hocoma\footnote{https://www.hocoma.com/us/} for therapy training. 
+Our robot-aided rehabilitation uses Armeo@Spring exoskeleton from Hocoma\footnote{https://www.hocoma.com/us/} for therapy training. 
 Shown in figure \ref{fig:1setupschedule}, the exoskeleton has 6 degrees of freedom, summarized in table \ref{tab:devicedof} and Fig. \ref{fig:1setupschedule}B. 
 It is attached to the arm by two or three velcro straps. 
 The exoskeleton has two springs equipped, at the upper arm and the forearm respectively. 
@@ -118,7 +119,7 @@ Only successful trials (control 99.8\%, stroke 78.2\%) are included in task spac
 We also exclude tests in which participants caught less than 25\% ladybugs (that is 0.7\% of all tests).
 
 \textbf{Task Space Performance.}
-We characterize task space performance of a ladybug test via the average number of peaks in the velocity profile \cite{}. 
+We characterize task space performance of a ladybug test via the average number of peaks in the velocity profile.% \cite{}. 
 To calculate the number of peaks in a velocity profile of a trial, we take the derivative of velocity (tangential acceleration) and count the number of times it goes from positive to negative.
 We then take the average of number of peaks ($ p $) of all successful trials in the test.
 
@@ -147,7 +148,7 @@ It is therefore important to infer anatomical joint angles from exoskeleton join
 
 \textbf{Joint Space Variability.}
 Because the last two joints (pronation/supination and wrist angle) have relatively small variance (control 12.4\%, stroke 4.6\%), we ignore them during joint space variability analysis and synergy analysis.
-To quantify joint space variability and its relevance to the task space, we use a nonlinear forward kinematics model of the exoskeleton (cite company \cite{})
+To quantify joint space variability and its relevance to the task space, we use a nonlinear forward kinematics model of the exoskeleton (provided by Hocoma Company)
 	\begin{equation}\label{eqn:nonlinearForwardKinematics}
 	\bm{r} = f(\bm{\theta})
 	\end{equation}
@@ -198,16 +199,18 @@ and the task-relevant space variability is
 \textbf{Synergy Extraction and Analysis.}
 We use Principal Component Analysis (PCA) to extract joint synergies from each ladybug test.
 PCA belongs to a family of Dimension Reduction methods.
-Principal Components of joint angles, which captures most of the variance presented in the data, can be interpreted as joint synergies \cite{}.
+Principal Components of joint angles, which captures most of the variance presented in the data, can be interpreted as joint synergies.% \cite{}.
 In this study, we only look at the first two synergies which on average account for 83.9\% joint angle variance for control group, 83.1\% for stroke group.
 Joint synergies of healthy participants are quite stable across individuals.
 We calculate the averaged synergies shown in figure \ref{fig:6synergy}C.
 
-To evaluate the synergy pattern of stroke participant, we use the principal angle \cite{} between subspaces that are spanned by synergies \cite{}.
+To evaluate the synergy pattern of stroke participant, we use the principal angle %\cite{}
+ between subspaces that are spanned by synergies.% \cite{}.
 Generally, the principal angle $ \phi $ between two subspaces is the minimum rotation angle required to rotate one subspace onto the other.
 A principal angle of \ang{0} indicates the same synergy patterns, whereas \ang{90} indicates completely different ones.
 Therefore we refer to this angle as synergy abnormality.
-We use Matlab 2016a \textsf{subspace} \cite{} to calculate the principal angle. 
+We use Matlab 2016a \textsf{subspace} %\cite{}
+ to calculate the principal angle. 
 
 For each stroke participant, we investigate the synergy abnormality (principal angle) $ \phi $ between his synergies from every test and the average healthy synergies.
 $ \phi(t) $ ($ t $ for test) reflects the abnormality of participant's joint synergy patterns throughout training. 
@@ -220,7 +223,7 @@ To investigate how joint synergies affects task space learning, we correlate $ \
 \textbf{Linear Regression}
 In this study, when doing linear regression, we identify outliers through Cook's Distance (Cook, 1977).
 Cook's Distance $ D $ uses a data point's residual and leverage \cite{Chatterjee1986} to estimate the influence of a data point on least-square regression.
-We label data point $ i $ as an outlier if $ D_i > 4/n $ ($ n $ is the number of observations)\cite{Bollen1985}.
+We label data point $ i $ as an outlier if $ D_i > 4/n $ ($ n $ is the number of observations) (Bollen, 1985). %\cite{Bollen1985}.
 Instead of removing them, we adopt robust regression method with the bisquare weight function (Hoaglin, Mosteller, 1983).
 
 \outline{2}{Results}
