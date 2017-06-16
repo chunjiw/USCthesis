@@ -42,6 +42,7 @@ The whole study lasts 37 weeks for each participant.
 	\label{fig:dosetimeline}
 \end{figure}
 
+
 Participants were grouped randomly into four groups with different dosage of therapy training during the intervention period: zero, low, moderate, and high therapy dose, measured by the amount of time of treatment: 0, 5, 10, 20 hours per week.
 
 In each test, participants received Wolf Motor Function Test (WMFT) and Bilateral Arm Reaching Test (BART), as well as an interview of Motor Activity Log (MAL). 
@@ -174,8 +175,8 @@ The fitting result of full mixed effects (Eqn. \ref{eqn:mixedeffect}) for effica
 
 
 
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Fri, May 05, 2017 - 11:14:12 AM
+% Table created by sFritargazer5 v.5.2 by Marek Hl11:14:12 Aavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mon, May 01, 2017 - 4:49:27 PM
 % Requires LaTeX packages: dcolumn 
 \begin{table}[!htbp] \centering 
 	\caption{Efficacy vs Efficiency} 
@@ -185,12 +186,11 @@ The fitting result of full mixed effects (Eqn. \ref{eqn:mixedeffect}) for effica
 		\hline \\[-1.8ex] 
 		& \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
 		\cline{2-3} 
-		\\[-1.8ex] & \multicolumn{2}{c}{MAL} \\ 
 		& \multicolumn{1}{c}{Efficacy} & \multicolumn{1}{c}{Efficiency} \\ 
-		\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)}\\ 
+  olumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)}\\ 
 		\hline \\[-1.8ex] 
-		x0.(Intercept) & -0.815$ $(0.531) & -0.849$ $(0.537) \\ 
-		x0.FM & 0.067^{***}$ $(0.012) & 0.068^{***}$ $(0.012) \\ 
+		$ x_0$.(Intercept)  & -0.815$ $(0.531) & -0.849$ $(0.537) \\ 
+		$ x_0$.FM  & 0.067^{***}$ $(0.012) & 0.068^{***}$ $(0.012) \\ 
 		b.(Intercept) & 0.018$ $(0.009) & 0.006^{***}$ $(0.001) \\ 
 		b.dose & 0.002^{*}$ $(0.001) & -0.0002^{*}$ $(0.0001) \\ 
 		c.(Intercept) & 0.001$ $(0.001) & 0.001$ $(0.001) \\ 
@@ -206,8 +206,13 @@ The fitting result of full mixed effects (Eqn. \ref{eqn:mixedeffect}) for effica
 	\end{tabular} 
 \end{table} 
 
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: Fri, May 05, 2017 - 11:14:12 AM
+$ \beta_1^b $ (b.dose in the table) is positive for efficacy, but negative for efficiency, which indicates that training efficacy increases with dose, while efficiency decreases.
+
+\subsection{Timing of training}
+The fitting result with timing effect \ref{eqn:timingcat}, but without dose fixed effect, is shown in table \ref{tab:timing}.
+Both $ b_t $ and $ c_t $ are significantly negative, indicating the effect of training decreases as training progresses.
+                                              11:Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mon, May 01, 2017 - 5:00:11 PM
 % Requires LaTeX packages: dcolumn 
 \begin{table}[!htbp] \centering 
 	\caption{Timing Effect} 
@@ -219,12 +224,12 @@ The fitting result of full mixed effects (Eqn. \ref{eqn:mixedeffect}) for effica
 		\cline{2-2} 
 		\\[-1.8ex] & \multicolumn{1}{c}{MAL} \\ 
 		\hline \\[-1.8ex] 
-		x0.(Intercept) & -0.855$ $(0.533) \\ 
-		x0.FM & 0.067^{***}$ $(0.012) \\ 
-		b0 & 0.004^{***}$ $(0.001) \\ 
-		bt & -0.002^{***}$ $(0.0003) \\ 
-		c0 & 0.004^{*}$ $(0.002) \\ 
-		ct & -0.002^{*}$ $(0.001) \\ 
+		$ x_0 $.(Intercept) & -0.855$ $(0.533) \\ 
+		$ x_0 $.FM & 0.067^{***}$ $(0.012) \\ 
+		$ b_0 $ & 0.004^{***}$ $(0.001) \\ 
+		$ b_t $ & -0.002^{***}$ $(0.0003) \\ 
+		$ c_0 $ & 0.004^{*}$ $(0.002) \\ 
+		$ c_t $ & -0.002^{*}$ $(0.001) \\ 
 		\hline \\[-1.8ex] 
 		Observations & \multicolumn{1}{c}{557} \\ 
 		Log Likelihood & \multicolumn{1}{c}{-276.891} \\ 
@@ -232,17 +237,16 @@ The fitting result of full mixed effects (Eqn. \ref{eqn:mixedeffect}) for effica
 		Bayesian Inf. Crit. & \multicolumn{1}{c}{635.976} \\ 
 		\hline 
 		\hline \\[-1.8ex] 
-		\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01; $^{***}$p$<$0.001} \\ 
-	\end{tabular} 
-\end{table} 
+		\textit{No
 
 
 
 
 
 $ \beta_1^b $ (b.dose in the table) is positive for efficacy, but negative for efficiency, which indicates that training efficacy increases with dose, while efficiency decreases.
+ $ c_t $ are significantly negative, indicating the effect of training decreases as training progresses.
 
-\subsection{Timing of training}
-The fitting result with timing effect \ref{eqn:timingcat}, but without dose fixed effect, is shown in table \ref{tab:timing}.
-Both $ b_t $ and $ c_t $ are significantly negative, indicating the effect of training decreases as training progresses.
 
+te:}  & \multicolumn{1}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01; $^{***}$p$<$0.001} \\ 
+	\end{tabular} 
+\end{table} 
