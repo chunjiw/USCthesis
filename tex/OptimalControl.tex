@@ -29,14 +29,14 @@ We tested our hypotheses in computer simulations using stochastic open-loop opti
 Although $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ (see equation \ref{eqn:cnsdn} have previously been estimated \cite{VanBeers2004}, these estimates were based on inverse dynamics control of a simulated arm with a viscosity parameter that was estimated at rest from restoring forces to small perturbations \cite{Gomi1998}. 
 However, the amount of viscosity during movements is presumably substantially smaller during movement than at rest \cite{Burdet2013}. 
 In addition, we found in simulations (results not shown) that viscosity has a profound effect on the distribution of endpoints.  
-We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ as well as a free viscosity parameter by fitting an optimal open-loop controller to endpoint reaching data in Chapter \ref{cha:md}.
+We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ as well as a free viscosity parameter by fitting an optimal open-loop controller to endpoint reaching data in Chapter \ref{cha:movementtime}.
 
 We then used these parameters to simulate reaching movements, and investigated endpoint variability and effort of movement with different durations.
 %Our results reveal distinct roles of CN, SDN, and effort in planning movements.
 
 \outline{2}{Methods}
 \section{Methods}
-To test our hypothesis, we built an open-loop stochastic optimal control model with both SDN and CN, estimated the levels of CN and SDN through the matching of the model with data in Chapter \ref{cha:md}, and simulated endpoint distributions and effort of movement with different movement durations.
+To test our hypothesis, we built an open-loop stochastic optimal control model with both SDN and CN, estimated the levels of CN and SDN through the matching of the model with data in Chapter \ref{cha:movementtime}, and simulated endpoint distributions and effort of movement with different movement durations.
 
 \subsection{Open-loop Stochastic Optimal Control Model}
 The reaching movement is simulated with a planar arm with a shoulder and an elbow, whose joint angles are represented by $\bm{q} = (q_1, q_2)^T$, controlled by the open-loop stochastic optimal controller. 
@@ -97,7 +97,7 @@ In order to make sure this approximation is appropriate, we compared the distrib
 Although $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ (see equation \ref{eqn:cnsdn}) have previously been estimated in \cite{VanBeers2004}, these estimates were based on inverse dynamics control of a simulated arm with a viscosity parameter that was estimated at rest from restoring forces to small perturbations \cite{Gomi1998}. 
 However, the amount of viscosity during movements is presumably substantially smaller during movement than at rest \cite{Burdet2013}. 
 In addition, we found in simulations (Supplemental Material \ref{app:oc}) that viscosity has a profound effect on the distribution of endpoints.  
-We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ with viscosity as a free parameter by fitting an optimal open-loop controller to reaching data described in Chapter \ref{cha:md}.
+We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ with viscosity as a free parameter by fitting an optimal open-loop controller to reaching data described in Chapter \ref{cha:movementtime}.
 
 We picked the $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ values that minimize the following fitting error function:
 
@@ -170,7 +170,7 @@ The difference stems from the larger effort required for a movement to the targe
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{"figures/variability - cost - minimum shift"}
-	\caption[Simulation of Cost vs. Movement Duration Curve]{Simulation of Cost vs. Movement Duration Curve. The minimum of cost curve is at longer movement duration than the minimum of error curve, for both left and right target. The minimm of cost curve for the left target is at the "preferred" movement duration that the subjects choose in preferred condition (see Chapter \ref{cha:md}); However, for the right target, the minimum of cost curve is not at the "preferred" movement duration.}
+	\caption[Simulation of Cost vs. Movement Duration Curve]{Simulation of Cost vs. Movement Duration Curve. The minimum of cost curve is at longer movement duration than the minimum of error curve, for both left and right target. The minimm of cost curve for the left target is at the "preferred" movement duration that the subjects choose in preferred condition (see Chapter \ref{cha:movementtime}); However, for the right target, the minimum of cost curve is not at the "preferred" movement duration.}
 	\label{fig:variability---cost---minimum-shift}
 \end{figure}
 
@@ -179,10 +179,10 @@ The difference stems from the larger effort required for a movement to the targe
 %If a task does not specifically (explicitely) have a varibility limit, then minimizing endpoint variance with SDN or minimizing effort inevitably leads to infinitely long movement duration. Therefore, additional mechanism is needed to reduce the movement duration. [Shadmehr 2010, 2016] proposes that the movement duration pose a discount of reward of the goal, which is called the "Cost of Time". Although Although this hypothesis has its base on physiological studies (Johnson  Bickel, 2002), but the discounting time constant is in the range of days or months. Whether discounting works within seconds remains to be confirmed. Another mechanism to reduce movement duration is to consider Constant Noise (CN). In Van Beers work, it has been shown that the effect of CN is not negligible ... and [authors] shows that CN in optimal control model, leads to larger variability at longer duration. Thus minimizing endpoint variability due to both signal-dependent and constant noise would yield a minimum that could determine movement duration. Correspondingly, our first hypothesis is that the CNS chooses intermediate reaching movement durations to minimize endpoint variability in the face of signal-dependent and constant noise.
 
 It has long been known that the duration of arm movements has an effect on endpoint variability  \cite{Woodworth1899, Fitts1954}, but the relationship had not been systematically characterized. 
-Our modeling results showed that, in coherence with data \ref{cha:md}, an intermediate movement duration minimizes total endpoint error. 
+Our modeling results showed that, in coherence with data \ref{cha:movementtime}, an intermediate movement duration minimizes total endpoint error. 
 Such intermediate movement duration was predicted by the presence of SDN and CN in the motor command and was previously found in saccadic movements \cite{VanBeers2008}, but had not been observed in reaching movements. 
 In addition, the model showed that the minimization of endpoint variability and effort yields longer movement duration than minimizing only endpoint variability.
-This behavior of the model, for a subset of movement direction (the \ang{135} target), is coherent with data in Chapter \ref{cha:md}; however, the movement duration to the \ang{45} target was not well accounted for by the model. The effort required for the \ang{45} target, compared to the \ang{135} target, is very small, because the movement involves mostly only the elbow joint rotation. 
+This behavior of the model, for a subset of movement direction (the \ang{135} target), is coherent with data in Chapter \ref{cha:movementtime}; however, the movement duration to the \ang{45} target was not well accounted for by the model. The effort required for the \ang{45} target, compared to the \ang{135} target, is very small, because the movement involves mostly only the elbow joint rotation. 
 What's more, the use of squared motor command makes the effort decreases cubically with movement duration \cite{Shadmehr2016}, rendering the effect of effort very small to have an impact on the cost curve \ref{fig:variability---cost---minimum-shift}. 
 We plan to use an optimal control model with an effort term in the cost function defined as the integral of absolute value of motor commands (which decreases linearly with movement duration).
 It is reasonable to expect the effect of effort not so small at longer movement with a L1 norm effort term.
@@ -286,7 +286,7 @@ $\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ represent the levels of the noise
 
 We choose Linear Quadratic Regulator (LQR) \cite{Li2004} to formulate the optimal control problem. Since the plant is nonlinear, a generalized LQR called iterative LQR (iLQR) is adopted here.
 
-\subsubsection{LQR with signal dependent noise}
+\paragraph{LQR with signal dependent noise.}
 Standard LQR deals with independent Gaussian noise. To generalize to signal dependent noise (SDN) is quite straightforward. I conclude the result here.
 
 Given the dynamics (linear) and cost function (sum of cost rate, quadratic), the problem is to get motor command $\bm{u}_t$ such that the cost function is minimized.
@@ -307,7 +307,7 @@ where $\bm{V}_t$ is the cost-to-go matrix
 \bm{V}_t = \bm{Q}_t + \bm{A}^T\bm{V}_{t+1}\bm{A} - \bm{A}^T\bm{V}_{t+1}\bm{B}(\bm{R} + (\bm{B+C})^T\bm{V}_{t+1}(\bm{B+C}))^{-1}\bm{B}^T\bm{V}_{t+1}\bm{A}
 \end{equation}
 
-\subsubsection{Linearization}
+\paragraph{Linearization}
 To formulate the model in the form of LQR, a linearization is required. First is to discretize all time-dependent variables :
 \begin{equation}
 \begin{split}
@@ -358,7 +358,7 @@ Now the dynamics equation can be written as
 \end{split}
 \end{equation}
 
-\subsubsection{Cost Function}
+\paragraph{Cost Function}
 \label{app:cost}
 Usually there are two terms in the cost function; one is the cost for motor command $\bm{u}$, the other is for endpoint error $\bm{x} - \bm{x}^*$. To make both of them representable in quadratic form, $\bm{x}^*$ has to be imbedded into the state vector, so the new state vector is now defined as
 \begin{equation}
@@ -410,10 +410,10 @@ In conclusion, the result of linearization is the following LQR problem:
 \end{split}
 \end{equation}
 
-\subsubsection{Iterative LQR}
+\paragraph{Iterative LQR}
 The solution to equation \ref{linlqr} is not the solution to the original nonlinear problem, since it is just a linear approximation around $\tilde{\bm{x}}_t$ and $\tilde{\bm{u}}_t$. However, the solution can be taken as a new start point, and so on. When the iteration converges, the solution to equation \ref{linlqr} is $\tilde{\bm{u}}_t$ itself.
 
-\subsubsection{Covariance Matrix Propagation}\label{app:covarProp}
+\paragraph{Covariance Matrix Propagation}\label{app:covarProp}
 Once we get the optimal solution $\tilde{\bm{u}}$ from iterative LQR, we can plug it back into equation \ref{linlqr} (the same as the dynamics equation \ref{dynam}) to get the optimal trajectory. We can also turn on SDN in a form that is consistent with equation \ref{optimprob}, and/ or any form of constant noise, to simulate arm movement with motor/ state noise. The statistics of multiple simulations then can be compared with experiment data.
 
 Many works look at the characters of endpoint distributions of arm reaching movement \cite{VanBeers2004, Guigon2008}. Instead of running repetitively the simulations, there is another way to get the endpoint distribution, namely to calculate the covariance matrix of the state vector after each time step. Let us consider equation \ref{dynam} with motor command $\bm{u}_t$ corrupted with constant noise (CN) and signal dependent noise (SDN). That is,
@@ -434,7 +434,7 @@ I omit the mean of the variables for simplicity. Apply to the dynamics equation 
 \end{equation}
 
 \subsection{Results}\label{results}
-\subsubsection{Effects of Viscosity}
+\paragraph{Effects of Viscosity}
 In \cite{VanBeers2004}, The viscosity matrix $\bm{B}$ in equation \ref{dynamics} is set to be diagonal with a value of 0.8 Nms/rad:
 \begin{equation}
 \bm{B} = 
