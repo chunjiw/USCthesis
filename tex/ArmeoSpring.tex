@@ -6,11 +6,11 @@
 \outline{2}{Introduction}
 \section{Introduction}
 
-Initial behavioral changes post-stroke largely result from “spontaneous recovery”, which is greatest in the first month and continues for ~6 months {Duncan, 1992 22;Duncan, 2000 23}. 
-Spontaneous recovery involves reduction in lesion edema, ischemic penumbra, and brain reorganization {Bains, 2014 24;Murphy, 2009 25}. 
-Motor training consisting of thousands of movements over weeks is thought to influences speed and level of recovery via slow re-organization of surviving neural networks {Nudo, 1996 26;Pavlides, 1993 27;Wolf, 2006 28;Lincoln, 1996 29}. 
-Evidence points that UE training improves reaching movements’ speed, smoothness, and range. (e.g., {Anton, 1996 39}) 
-As a result, a large number of studies, and devices, have been developed to retrain arm movements post-stroke (REFs). 
+Initial behavioral changes post-stroke largely result from “spontaneous recovery”, which is greatest in the first month and continues for $ \sim $6 months \cite{Duncan1992, Duncan2000}. 
+Spontaneous recovery involves reduction in lesion edema, ischemic penumbra, and brain reorganization \cite{Bains2014, Murphy2009}. 
+Motor training consisting of thousands of movements over weeks is thought to influences speed and level of recovery via slow re-organization of surviving neural networks \cite{Nudo1996, Pavlides1993, Wolf2006, Lincoln1996}. 
+Evidence points that UE training improves reaching movements’ speed, smoothness, and range(e.g. \cite{Anton1996}).
+As a result, a large number of studies, and devices, have been developed to retrain arm movements post-stroke. 
 
 However, during robotic or mechanized training, the environment is “perturbed” compared to movements in daily activities. 
 For instance, during training with the MIT-Manus robot, the movements are in the horizontal plane, with the hand supported by the robot handle. 
@@ -27,19 +27,19 @@ The mixed effects allow us to take into account the large variability in initial
 
 Our second objective is to identify predictors of such recovery and learning. 
 A possible candidate for the modulation of recovery is the pattern of joint movements. 
-Stroke survivors usually display atypical upper extremity movement patterns, referred to as abnormal “synergies” {Brunnström, 1970}. 
+Stroke survivors usually display atypical upper extremity movement patterns, referred to as abnormal ``synergies" \cite{Brunnstroem1970}. 
 Because of the redundancy in the number of arm joints, many different combinations of joint angles can create the same hand position and orientation. 
-Thus, improvements in reaching performance (measured in end-effector space) can result either from compensatory adaptation, in which the patient uses alternate degrees of freedom and/or muscles to complete the task, or from true recovery of normative movement patterns {Roby-Brami, 2003 56}. 
-For example, to reach a target, patients often generate exaggerated forward trunk movements {Roby-Brami, 2003 56}, or exaggerated shoulder elevation {Steenbergen, 2000 55}.  
-Such compensation may ultimately impede recovery however {Roby-Brami, 2003 56}; contrarily, it has been shown that reduction of compensatory trunk movement for instance decreased long-term impairments in the arm {Michaelsen, 2006 57}. 
+Thus, improvements in reaching performance (measured in end-effector space) can result either from compensatory adaptation, in which the patient uses alternate degrees of freedom and/or muscles to complete the task, or from true recovery of normative movement patterns \cite{Roby-Brami2003}. 
+For example, to reach a target, patients often generate exaggerated forward trunk movements \cite{Roby-Brami2003}, or exaggerated shoulder elevation \cite{Steenbergen2000}.  
+Such compensation may ultimately impede recovery however \cite{Roby-Brami2003}; contrarily, it has been shown that reduction of compensatory trunk movement for instance decreased long-term impairments in the arm \cite{Michaelsen2006}. 
 Here, our hypothesis is that individuals post-stroke who show patterns of joint movements similar to non-disabled subject will recover faster than those who exhibit dissimilar, compensatory, movements.
-For this, we use Principal Component Analysis (PCA) to quantify joint synergies {van Kordelaar, 2012} in both stroke and non-disabled individuals.
+For this, we use Principal Component Analysis (PCA) to quantify joint synergies \cite{Kordelaar2012} in both stroke and non-disabled individuals.
 
 A possible candidate for the modulation of motor learning is movement variability in the null space of the joint angles. 
-It has been proposed that movement variability in non-disabled individuals can influence motor learning (REFs, and REFds). 
-The redundancy of human arm kinematics dictates that there must be task-irrelevant variability, that is, variability that does not affect endpoint trajectories, in the joint space {Scholz, 1999}. 
-Recently, {Singh, 2016} shows that redundancy in joint space is exploited by non-disabled individuals to facilitate learning. 
-Here, our hypothesis is that task-irrelevant variability during training with the redundant ARMEO spring will modulate motor learning in individuals post-stroke.
+It has been proposed that movement variability in non-disabled individuals can influence motor learning. 
+The redundancy of human arm kinematics dictates that there must be task-irrelevant variability, that is, variability that does not affect endpoint trajectories, in the joint space \cite{Scholz1999}. 
+Recently, \cite{Singh2016} shows that redundancy in joint space is exploited by non-disabled individuals to facilitate learning. 
+Here, our hypothesis is that task-irrelevant variability during training with the redundant ARMEO Spring will modulate motor learning in individuals post-stroke.
 
  
 
@@ -149,7 +149,7 @@ In the control group, difficulty was set to the highest level.
 \subsection{Data Analysis}
 
 \textbf{Preprocessing.}
-We filtered the data with a second order Butterworth filter {Butterworth, 1930} with a cutoff frequency of 5 Hz. 
+We filtered the data with a second order Butterworth filter \cite{Butterworth1930} with a cutoff frequency of 5 Hz. 
 We defined a trial as the movement between two consecutive targets. 
 A trial was considered successful if it started from previously caught target and led to the catching of next target. 
 Only successful trials, that is, trials in which the participant caught the next ladybug within the pre-specified time of 10 sec (control 99.8\%, stroke 78.2\%) were included in the analysis. 
@@ -197,10 +197,10 @@ The models were all fit with the function \textsf{nlmefit} in Matlab 2016a.
 \textbf{Synergy Extraction and Analysis}
 
 We use Principal Component Analysis (PCA) to extract joint synergies from each ladybug test.
-The principal components of joint angles, which captures most of the variance presented in the data, can be interpreted as joint synergies and has been previously used in both non-disabled and stroke individuals {Soechting, 1997 }. 
+The principal components of joint angles, which captures most of the variance presented in the data, can be interpreted as joint synergies and has been previously used in both non-disabled and stroke individuals \cite{Soechting1997}. 
 As a dimension reduction method, PCA provides components that explain the most variability in joint angle space. 
 Here, because the last two joints (pronation/supination and wrist angle) accounted for only 12.4\% of the variance in the control group, and 4.6\% in the stroke group, we ignored these joints in the synergy analysis.  
-Similarities between groups of synergies can be measured via the principal angle between two subspaces {Bockemhl, 2010}, which is the minimum rotation angle required to rotate one subspace onto the other {Björck, 1973}. 
+Similarities between groups of synergies can be measured via the principal angle between two subspaces \cite{Bockemuehl2010}, which is the minimum rotation angle required to rotate one subspace onto the other \cite{Bjoerck1973}. 
 A principal angle of $ \ang{0} $ indicates identical synergy patterns, whereas $ \ang{90} $ indicates maximal differences.  
 For each stroke participant, we computed the principal angle $ \phi $ between his/her synergies from every test and the average synergies of the non-disabled participants computed with the data from the last 4 tests, in the last day of training. 
 At this point, performance in this group was near asymptote (see below); we thus assumed that synergies computed at this time formed a basis for comparison of the synergies in the stroke group. 
@@ -235,18 +235,18 @@ To investigate how joint synergies affects task space learning, we correlated th
 
 \textbf{Joint Space Variability}
 
-We adapted the method from {Singh, 2016} to quantify joint space variability and its relevance to the task space. 
-Because data from the reaching tests in the present study were collected during the ladybug test provided by Hocoma, there are two main difference between the tests used in the present study and those of Singh et al. however. 
-The first is that, whereas the tests in Singh et al. contains multiple repetition of the same movements, the ladybug tests contain a single movement for each target. 
+We adapted the method from \cite{Singh2016} to quantify joint space variability and its relevance to the task space. 
+Because data from the reaching tests in the present study were collected during the ladybug test provided by Hocoma, there are two main difference between the tests used in the present study and those of \cite{Singh2016} however. 
+The first is that, whereas the tests in \cite{Singh2016} contains multiple repetition of the same movements, the ladybug tests contain a single movement for each target. 
 Thus, it is not possible to compute variability within a single ladybug test. 
 We therefore used data from multiple consecutive tests. 
-Second, whereas the variability was calculated at baseline, that is, before the perturbation was introduced in the Singh et al. study, we do not have access to reaching data without gravity support before training (without such gravity support, it is probable that a number of individuals post-stroke would not be able to perform the test). 
+Second, whereas the variability was calculated at baseline, that is, before the perturbation was introduced in the \cite{Singh2016} study, we do not have access to reaching data without gravity support before training (without such gravity support, it is probable that a number of individuals post-stroke would not be able to perform the test). 
 We therefore  computed the task-irrelevant variability from the last 10 consecutive tests. 
 We used the last 10 tests because our initial inspection of the data and double exponential models (see results) showed that changes in average number of peaks in the last 10 tests were small, because fast changes due to learning had vanished. 
-In addition, whereas Singh et al. computed variability at the time of maximum velocity, we computed task-irrelevant variability when the cursor entered the target area because of very large between- and within-subject variability in task-space at the time of maximum velocity.
+In addition, whereas \cite{Singh2016} computed variability at the time of maximum velocity, we computed task-irrelevant variability when the cursor entered the target area because of very large between- and within-subject variability in task-space at the time of maximum velocity.
 Note that for this analysis, we again ignored the two wrist joints because of small variance. 
 
-Here, we briefly describe the method, adapted from Singh et al..
+Here, we briefly describe the method, adapted from \cite{Singh2016}.
 The nonlinear forward kinematics model of the exoskeleton is given by
 	\begin{equation}\label{eqn:nonlinearForwardKinematics}
 		\bm{r} = f(\bm{\theta})
@@ -431,16 +431,16 @@ The mixed effect estimation of parameters allow us to obtain estimations of indi
 Task-irrelevant variability, or variance in the UnControlled Manifold (UCM), is a source of variability that doesn’t affect the execution of a task, which can be represented by variables. 
 In the original study, (Scholz  Schöner, 1999) demonstrated that during a functional task, certain relevant variables are not controlled.
 The redundancy of human arm kinematics dictates that there must be task-irrelevant variability (the variability that does not affect endpoint trajectories) in the joint space. 
-We measure this task-irrelevant variability with adapted method from (Singh et al., 2016). 
+We measure this task-irrelevant variability with adapted method from \cite{Singh2016}. 
 Although this variability is task irrelevant, it is not unnecessary since it brings flexibility and allow versatile joint coordination for some specific task. 
 However, how task-irrelevant variability affects learning (in healthy subjects) or recovery (in stroke survivors) is a question worth investigating. 
-(Singh et al., 2016) suggested that this variability, as a form of redundancy exploitation, helps motor adaptation and learning. 
+\cite{Singh2016} suggested that this variability, as a form of redundancy exploitation, helps motor adaptation and learning. 
 In our study, we found a correlation between task-irrelevant variability and learning rate of post-stroke individuals, suggesting that it also helps stroke individuals to learn a novel task.
 
 Joint synergies are extracted through Principal Component Analysis (PCA). 
 As a dimension reduction method, PCA provides components that explain the most variability in joint angle space. 
-Along with other dimension reduction methods, PCA has been used to extract joint synergies (van Kordelaar et al., 2012). 
-Similarities between synergies can be measured through the angle between two synergies in joint angle space, and similarities between groups of synergies can be measured through the angle between two subspaces (Bockemhl, 2010). 
-We couldn’t verify the method used in (Bockemhl, 2010), instead we use numerical method in (Björck  Golub, 1973) to calculate angles between subspaces. 
+Along with other dimension reduction methods, PCA has been used to extract joint synergies \cite{Kordelaar2012}. 
+Similarities between synergies can be measured through the angle between two synergies in joint angle space, and similarities between groups of synergies can be measured through the angle between two subspaces \cite{Bockemuehl2010}. 
+We couldn’t verify the method used in \cite{Bockemuehl2010}, instead we use numerical method in \cite{Bjoerck1973} to calculate angles between subspaces. 
 A correlation between joint synergy abnormality and recovery rate may suggest that joint coordination patterns are important for functional recovery.
 
