@@ -1,5 +1,6 @@
 \outline{1}{Introduction}
 \chapter{Introduction}
+\raggedbottom
 \label{cha:introduction}
 
 
@@ -8,19 +9,18 @@
 Human upper extremity movement is an essential component that is necessary for everyday life.
 Many, if not all, activities cannot be completed without fluent upper extremity movement control.
 Study of upper extremity movement sheds light on the interesting subject of how humans control the body to move around and perform certain tasks, and has attracted many researchers’ attention. 
-As a major subset of upper extremity movement, the study of reaching movement is approached via many techniques including kinematics analysis (Hogan  Sternad, 2009), optimal control (Todorov  Jordan, 2002), synergy analysis (Bockemühl, Troje,  Dürr, 2010), uncontrolled manifold (Domkin, Laczko, Djupsjöbacka, Jaric, Latash, 2005) etc. 
-The study of rehabilitation and recovery of reaching movement of post-stroke individuals, in parallel with studies of healthy subjects, also provides valuable insights about the cause of pathological movement and recovery mechanisms, and can help understand the pattern and structure of recovery hence facilitate it (Liebermann, Berman, Weiss, Levin, 2012). 
-
+As a major subset of upper extremity movement, the study of reaching movement is approached via many techniques including kinematics analysis \cite{Hogan2009}, optimal control \cite{Todorov2002}, synergy analysis \cite{Bockemuehl2010}, uncontrolled manifold \cite{Domkin2005} etc. 
+The study of rehabilitation and recovery of reaching movement of post-stroke individuals, in parallel with studies of healthy subjects, also provides valuable insights about the cause of pathological movement and recovery mechanisms, and can help understand the pattern and structure of recovery hence facilitate it \cite{Liebermann2012}.
 
 \section{Motor Control of Reaching Movement}
-Humans quickly choose a movement duration for a reaching movement, and the decision usually works very well with the specific goal and the context (Tanaka, Krakauer,  Qian, 2006). 
+Humans quickly choose a movement duration for a reaching movement, and the decision usually works very well with the specific goal and the context \cite{Tanaka2006}. 
 This decision of movement duration, or of any movement, is poorly understood. 
-The first prominent work on this topic was by Fitts whose work was referred as “Fitts’ law” (Fitts, 1954), which formulize the relationship between movement duration and task difficulty. 
-Works by R. Schmidt in 1980s (Urbin, Stodden, Fischman,  Weimar, 2011) focused on ballistic movement, and reached to the conclusion that, movement variability was smaller at longer movement, when the movement duration was in the range from 100 to 200 milliseconds. 
+The first prominent work on this topic was by Fitts whose work was referred as “Fitts’ law” \cite{Fitts1954}, which formulized the relationship between movement duration and task difficulty. 
+Works by R. Schmidt in 1980s \cite{Urbin2011} focused on ballistic movement, and reached to the conclusion that, movement variability was smaller at longer movement, when the movement duration was in the range from 100 to 200 milliseconds. 
 However, none of these studies gave theory of how and why a certain movement duration is determined. 
 There are several competing theories about how the duration of a movement is determined. 
-One of the hypotheses is “time discounting” of reward, based on the idea that reward in the future is discounted comparing an immediate reward (Shadmehr et al., 2010).
-Although this hypothesis has its base on physiological studies (Johnson  Bickel, 2002), but the discounting time constant is in the range of days or months, much longer than the time scale of reaching movement, which is in seconds. 
+One of the hypotheses is “time discounting” of reward, based on the idea that reward in the future is discounted comparing an immediate reward \cite{Shadmehr2010}.
+Although this hypothesis has its base on physiological studies \cite{Johnson2002}, but the discounting time constant is in the range of days or months, much longer than the time scale of reaching movement, which is in seconds. 
 Whether discounting works within seconds remains to be confirmed. 
 
 To understand the decision process therefore appears to be an interesting question. 
@@ -33,28 +33,28 @@ In this experiment, we investigate the relationship between endpoint variability
 In Chapter \ref{cha:optimalcontrol}, I present the development of a stochastic, open-loop optimal control model that demonstrate a possible mechanism of how movement variability, together with effort, determines movement duration.
 
 The significance of this work is threefold. First, we re-estimated the levels of CN and SDN in reaching movements using optimal control model. 
-CN and SDN have been estimated in several works about saccadic (R. J. van Beers, 2007) and reaching movements (Robert J van Beers, Haggard, Wolpert, 2004), but our result yields better fit with data, and requires no extra noise parameters comparing with (Robert J van Beers et al., 2004). 
+CN and SDN have been estimated in several works about saccadic \cite{VanBeers2007} and reaching movements \cite{VanBeers2004}, but our result yields better fit with data, and requires no extra noise parameters comparing with \cite{VanBeers2004}. 
 Second, we show that in reaching movement, there exists an intermediate movement duration that minimizes endpoint variance. 
-This gains our understanding of the relationship between movement duration and variability, and serves as an extension to the famous Fitts’ law (Fitts, 1954) and similar studies on saccadic movement (R. J. van Beers, 2007). 
-This work also extends the impulse variability theory (Urbin et al., 2011) to longer movement duration. 
+This gains our understanding of the relationship between movement duration and variability, and serves as an extension to the famous Fitts’ law \cite{Fitts1954} and similar studies on saccadic movement \cite{VanBeers2007}. 
+This work also extends the impulse variability theory \cite{Urbin2011} to longer movement duration. 
 Third, by showing that subjects chose durations of reaching movements that are longer than those minimizing endpoint variance, we gave a clear evidence that effort plays a role to determine movement duration in reaching movements.
 
 
 \section{Recovery of Kinematics Performance}
 The same reaching task may have different ways to perform, since the degrees of freedom of the arm may be larger than that of the task. 
 For example, the trajectory from home to target can be straight or curved. 
-Even the same trajectory can be achieved with different joint coordination patterns, from different populations, i.e. healthy subjects and post-stroke individuals (Cirstea  Levin, 2000). 
-This is important because the efficiency of different patterns of joint coordination can be different, and therefore can be correlated with performance (Sibindi et al., 2013). 
+Even the same trajectory can be achieved with different joint coordination patterns, from different populations, i.e. healthy subjects and post-stroke individuals \cite{Cirstea2000}. 
+This is important because the efficiency of different patterns of joint coordination can be different, and therefore can be correlated with performance \cite{Sibindi2013}. 
 In this project, we look at joint coordination patterns during a vertical pointing task, in both healthy and post-stroke individuals, and its relevance to movement performance.
 
-A lot of work (Laura Dipietro, Krebs, Fasoli, Volpe,  Hogan, 2009) focus on motor learning and recovery in hand space, which is usually the space of planned activity and experiment design. 
+A lot of work \cite{Dipietro2009} focus on motor learning and recovery in hand space, which is usually the space of planned activity and experiment design. 
 However, motor learning and recovery can also be investigated in joint space, which involves coordination of different joint angles. 
 Because the dimension of hand space or task space is often smaller than the degree of freedom of joint space, the same hand position, orientation and velocity can be achieved by different combinations of joint angles. 
-Thus, the improvements of performance in hand space can due to either compensatory movement or true recovery (Cirstea  Levin, 2000; Levin, Michaelsen, Cirstea,  Roby-Brami, 2002; Shaikh, Goussev, Feldman,  Levin, 2013) of normal movement patterns.
-The notion of compensatory mechanism and true recovery can be confusing (Levin, Kleim,  Wolf, 2009). 
-Here we do not consider recovery in a neural level, but rather the performance level (Levin et al., 2009), which is essentially in the language of kinematics and dynamics. 
+Thus, the improvements of performance in hand space can due to either compensatory movement or true recovery \cite{Cirstea2000, Levin2002, Shaikh2014} of normal movement patterns.
+The notion of compensatory mechanism and true recovery can be confusing \cite{Levin2009}. 
+Here we do not consider recovery in a neural level, but rather the performance level \cite{Levin2009}, which is essentially in the language of kinematics and dynamics. 
 For example, one common compensatory movement during reaching forward movement is trunk movement. 
-Levin and colleague have many works investigating how trunk and shoulder movements serve as compensatory mechanism for severe impaired individuals (Cirstea  Levin, 2000). 
+Levin and colleague have many works investigating how trunk and shoulder movements serve as compensatory mechanism for severe impaired individuals \cite{Cirstea2000}. 
 It is shown that with compensatory movement of the trunk, the performance in hand space is worse than that without. 
 However, even though the trunk is constrained and does not contributes any compensatory movements, the arm by itself can have compensatory movements. 
 How the performance of a reaching movement in hand space is related to compensatory movements of the arm is still unclear. 
@@ -62,7 +62,7 @@ A better understanding on this topic can help clinical practice to plan a rehabi
 
 In Chapter \ref{cha:armeospring}, I looked into joint coordination patterns of both healthy subjects and post-stroke individuals, with kinematics data at both endpoint and joint space. 
 We used Principal Component Analysis (PCA) to measure motor synergies.
-We also looked at redundancy exploitation in the reaching movements (Singh et al 2016).
+We also looked at redundancy exploitation in the reaching movements \cite{Singh2016}.
 
 \section{Dynamic Mixed Effect Model of Stroke Rehabilitation}
 Observational rehabilitation studies are important as they shed light on effective factors in rehabilitation.
