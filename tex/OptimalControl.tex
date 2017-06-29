@@ -30,9 +30,10 @@ Although $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ (see equation \ref{eqn:c
 However, the amount of viscosity during movements is presumably substantially smaller during movement than at rest \cite{Burdet2013}. 
 In addition, we found in simulations (results not shown) that viscosity has a profound effect on the distribution of endpoints.  
 We therefore re-estimated $\sigma_{\text{SDN}}$ and $\sigma_{\text{CN}}$ as well as a free viscosity parameter by fitting an optimal open-loop controller to endpoint reaching data in Chapter \ref{cha:movementtime}.
-
 We then used these parameters to simulate reaching movements, and investigated endpoint variability and effort of movement with different durations.
 %Our results reveal distinct roles of CN, SDN, and effort in planning movements.
+
+This work is in collaboration with Yupeng Xiao\footnote{\textit{Neuroscience Graduate Program, University of Southern California, Los Angeles, California}}, Etienne Burdet\footnote{\textit{Bioengineering Department,Imperial College, London, United Kingdom}}, James Gordon\footnote{\label{bknpt1}\textit{Biokinesiology and Physical Therapy, University of Southern California, Los Angeles, California}}, and Nicolas Schweighofer\footnotemark[\ref{bknpt1}].
 
 \outline{2}{Methods}
 \section{Methods}
@@ -84,7 +85,7 @@ As shown in equation \ref{eqn:cnsdn}, the execution noise (CN and SDN) are assum
 The endpoint distribution due to execution noise is generally not Gaussian due to nonlinearity of the kinematics and dynamics. 
 Through linearization of the system, we essentially used Gaussian as an approximation of the actual endpoint distribution. 
 This approximation makes the algorithm much more efficient (thanks to the covariance propagation equation, see Supplemental Material \ref{app:covarProp}), than simulating large number of trials and calculating statistics over the endpoints (seen in \cite{VanBeers2004,Guigon2008}).
-In order to make sure this approximation is appropriate, we compared the distribution from the linearized system to the original nonlinear system. As shown in figure \ref{fig:linearizeddistributionapprox}, the Gaussian distributions given by the linearized system (the blue 95\% confidence ellipse) are good approximations of the actual distributions of the original nonlinear system (the 2-dimension histogram, from 6000 simulated endpoints).
+In order to make sure this approximation is appropriate, we compared the distribution from the linearized system to the original nonlinear system. As shown in Figure \ref{fig:linearizeddistributionapprox}, the Gaussian distributions given by the linearized system (the blue 95\% confidence ellipse) are good approximations of the actual distributions of the original nonlinear system (the 2-dimension histogram, from 6000 simulated endpoints).
 
 \begin{figure}
 	\centering
@@ -136,7 +137,7 @@ With the estimated  $\sigma_{\text{CN}}$ and $\sigma_{\text{SDN}}$ as well as vi
 The minimization of the fitting error function yielded the following noise and viscosity parameters: $\sigma_{\text{SDN}} = 0.298$ (unit-less), $\sigma_{\text{CN}}$(fast, medium, preferred, slow) = (0.010, 0.037, 0.035, 0.031)(\si{N.m}), and $b=0.110$ (\si{kg.m^2/s}). 
 Note that our estimation of viscosity is significantly lower than \cite{VanBeers2004}. 
 
-We interpolate $\sigma_{\text{CN}}$ as a function of movement duration using piecewise cubic Hermite interpolation \cite{Fritsch1980}, shown in figure \ref{fig:interpcn}.
+We interpolate $\sigma_{\text{CN}}$ as a function of movement duration using piecewise cubic Hermite interpolation \cite{Fritsch1980}, shown in Figure \ref{fig:interpcn}.
 
 \begin{figure}
 	\centering
@@ -145,7 +146,7 @@ We interpolate $\sigma_{\text{CN}}$ as a function of movement duration using pie
 	\label{fig:interpcn}
 \end{figure}
 
-The model with estimated noise and viscosity parameters produces a Movement Duration - Total Error relationship that is very close to the data, shown in figure \ref{fig:total-error}.
+The model with estimated noise and viscosity parameters produces a Movement Duration - Total Error relationship that is very close to the data, shown in Figure \ref{fig:total-error}.
 
 \begin{figure}
 	\centering
@@ -164,13 +165,13 @@ The total error reached a minimum at an intermediate movement duration (approxim
 The total cost (equation \ref{eqn:cost}) also exhibited a U-shape characteristic. 
 For the left target, the total cost curve reached the minimum at about 1000 ms, very close to the average movement duration (1053 ms) that the subjects chose at the preferred condition. 
 However, for the right target, the total cost curve reached the minimum at a movement duration only a little longer than the movement duration that minimizes the total error, not enough to the average movement duration (about 1000 ms) that the subjects chose at the preferred condition.
-The difference stems from the larger effort required for a movement to the target at \ang{135} (which involves both shoulder and elbow rotation) than the target at \ang{45} (which involves roughly to an elbow rotation), as shown by the yellow curve in figure \ref{fig:variability---cost---minimum-shift}. 
+The difference stems from the larger effort required for a movement to the target at \ang{135} (which involves both shoulder and elbow rotation) than the target at \ang{45} (which involves roughly to an elbow rotation), as shown by the yellow curve in Figure \ref{fig:variability---cost---minimum-shift}. 
 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{"figures/variability - cost - minimum shift"}
-	\caption[Simulation of Cost vs. Movement Duration Curve]{Simulation of Cost vs. Movement Duration Curve. The minimum of cost curve is at longer movement duration than the minimum of error curve, for both left and right target. The minimm of cost curve for the left target is at the "preferred" movement duration that the subjects choose in preferred condition (see Chapter \ref{cha:movementtime}); However, for the right target, the minimum of cost curve is not at the "preferred" movement duration.}
+	\caption[Simulation of Cost vs. Movement Duration Curve]{Simulation of Cost vs. Movement Duration Curve. The minimum of cost curve is at longer movement duration than the minimum of error curve, for both left and right target. The minimum of cost curve for the left target is at the ``preferred" movement duration that the subjects choose in preferred condition (see Chapter \ref{cha:movementtime}); However, for the right target, the minimum of cost curve is not at the ``preferred" movement duration.}
 	\label{fig:variability---cost---minimum-shift}
 \end{figure}
 
@@ -179,7 +180,7 @@ The difference stems from the larger effort required for a movement to the targe
 %If a task does not specifically (explicitely) have a varibility limit, then minimizing endpoint variance with SDN or minimizing effort inevitably leads to infinitely long movement duration. Therefore, additional mechanism is needed to reduce the movement duration. [Shadmehr 2010, 2016] proposes that the movement duration pose a discount of reward of the goal, which is called the "Cost of Time". Although Although this hypothesis has its base on physiological studies (Johnson  Bickel, 2002), but the discounting time constant is in the range of days or months. Whether discounting works within seconds remains to be confirmed. Another mechanism to reduce movement duration is to consider Constant Noise (CN). In Van Beers work, it has been shown that the effect of CN is not negligible ... and [authors] shows that CN in optimal control model, leads to larger variability at longer duration. Thus minimizing endpoint variability due to both signal-dependent and constant noise would yield a minimum that could determine movement duration. Correspondingly, our first hypothesis is that the CNS chooses intermediate reaching movement durations to minimize endpoint variability in the face of signal-dependent and constant noise.
 
 It has long been known that the duration of arm movements has an effect on endpoint variability  \cite{Woodworth1899, Fitts1954}, but the relationship had not been systematically characterized. 
-Our modeling results showed that, in coherence with data \ref{cha:movementtime}, an intermediate movement duration minimizes total endpoint error. 
+Our modeling results showed that, in coherence with data in Chapter \ref{cha:movementtime}, an intermediate movement duration minimizes total endpoint error. 
 Such intermediate movement duration was predicted by the presence of SDN and CN in the motor command and was previously found in saccadic movements \cite{VanBeers2008}, but had not been observed in reaching movements. 
 In addition, the model showed that the minimization of endpoint variability and effort yields longer movement duration than minimizing only endpoint variability.
 This behavior of the model, for a subset of movement direction (the \ang{135} target), is coherent with data in Chapter \ref{cha:movementtime}; however, the movement duration to the \ang{45} target was not well accounted for by the model. The effort required for the \ang{45} target, compared to the \ang{135} target, is very small, because the movement involves mostly only the elbow joint rotation. 
@@ -414,7 +415,7 @@ In conclusion, the result of linearization is the following LQR problem:
 The solution to equation \ref{linlqr} is not the solution to the original nonlinear problem, since it is just a linear approximation around $\tilde{\bm{x}}_t$ and $\tilde{\bm{u}}_t$. However, the solution can be taken as a new start point, and so on. When the iteration converges, the solution to equation \ref{linlqr} is $\tilde{\bm{u}}_t$ itself.
 
 \paragraph{Covariance Matrix Propagation}\label{app:covarProp}
-Once we get the optimal solution $\tilde{\bm{u}}$ from iterative LQR, we can plug it back into equation \ref{linlqr} (the same as the dynamics equation \ref{dynam}) to get the optimal trajectory. We can also turn on SDN in a form that is consistent with equation \ref{optimprob}, and/ or any form of constant noise, to simulate arm movement with motor/ state noise. The statistics of multiple simulations then can be compared with experiment data.
+Once we get the optimal solution $\tilde{\bm{u}}$ from iterative LQR, we can plug it back into equation \ref{linlqr} (the same as the dynamics equation \ref{dynam}) to get the optimal trajectory. We can also turn on SDN in a form that is consistent with equation \ref{optimprob}, and/ or any form of constant noise, to simulate arm movement with motor or state noise. The statistics of multiple simulations then can be compared with experiment data.
 
 Many works look at the characters of endpoint distributions of arm reaching movement \cite{VanBeers2004, Guigon2008}. Instead of running repetitively the simulations, there is another way to get the endpoint distribution, namely to calculate the covariance matrix of the state vector after each time step. Let us consider equation \ref{dynam} with motor command $\bm{u}_t$ corrupted with constant noise (CN) and signal dependent noise (SDN). That is,
 \begin{equation}
@@ -445,7 +446,7 @@ In \cite{VanBeers2004}, The viscosity matrix $\bm{B}$ in equation \ref{dynamics}
 \end{equation}
 Here I compare simulation results with \cite{VanBeers2004} value and a value of zero.
 
-For a movement to a 90 degree target, simulation with high viscosity value gives S-shaped trajectory and asymmetric velocity profile  (figure \ref{fig:0.8}), whereas simulation with zero viscosity gives bell shaped velocity profile (figure \ref{fig 0.0}).
+For a movement to a 90 degree target, simulation with high viscosity value gives S-shaped trajectory and asymmetric velocity profile  (Figure \ref{fig:0.8}), whereas simulation with zero viscosity gives bell shaped velocity profile (Figure \ref{fig 0.0}).
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{up8} 

@@ -1,5 +1,5 @@
-\outline{1}{How to reach the threshold? A trade-off between efficacy and efficiency of motor rehabilitation in chronic stroke}
-\chapter{How to reach the threshold? A trade-off between efficacy and efficiency of motor rehabilitation in chronic stroke}
+\outline{1}{How to Reach the Threshold? A Trade-off Between Efficacy and Efficiency of Motor Rehabilitation in Chronic Stroke}
+\chapter{How to Reach the Threshold? A Trade-off Between Efficacy and Efficiency of Motor Rehabilitation in Chronic Stroke}
 \label{cha:dose}
 
 \section{Abstract}
@@ -17,11 +17,13 @@ In addition, the greater the dose, the more the forgetting following training.
 However, the random learning and forgetting coefficients showed a large between subject variability in both increase and decrease in MAL as a function of dose and time. 
 In conclusion, our novel model well accounted for the individual dynamics of motor training post-stroke and exhibited a trade-off between the gains due to training on one hand and the intensity and duration of motor training on the other hand. 
 
+This work is in collaboration with Carolee Winstein\footnote{\label{dosept}\textit{Biokinesiology and Physical Therapy, University of Southern California, Los Angeles, USA}} and Nicolas Schweighofer\footnotemark[\ref{dosept}]. 
+
 
 \outline{2}{Introduction}
 \section{Introduction}
 The foundation of neuro-rehabilitation is that sensorimotor learning determines activity-dependent sensorimotor recovery after stroke \cite{Kitago2013, Krakauer2006}. 
-Indeed, a number of studies have reported that UE training improves clinical scores \cite{Cirstea2003}, \cite{Kamper2002, Kwakkel2006, McCrea2005} and improves reaching movements’ speed, smoothness, and range (e.g., \cite{Anton1996}). 
+Indeed, a number of studies have reported that UE training improves clinical scores \cite{Cirstea2003, Kamper2002, Kwakkel2006, McCrea2005} and improves reaching movements’ speed, smoothness, and range (e.g., \cite{Anton1996}). 
 Clinical trials have shown that motor therapy delivered in the subacute to chronic phase can effectively increase spontaneous use and function of the affected limb for individuals with mild to moderate impairments post-stroke \cite{Wolf2006, Lohse2014}. 
 A recent previous meta-analysis of 30 studies of upper and lower extremity rehabilitation therapy after stroke suggested that large doses of therapy lead to clinically meaningful improvements. 
 We recently showed in the DOSE trial that a measure of upper extremity use, the MAL-QOM, follows robust dose-response relationships in individuals with chronic stroke (more than 6 months post-stroke). 
@@ -69,7 +71,7 @@ The relevant criteria to the study are: age greater than 21, scores on the impai
 In addition, participants were randomized into one of four groups within four strata by severity and chronicity.  
 Participants were stratified by stroke severity based on their baseline UEFM score.  
 Individuals with a score between 41-58 were classified as “mild” and those between 19-40 as “moderate”.  
-Participants were further stratified by chronicity such that those with stroke onset 6 months to 1.5 years were classified as “early” and those with stroke onset >1.5 years were classified as “late”. 
+Participants were further stratified by chronicity such that those with stroke onset 6 months to 1.5 years were classified as “early” and those with stroke onset $ > $1.5 years were classified as “late”. 
 
 The intervention was an individualized arm and hand therapy program based on the principle-based Accelerated Skill Acquisition Program (ASAP), which has been described in detail previously \cite{Winstein2014}. 
 In brief, ASAP includes 1) elements of purposeful and skilled movement execution, including challenging and progressive practice, 2) support for patients’ control or autonomy by choices of specific tasks to be practiced, 3) collaborative problem solving to identify and address movement needs, 4) and encouragement of self-direction in extending practice to community contexts \cite{Winstein2014}. 
@@ -79,8 +81,8 @@ Therapy was delivered by three different physical therapists over the duration o
 
 The primary outcome measures in the DOSE trial were the log transformed mean Wolf Motor Function Test time (WMFT) score, and the Motor Activity Log-Quality of Movement rating (MAL-QOM; henceforth referred as MAL). 
 The MAL is a semi-structured interview in which participants are asked to recall and rate the quality of movement (QOM) of the paretic arm for 28 activities of daily living. 
-It has been used extensively, including in the EXCITE trial, and has good validity and reliability [24]. 
-Because we previously showed that the MAL-QOM showed robust and highly significant dose response (Winstein et al. in preparation), we analyzed its dynamics in the study.
+It has been used extensively, including in the EXCITE trial, and has good validity and reliability. 
+Because we previously showed that the MAL-QOM showed robust and highly significant dose response, we analyzed its dynamics in the study.
 
 In the DOSE trial, each participant performed 14 clinical assessments, which include the MAL, the WMFT, and an arm reach performance and choice task \cite{Park2016}. 
 Trained and standardized research assistants who were blinded to group assignment performed all assessments. 
@@ -148,7 +150,7 @@ In its general form, the model is given by
 \begin{equation}
 	x_i(t) = f(x_{0i},b_i,c_i,t) + \epsilon_i (t)
 \end{equation}
-where $ x_{0i} $, $ b_i $, $ c_i $ are the mixed effect parameters for individual $ i $ (cite Bates); $ \epsilon_i (t) $ is the residual. 
+where $ x_{0i} $, $ b_i $, $ c_i $ are the mixed effect parameters for individual $ i $; $ \epsilon_i (t) $ is the residual. 
 Below we provide an overview of the main models tested. 
 A complete list of models is given in Table \ref{tab:models}.
 
@@ -219,7 +221,7 @@ In the models with continuous effect of time, we considered a linear dependence 
 \begin{equation}\label{eqn:timingcat}
 	b(k) = \beta_1^b + \beta_2^b (k-1) + \delta_i^b
 \end{equation}
-As above, the initial condition was modeled with equation 5.  
+As above, the initial condition was modeled with Equation \ref{eqn:initialFM}.  
 
 In the models with categorical effect of time, we modeled independent values of b and c at different training period, namely
 \begin{equation}
@@ -250,7 +252,7 @@ For categorical models, the 0 dose group was used as the reference group, such t
 For these models, the \textsf{R} function \textsf{intervals()} was used to construct 95\% confidence intervals on parameters.
 
 In addition, because we previously showed that the initial MAL depends on impairment \cite{Winstein2014}, we tested the effect of initial MAL as 
-\begin{equation}
+\begin{equation}\label{eqn:initialFM}
 	x_{0i} = \beta_1^{x_0} + \beta_2^{x_0} \text{FM}_i + \delta_i^{x_0}
 \end{equation}
 where $ \text{FM}_i $ is the initial UEFM score of participant $ i $.
@@ -294,9 +296,9 @@ These results, as well as decreased efficacy, will be demonstrated below.
 
 
 \subsection{Training Efficacy}
-The results of fit for the models for testing dose-training efficacy (models 1.1 and 1.2 in Table \ref{tab:models}) are shown in Figure \ref{fig:doseefficacy}A and supplementary table 1. 
+The results of fit for the models for testing dose-training efficacy (models 1.1 and 1.2 in Table \ref{tab:models}) are shown in Figure \ref{fig:doseefficacy}A and Supplementary Table \ref{tab:dosemodel1}. 
 As suggested by the individual responses of Figure \ref{fig:dosebest}A, increasing dose of training increases the efficacy of training, as shown by the positive slope between dose and the increase in MAL per session (parameter b.dose = 0.002; $ p < 0.01 $). 
-Figure \ref{fig:doseefficacy}A, and inspection of the coefficients of the categorical model show, however, that this dose efficacy is mostly driven by the 60 hour dose (parameter $ b.dose_hour $ 60 is greater than b.(Intercept) parameter $ p < 0.05 $).
+Figure \ref{fig:doseefficacy}A, and inspection of the coefficients of the categorical model show, however, that this dose efficacy is mostly driven by the 60 hour dose (parameter b.dose\_hour60 is greater than b.(Intercept) parameter at $ p < 0.05 $).
 
 \begin{figure}
 	\centering
@@ -309,14 +311,14 @@ Figure \ref{fig:doseefficacy}A, and inspection of the coefficients of the catego
 \end{figure}
 
 
-Whereas increasing dose increases MAL during training, the same continuous dose model show that following training, there is an increase in forgetting for larger doses, as shown by the negative slope between dose and the change in MAL between sessions (parameter c.dose =  negative  -0.0001**; p < 0.05 – Figure \ref{fig:doseefficacy}B). 
-Note however, that for 0 dose, c is slightly positive although not significantly different from 0 (c.(Intercept) = 0.001). A model with categorical dose effect on c (results in Figure \ref{fig:doseefficacy}B) shows that the dose effect is mostly linear and significant for 30 and 60 hour doses ($ c.dose_hour30 $  -0.0020477 p <  0.05,  $ c.dose_hour60 $  -0.0027305; $ p < 0.01 $)
+Whereas increasing dose increases MAL during training, the same continuous dose model show that following training, there is an increase in forgetting for larger doses, as shown by the negative slope between dose and the change in MAL between sessions (parameter c.dose = -0.0001; p $ < $ 0.05), and suggested by Figure \ref{fig:doseefficacy}B. 
+Note however, that for 0 dose, $ c $ is slightly positive although not significantly different from 0 (c.(Intercept) = 0.001). A model with categorical dose effect on $ c $ (results in Figure \ref{fig:doseefficacy}B) shows that the dose effect is mostly linear and significant for 30 and 60 hour doses (c.dose\_hour30 = -0.002, p $ < $ 0.05,  c.dose\_hour60 = -0.003, $ p < 0.01 $)
 
 \subsection{Effect of Dose and Timing on Training Efficiency}
-The results of fit for the models for testing dose training efficiency (models 2 in Table \ref{tab:models}) are shown in Figure \ref{fig:doseefficiency}A and supplementary table 2. 
-As a reminder, in these models, the input $ u(t) $ is proportional to the dose – as a result, the learning rate parameter reflects the efficiency of training. 
-As predicted, increasing dose of training decreases the efficiency of training, as shown by the negative slope on Figure \ref{fig:doseefficiency}A (parameter b.dose is negative  = -0.0001; $ p < 0.05 $). 
-Figure \ref{fig:doseefficiency}A, and inspection of the coefficients of the categorical model show, that this effect is mostly driven by the 30 and 60 hour doses (both parameters are greater than b.intercept parameter $ p < 0.05 $).
+The results of fit for the models for testing dose training efficiency (models 2 in Table \ref{tab:models}) are shown in Figure \ref{fig:doseefficiency}A and Supplementary Table \ref{tab:dosemodel2}. 
+As a reminder, in these models, the input $ u(t) $ is proportional to the dose, as a result, the learning rate parameter reflects the efficiency of training. 
+As predicted, increasing dose of training decreases the efficiency of training, as shown by the negative slope on Figure \ref{fig:doseefficiency}A (parameter b.dose = -0.0001; $ p < 0.05 $). 
+Figure \ref{fig:doseefficiency}A, and inspection of the coefficients of the categorical model show, that this effect is mostly driven by the 30 and 60 hour doses (both parameters are greater than b.(Intercept) parameter at $ p < 0.05 $).
 
 
 \begin{figure}
@@ -331,18 +333,18 @@ Figure \ref{fig:doseefficiency}A, and inspection of the coefficients of the cate
 
 Similarly, the efficiency of training decreases with the number of bouts of training (model 3 in Table \ref{tab:models}; Figure \ref{fig:doseefficiency}B). 
 The effect is strong with more than a two-fold reduction in gain for the second and third bout compared to the first bout. 
-Interestingly, the b3 coefficients (learning rate for the third bout) is not significantly different from 0 (supplementary table 3). 
+Interestingly, the $ b_3 $ coefficients (learning rate for the third bout) is not significantly different from 0 (Supplementary Table \ref{tab:dosemodel3}). 
 Thus, the increase due to the third bout of training is small, even for larger doses. 
 Such small effects of later bouts of training can be seen in plots of the individual fitted response with this model (Figure \ref{fig:indtimingefficiencybc}), notably for the 60 hour group. 
 The first session of training largely increases the MAL. 
 However, the second and in particular the third session have reduced effect. 
 Similarly, it can be seen that for the 15 hour groups, very few subjects benefit from the additional training. 
-Accordingly, the coefficient for the third session is near 0 (Figure \ref{fig:doseefficiency}b, and not significantly different from 0 – Supplementary Table 3).
+Accordingly, the coefficient for the third session is near 0 (Figure \ref{fig:doseefficiency}B, and not significantly different from 0, see Supplementary Table \ref{tab:dosemodel3}).
 
 \subsection{Forgetting following training is fast initially but tampers off within 2 months post-training}
 In motor learning research, it is commonly observed that forgetting following training is initially fast and then tampers off. 
 Here, using a model in which the forgetting over the six months post-training are estimated over three intervals of 2 months (model 4 in Table \ref{tab:models}), we show that following the last session of training, forgetting is initially relatively rapid, but by 2 months post-training, forgetting tampers off, which allow patients to maintain some of the gains due to therapy. 
-Accordingly, the forgetting parameter immediately training is significantly negative, but the next two parameters are not different from 0 (c3 = -0.003, p = 0.0069, c4 = 0.002, p = 0.1020, c5 = -0.00, p = 1).
+Accordingly, the forgetting parameter immediately after training is significantly negative, but the next two parameters are not different from 0 ($ c_3 $ = -0.003, p = 0.0069; $ c_4 $ = 0.002, p = 0.1020; $ c_5 $ = -0.00, p = 1).
 
 \begin{figure}
 	\centering
@@ -377,19 +379,19 @@ The dynamical component of the model allowed us to obtain a detailed time course
 The use of the mixed-effects in the nonlinear model is motivated by the high variability in lesion, impairment, and responsiveness to therapy in individuals with stroke. 
 In a previous reach training study with participants with chronic stroke \cite{Park2017}, we used non-linear mixed effects models to dissociate improvement in performance due to learning from highly variable decrease in performance presumably due to fatigue. 
 In future studies that record large amount of neural and clinical data, the number of co-variate may be sufficiently large to capture for most of the variance in the data. 
-In the current study, the mixed-effects allowed us to model the between- participant variability that is not captured by the co-variates such as the initial MAL, the initial FM, and the dose. 
+In the current study, the mixed-effects allowed us to model the between-participant variability that is not captured by the co-variates such as the initial MAL, the initial FM, and the dose. 
 The inclusion of the random effects the largely improve the fit however. 
 For instance, the fitting error of  “best model” (the Log-likelihood) worsens by 23\% when only initial random effects are included (that is, when learning and decay rate random effects are removed). 
 The model with no random effects does not converge at all. 
 
 Our main findings are that whereas larger doses increase the MAL from pre to post-training, but also increase forgetting post-training and decrease the efficiency of training. 
 In previous work, we have shown a strong dose response relationship for the MAL in the DOSE trial when solely considering changes due to the three bouts of training. 
-Here, fitting dose-efficacy dynamical models that include all the data, in particular the 1-month wait periods between the train bouts, we show that the “learning rates” of the model with dose-independent inputs. 
+Here, fitting dose-efficacy dynamical models that include all the data, in particular the 1-month wait periods between the train bouts, we show that the “learning rates” of the model increase with dose-independent inputs. 
 Because the learning rates with such inputs represent the gain in MAL for each training bout, the dose versus learning rates plot represent a dose-response curve; this results thus confirm our previous finding of a significant dose response relationship (Figure \ref{fig:doseefficacy}). 
 This dose response curve is only true during training however. 
-Indeed, results show that there is no differences in response accross doses when the median of the first three MAL tests (before training) are compared the median of the last three (ANOVA, p = XX). 
+Indeed, results show that there is no differences in response across doses when the median of the first three MAL tests (before training) are compared the median of the last three. 
 The main cause for this lack of overall efficacy is the very significant dose relationship in the decay following training (Figure \ref{fig:doseefficacy}B), with many participants in large doses showing reduction in the MAL following training (see Figure \ref{fig:dosebest}B). 
-In addition, participants in the low doses often show a “spontaneous” increase in the MAL following training – we will discuss this phenomenon below. 
+In addition, participants in the low doses often show a “spontaneous” increase in the MAL following training -- we will discuss this phenomenon below. 
 Although it is unclear  what causes this dose-dependent forgetting, it resembles decay in motor adaptation, because 1) it is initially fast in the two first month following training before tempering to zero in the last 4 months (see results) and 2) it is greater following greater gains, as seen with adaptation to larger perturbation. 
 Although this may be taken with caution, it is therefore possible that training given in the chronic state post-stroke is similar to motor adaptation, which is defined as return of the system to baseline performance in face of perturbation. 
 So here, training can be seen as the perturbation, and upon the discontinuation of training, the system returns to its baseline “chronic” state. 
@@ -410,28 +412,28 @@ Second, the more the dose and the duration of training, the less the efficiency 
 However, the increase of the MAL post-training for a number of participants, and in the 0 dose group in particular, casts hope for developing effective rehabilitation methods. 
 
 Increase in the MAL post-training maybe due to a ‘self-training’ affect. 
-A model in which we use the dose and average MAL post-training  as covariate for forgetting post-training (Model X; Table XX)– show  that the change in MAL post-training is positively modulated by the average of the level of MAL post-training. 
+A model in which we use the dose and average MAL post-training  as covariate for forgetting post-training (model 5; Table \ref{tab:dosemodel5}) shows that the change in MAL post-training is positively modulated by the average of the level of MAL post-training. 
 Thus, if MAL post-training is high, because it was high initially, or because therapy brought the MAL to a high level, then the MAL keeps increasing following training. 
 We previously postulated the existence of a threshold in which arm use in daily activities acts as “self-training” and reinforce performance, which then further reinforce us in a virtuous cycle. 
-Here, across doses, figure XX shows that there is threshold for the MAL, around 3.5. 
-Above this value, uses continues to increase spontaneously post-training. 
-Below this value, uses decreases. 
+Here, across doses, Figure \ref{fig:forgettingthreshold} shows that there is threshold for the MAL, around 3.5. 
+Above this value, uses continue to increase spontaneously post-training. 
+Below this value, uses decrease. 
 Accordingly, the goal of rehabilitation is therefore to bring the patient above threshold, such that the gains from rehabilitation can be not only maintained but further increased thanks to the patient (implicit) self-training via daily activities. 
 
 But how can we explain the increase in the MAL in the 0 group even for lower MAL values? A possibility is a learning effect of the MAL itself, but if this effect exists, it is probably small because the increase is not seen in most participants in large dose groups. 
 An alternative is that assessment, which contains between 100 to 200 movements (depending on subject choice to use their arm, as our test contained both forced and free choice trials) plus the WMFT test, increases the MAL. 
 This increase in MAL due to this test would be stronger in the 0 dose group, and still somewhat present in the 15 hour dose group (see Figure \ref{fig:dosebest}), but not in the larger dose group because of the reduced efficiency of training in these groups. 
-Thus, in the large dose group, the efficiency of these same tests is reduced, and participants in the 30 hours and 60 hours group show decay post-training on average, (although variability is large and in part explained by arm use post-training - see above). 
+Thus, in the large dose group, the efficiency of these same tests is reduced, and participants in the 30 hours and 60 hours group show decay post-training on average (although variability is large and in part explained by arm use post-training - see above). 
 
-Taken together these results support a rehabilitation strategy in which the same amount of training is distributed over months not only to increase the MAL during training, but also to maintain the gains. 
+These results together support a rehabilitation strategy in which the same amount of training is distributed over months not only to increase the MAL during training, but also to maintain the gains. 
 Indeed, one of the most robust results of learning theory is the so-called “spacing effect”, according to which the spacing of presentations strongly increases the retention of learned material compared to massed presentations. 
-This phenomenon has been extensively studied in word learning research for more than a century (Ebbinghaus, 1913) – see for a review (Druckman  Bjork, 1991). 
+This phenomenon has been extensively studied in word learning research for more than a century \cite{Ebbinghaus1913} – see for a review \cite{Druckman1991}. 
 Note that the spacing effect can be extremely robust, as in some cases massed practice yields long-term performance less than one half the level from spaced practice. 
-Further, it can be truly long-lasting, as (Bahrick, 1987) found enhanced retention up to 8 years after vocabulary learning with spaced presentation. 
+Further, it can be truly long-lasting, as \cite{Bahrick1987} found enhanced retention up to 8 years after vocabulary learning with spaced presentation. 
 
 \paragraph{Conclusions: implications for clinical practice}
 Although our results need to be confirmed, they point to the need of a change in policy and rehabilitation methods: the intensity of training in the chronic state can be relatively small for each bout, but training should be continuously distributed over a life-time. 
-Here, please note that “small” is relative, and we do not believe that the amount of training  given in a single session of clinical practice is sufficient, as patients perform only 32 movements session on average (Lang et al., 2009). 
+Here, please note that “small” is relative, and we do not believe that the amount of training  given in a single session of clinical practice is sufficient, as patients perform only 32 movements session on average \cite{Lang2009}. 
 Our assessments contain between 100 to 200 movements plus the WMFT test. 
 In addition, we previously showed \cite{Park2017}, that most gains in reaching movements were achieved with approximately 300 movements. 
 Thus, our results suggest that intensive bouts of training of a few hundred movements should be given at regular intervals. 
@@ -441,7 +443,7 @@ Delivering such training will probably be well suited via technological devices 
 \outline{2}{Supplementary Materials}
 \section{Supplementary Materials}
 \subsection{State Space Model to Nonlinear Mixed Effect Model}\label{sec:SM1}
-In the field of motor perturbation adaptation, state space model is adopted to model learning behavior [cite]. 
+In the field of motor perturbation adaptation, state space model is adopted to model learning behavior \cite{Smith2006}. 
 In particular, the state of the system $ x_k $ at trial $ k $ follows 
 \begin{equation}\label{ssm}
 x_{k+1} = Ax_k + Bu_k
