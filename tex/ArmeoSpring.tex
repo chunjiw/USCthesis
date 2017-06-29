@@ -90,7 +90,7 @@ All joint angles and end effector locations are recorded. As seen in Table \ref{
 
 %\textbf{Device.}
 %Our robot-aided rehabilitation uses Armeo@Spring exoskeleton from Hocoma\footnote{https://www.hocoma.com/us/} for therapy training. 
-%Shown in figure \ref{fig:1setupschedule}, the exoskeleton has 6 degrees of freedom, summarized in table \ref{tab:devicedof} and Fig. \ref{fig:1setupschedule}B. 
+%Shown in figure \ref{fig:1setupschedule}, the exoskeleton has 6 degrees of freedom, summarized in table \ref{tab:devicedof} and Figure \ref{fig:1setupschedule}B. 
 %It is attached to the arm by two or three velcro straps. 
 %The exoskeleton has two springs equipped, at the upper arm and the forearm respectively. 
 %The springs can be adjusted to compensate the gravity force of the arm. 
@@ -131,7 +131,7 @@ The sequence of target locations appeared random to the subject but was fixed in
 To catch the ladybug, the user moved the cursor to its location. 
 The user had limited time to catch the ladybug ($<$ 10 seconds). 
 After a ladybug was caught, or the time limit was reached, the ladybug disappeared and the next ladybug appeared at a new location. 
-There were four possible difficulty levels for the test; difficulty was modulated both by the number of targets and by the workspace size; from easy to difficult: 12 targets, 24 × 16 cm (horizontal × vertical);  20 targets, 36 × 27 cm ; 32 targets, 45 × 36 cm and 48 targets, 63 × 45 cm. In the stroke group, test difficulty was adjusted by the therapist based on performance. 
+There were four possible difficulty levels for the test; difficulty was modulated both by the number of targets and by the workspace size; from easy to difficult: 12 targets, 24 $ \times $ 16 cm (horizontal $ \times $ vertical);  20 targets, 36 $ \times $ 27 cm ; 32 targets, 45 $ \times $ 36 cm and 48 targets, 63 $ \times $ 45 cm. In the stroke group, test difficulty was adjusted by the therapist based on performance. 
 In the control group, difficulty was set to the highest level. 
 
 
@@ -157,18 +157,18 @@ We excluded tests in which participants caught less than 25\% of the ladybugs (0
 
 \textbf{Task Space Performance.}
 We characterized task space performance in a test via the average number of peaks in the velocity profiles. 
-This measure of movement smoothness has been used to quantify movement smoothness in non-disabled subjects {Brooks, 1973} and individual post-stroke {L., 2001 }. 
+This measure of movement smoothness has been used to quantify movement smoothness in non-disabled subjects \cite{Brooks1973} and individual post-stroke. 
 The number of peaks in the velocity profile have been shown to decrease following robotic training post-stroke.  
 To calculate the number of peaks in each movement, we computed the derivative of velocity (tangential acceleration) and counted the number of times it went from positive to negative. 
 We then took the average of number of peaks ($ p $) of all successful trials in the test. 
 
 \textbf{Mixed Effect Models of Learning and Recovery}
 
-Stroke is characterized by high variability in lesion, impairment, spontaneous recovery, and responsiveness to therapy {Cramer, 2008}. 
-We have previously shown that including mixed-effects in non-linear models can account for between-individual differences in performance and changes of performances during motor training post-stroke (REF). 
+Stroke is characterized by high variability in lesion, impairment, spontaneous recovery, and responsiveness to therapy \cite{Cramer2008}. 
+We have previously shown that including mixed-effects in non-linear models can account for between-individual differences in performance and changes of performances during motor training post-stroke \cite{Park2017}. 
 Here, similarly, we therefore used non-linear mixed effects to precisely account for differences in baseline performance, as well as learning and recovery for each participant. 
 
-Specifically, we modeled the dynamics of average number of peaks $ p $ in the velocity profiles in each test as exponential functions of time $ t $ represented by task number, with mixed effects {Lindstrom, 1990}. 
+Specifically, we modeled the dynamics of average number of peaks $ p $ in the velocity profiles in each test as exponential functions of time $ t $ represented by task number, with mixed effects \cite{Lindstrom1990}. 
 Because visual observation seemed to indicate that changes in the average number of peak decreased according to a single exponential-like decay for participants in the control group, we considered a model with a single exponential formulation
 \begin{equation}\label{eqn:singleexp}
 p_{i,j} = A_i \exp(-B_i t_{j}) + 1 + \epsilon_{i,j}
@@ -251,7 +251,7 @@ The nonlinear forward kinematics model of the exoskeleton is given by
 	\begin{equation}\label{eqn:nonlinearForwardKinematics}
 		\bm{r} = f(\bm{\theta})
 	\end{equation}
-where $ \bm{r} = (x,y)^T $ is the location of the end effector, $ \bm{\theta} $ is joint angles (see Table \ref{tab:devicedof} and Fig. \ref{fig:1setupschedule}B for details). 
+where $ \bm{r} = (x,y)^T $ is the location of the end effector, $ \bm{\theta} $ is joint angles (see Table \ref{tab:devicedof} and Figure \ref{fig:1setupschedule}B for details). 
 
 The mean joint configuration across the last 10 tests at one specific ladybug ($ b $) is denoted by $ \bar{\bm{\theta}}_b $.
 We will omit index $ b $ for convenience.
@@ -294,9 +294,9 @@ and the task-relevant space variability is
 Finally, note that this kinematic model (Eqn. \ref{eqn:nonlinearForwardKinematics}) was provided to us by Hocoma, the ARMEO Company. 
 
 \textbf{Linear Regression.}
-When performing linear regression between variables, we identified outliers through Cook’s Distance {Cook, 1977}. 
+When performing linear regression between variables, we identified outliers through Cook’s Distance \cite{Cook1977}. 
 The Cook’s Distances of outliers are greater than $ 4/n $, where $ n $ is the number of data points. 
-When outliers were detected, we performed a robust regression method with the bisquare weight function {Hoaglin, 1983}. 
+When outliers were detected, we performed a robust regression method with the bisquare weight function \cite{Hoaglin1983}. 
 We verified in all regression analyses that test difficulty was not significant when included as a covariate. 
 Our predefined threshold for statistical significance was 0.05. 
 All analyses were performed in Matlab.
@@ -343,16 +343,16 @@ For subjects in the control group, a single exponential model has a smaller BIC 
 		A,B: Group average (blue dots) and fixed effects (red line) of the fitted exponential model of number of peaks for the control (A) and stroke groups (B). Shaded area represents standard deviation (note the different scale for both axes in both groups); 
 		C: Representative participants. 
 		SB 53: fast learning rate and large task-irrelevant variability; 
-		SB 46: slow learning rate and small task-irrelevant variability (see Fig. \ref{fig:5learnratevsnullvar} for task-irrelevant variability);
+		SB 46: slow learning rate and small task-irrelevant variability (see Figure \ref{fig:5learnratevsnullvar} for task-irrelevant variability);
 		SB 7: fast recovery rate and small initial synergy abnormality;
-		SB 43: slow recovery rate and large initial synergy abnormality (see Fig. \ref{fig:6synergy} for initial synergy abnormality).
+		SB 43: slow recovery rate and large initial synergy abnormality (see Figure \ref{fig:6synergy} for initial synergy abnormality).
 	}
 	\label{fig:3nopfixran}
 \end{figure}
 
-The double exponential mixed effect model of the stroke groups (Equation. \ref{eqn:doubleexp}) tields two learning rates $ B^f $ and $ B^s $. 
+The double exponential mixed effect model of the stroke groups (Equation \ref{eqn:doubleexp}) tields two learning rates $ B^f $ and $ B^s $. 
 We refer the smaller of the two, $ B^s $ as the slow learning rate, the larger, $ B^f $ the fast learning rate.
-Fig. \ref{fig:3nopfixran}C shows examples of individual fitting.
+Figure \ref{fig:3nopfixran}C shows examples of individual fitting.
 The slow component, due to small learning rate, is approximately linear; but the fast component usually reaches asymptote during the training.
 For the stroke group, the fast learning rate corresponds to a time constant of 13 $\pm$ 19 tests; and the slow learning rate with a time constant of 352 $\pm$ 123 tests (see Figure \ref{fig:3nopfixran}). 
 For the control group, the time constant is 4.4 + 1.6 tests (as a reminder, there were 4 tests per day, but training and testing was only performed on weekdays). 
@@ -429,7 +429,7 @@ We characterize kinematics performance with a double exponential model of number
 The mixed effect estimation of parameters allow us to obtain estimations of individual learning rates.
 
 Task-irrelevant variability, or variance in the UnControlled Manifold (UCM), is a source of variability that doesn’t affect the execution of a task, which can be represented by variables. 
-In the original study, (Scholz  Schöner, 1999) demonstrated that during a functional task, certain relevant variables are not controlled.
+In the original study, \cite{Scholz1999} demonstrated that during a functional task, certain relevant variables are not controlled.
 The redundancy of human arm kinematics dictates that there must be task-irrelevant variability (the variability that does not affect endpoint trajectories) in the joint space. 
 We measure this task-irrelevant variability with adapted method from \cite{Singh2016}. 
 Although this variability is task irrelevant, it is not unnecessary since it brings flexibility and allow versatile joint coordination for some specific task. 

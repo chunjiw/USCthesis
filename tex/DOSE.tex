@@ -4,7 +4,7 @@
 
 \section{Abstract}
 It is well known in motor learning research that the gains in motor performance depend on the dose of practice, but also that these gains follow diminishing returns: each additional unit of training yields smaller and smaller gains. 
-Recent results from the DOSE trial, a single blind, phase I, randomized controlled trial of four doses (0, 15, 30, or 60 hours) of upper extremity therapy during the chronic phase after stroke, showed a robust dose-response relationship for the Motor Activity Log-Quality of Movement (MAL) (Winstein et al., in preparation).  
+Recent results from the DOSE trial, a single blind, phase I, randomized controlled trial of four doses (0, 15, 30, or 60 hours) of upper extremity therapy during the chronic phase after stroke, showed a robust dose-response relationship for the Motor Activity Log-Quality of Movement (MAL).  
 Here, we test the hypotheses that: 1) increasing the dose of training leads to an increase in the efficacy of training but a decrease in the efficiency of training, and 2) increasing the duration of training will also decrease the efficiency of training. 
 We modeled the changes in the MAL during the train-wait-train-wait-train schedule used in the DOSE trial with novel dynamical mixed-effects models that account for individual responses both during and between training bouts. 
 With the learning term, we modeled increase in MAL during training.  
@@ -24,8 +24,8 @@ The foundation of neuro-rehabilitation is that sensorimotor learning determines 
 Indeed, a number of studies have reported that UE training improves clinical scores \cite{Cirstea2003}, \cite{Kamper2002, Kwakkel2006, McCrea2005} and improves reaching movements’ speed, smoothness, and range (e.g., \cite{Anton1996}). 
 Clinical trials have shown that motor therapy delivered in the subacute to chronic phase can effectively increase spontaneous use and function of the affected limb for individuals with mild to moderate impairments post-stroke \cite{Wolf2006, Lohse2014}. 
 A recent previous meta-analysis of 30 studies of upper and lower extremity rehabilitation therapy after stroke suggested that large doses of therapy lead to clinically meaningful improvements. 
-We recently showed in the DOSE trial (Winstein et al. REF) that a measure of upper extremity use, the MAL-QOM, follows robust dose-response relationships in individuals with chronic stroke (more than 6 months post-stroke). 
-Thus, in neuro-rehabilitation, like in motor learning, it appears that the change in motor performance depends on the amount of practice (but see REF). 
+We recently showed in the DOSE trial that a measure of upper extremity use, the MAL-QOM, follows robust dose-response relationships in individuals with chronic stroke (more than 6 months post-stroke). 
+Thus, in neuro-rehabilitation, like in motor learning, it appears that the change in motor performance depends on the amount of practice. 
 
 However, whereas it is well-established in motor learning that gains in performance follow diminishing returns, that is, each additional unit of training yields smaller and smaller gains, such decrease in efficiency of training in neuro-rehabilitation has yet to be shown. 
 Assuming different doses of training per unit of time and different durations of training, such changes in efficiency can be conceptualized in two different ways: On one hand, efficiency can change as a function of the amount, or dose, of training. 
@@ -40,7 +40,7 @@ For instance, in our previous study of arm training, there was little decay even
 On the other hand, we previously proposed that arm use in daily activities post-stroke, if above a threshold, could act to increase use in a virtuous cycle manner \cite{Hidaka2012, Schweighofer2009}. 
 Accordingly, if use is high following therapy, there could be further increase in use. 
 
-Here we addressed these questions in an analysis of all assessments of the MAL in the DOSE trial (REF), in which participants with chronic stroke were randomly assigned to 1 of 4 doses: 0, 15, 30, and 60 hours of upper extremity.
+Here we addressed these questions in an analysis of all assessments of the MAL in the DOSE trial, in which participants with chronic stroke were randomly assigned to 1 of 4 doses: 0, 15, 30, and 60 hours of upper extremity.
 The trial was designed according to a train-wait-train-wait-train schedule, in which training was provided in three weeklong bouts of five consecutive visits each separated by one month. 
 Because total of 14 assessments were performed before, during, and following therapy, the DOSE trial provides a rich data set to study the question of dose-efficacy, dose-efficiency, time-efficiency, as well as decay post-training. 
 In the field of motor adaptation and learning, one often uses state space models to describe the learning processes with a set of inputs, outputs, and variables related by first-order differential equations \cite{Smith2006, Lee2009}. 
@@ -60,13 +60,12 @@ Finally, we test the hypotheses that forgetting post-training is dose-dependent 
 \section{Methods}
 
 \subsection{The DOSE clinical trial}
-The current study is a secondary analysis of data from the DOSE trial; we refer the reader to Winstein et al. REF for methodological details. 
+% The current study is a secondary analysis of data from the DOSE trial; we refer the reader to Winstein et al. REF for methodological details. 
 Briefly, the DOSE trial was a single blind, phase I, randomized controlled trial of four doses of upper extremity therapy administered in an outpatient setting.  
 Participants with chronic stroke (more than 6 months post-onset) were randomized into four intervention groups that varied in the total dose of therapy (0, 15, 30, or 60 hours).  
 Each participants signed an informed consent, and the study was approved by the Institutional Review Board of the University of Southern California.
 
-Detailed inclusion and exclusion criteria are described in Winstein et al. REF. 
-Briefly, the relevant criteria to the study are: age greater than 21, scores on the impairment UE Fugl-Meyer motor (UEFM) test at baseline were 19-60 out of 66, cognitive function sufficiently preserved to provide informed consent, and no upper extremity sensory impairment or neglect. 
+The relevant criteria to the study are: age greater than 21, scores on the impairment UE Fugl-Meyer motor (UEFM) test at baseline were 19-60 out of 66, cognitive function sufficiently preserved to provide informed consent, and no upper extremity sensory impairment or neglect. 
 In addition, participants were randomized into one of four groups within four strata by severity and chronicity.  
 Participants were stratified by stroke severity based on their baseline UEFM score.  
 Individuals with a score between 41-58 were classified as “mild” and those between 19-40 as “moderate”.  
@@ -74,8 +73,8 @@ Participants were further stratified by chronicity such that those with stroke o
 
 The intervention was an individualized arm and hand therapy program based on the principle-based Accelerated Skill Acquisition Program (ASAP), which has been described in detail previously \cite{Winstein2014}. 
 In brief, ASAP includes 1) elements of purposeful and skilled movement execution, including challenging and progressive practice, 2) support for patients’ control or autonomy by choices of specific tasks to be practiced, 3) collaborative problem solving to identify and address movement needs, 4) and encouragement of self-direction in extending practice to community contexts \cite{Winstein2014}. 
-Using the train-wait-train-wait-train schedule shown in Figure 1A, training was provided in three week long bouts of five consecutive visits each separated by one month. 
-The total doses were distributed over the three bouts of training, as shown in Figure 1B. 
+Using the train-wait-train-wait-train schedule shown in Figure \ref{fig:doseinputs}A, training was provided in three week long bouts of five consecutive visits each separated by one month. 
+The total doses were distributed over the three bouts of training, as shown in Figure \ref{fig:doseinputs}B. 
 Therapy was delivered by three different physical therapists over the duration of the trial, who were trained and standardized in ASAP delivery. 
 
 The primary outcome measures in the DOSE trial were the log transformed mean Wolf Motor Function Test time (WMFT) score, and the Motor Activity Log-Quality of Movement rating (MAL-QOM; henceforth referred as MAL). 
@@ -83,9 +82,9 @@ The MAL is a semi-structured interview in which participants are asked to recall
 It has been used extensively, including in the EXCITE trial, and has good validity and reliability [24]. 
 Because we previously showed that the MAL-QOM showed robust and highly significant dose response (Winstein et al. in preparation), we analyzed its dynamics in the study.
 
-In the DOSE trial, each participant performed 14 clinical assessments, which include the MAL, the WMFT, and an arm reach performance and choice task (the BART, REF). 
+In the DOSE trial, each participant performed 14 clinical assessments, which include the MAL, the WMFT, and an arm reach performance and choice task \cite{Park2016}. 
 Trained and standardized research assistants who were blinded to group assignment performed all assessments. 
-Assessments were given with the following schedule (see Figure 1 C): 1) twice to assess baseline values in the month before training; 2) in the morning of the first day of training and 3-days training for each of the three 1-week training bouts, and 3) monthly for 6 months following the last bout of training.  
+Assessments were given with the following schedule (see Figure \ref{fig:doseinputs} C): 1) twice to assess baseline values in the month before training; 2) in the morning of the first day of training and 3-days training for each of the three 1-week training bouts, and 3) monthly for 6 months following the last bout of training.  
 
 \begin{figure}
 	\centering
@@ -153,10 +152,42 @@ where $ x_{0i} $, $ b_i $, $ c_i $ are the mixed effect parameters for individua
 Below we provide an overview of the main models tested. 
 A complete list of models is given in Table \ref{tab:models}.
 
+\begin{table}[b]
+	\footnotesize
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline
+		\multicolumn{2}{|l|}{Hypotheses and Models} & Training input & Fixed effects & Random effects \\
+		\hline
+		\multirow{2}{3cm}{1/ Training efficacy increases with dose}  & 1.1 continuous dose & $ u(t) = 1 $ & $ b + c \sim $ dose & $ x_0 + b + c \sim 1 $ \\
+		\cline{2-5}
+		& 1.2 categorical dose & $ u(t) = 1 $ & $ b \sim \text{dose}_\text{cat} $ & $ x_0 + b + c \sim 1 $ \\
+		\hline
+		2/ Training efficiency & 2.1 continuous dose & $ u(t) = $ dose & $ b \sim $ dose & $ x_0 + b + c \sim 1 $ \\ \cline{2-5}		
+		decreases with dose & 2.2 categorical dose & $ u(t) = $ dose & $ b \sim \text{dose}_\text{cat} $ & $ x_0 + b + c \sim 1 $ \\
+		\hline
+		3/ Training efficiency & 3.1 continuous time & $ u(t) = $ dose & $ b_0 + b_t \sim $ dose & $ x_0 + b_0 + c \sim 1 $ \\ \cline{2-5}
+		decreases with time & 3.2 categorical time & $ u(t) = $ dose & $ b_1 + b_2 + b_3 \sim 1 $ & $ x_0 + c \sim 1 $ \\
+		\hline
+		\multicolumn{2}{|l|}{4/ Forgetting decreases with time post-training} & $ u(t)=1 $ & $ b \sim $ dose & $ x_0+b+c_1+c_2 \sim 1 $\\		
+		\multicolumn{2}{|l|}{} && $ c_3 + c_4 + c_5 \sim 1 $ & \\ 		
+		\hline
+		\multicolumn{2}{|l|}{5/ MAL and dose modulate forgetting post-training} & $ u(t)=1 $ & $ b \sim $ dose & $ x_0 + c_1 + c_2 \sim 1 $\\	
+		\multicolumn{2}{|l|}{} && $ c_3 \sim \text{dose} + \text{MAL}_\text{av} $ & \\ 
+		\hline
+		\multicolumn{2}{|l|}{6/ Best fitting model} & $ u(t)=1 $ & $ b_0 \sim $ dose & $ x_0 + b_0 + c \sim 1 $\\	
+		\multicolumn{2}{|l|}{} && $ b_t \sim 1 $ & \\ 
+		\multicolumn{2}{|l|}{} && $ c \sim \text{dose} + \text{MAL}_\text{av} $ & \\ 
+		\hline
+	\end{tabular}
+	\caption[Final models selected for all hypotheses tested.]{Final models selected for all hypotheses tested. Note that the fixed effects $ x_0 \sim $ FM are not shown because they are included in all models.}
+	\label{tab:models}
+\end{table}
+
+
 \paragraph{Modeling efficacy and dose-efficiency of training}
 \subparagraph{Continuous dose models: } 
 To estimate the efficacy of training (the overall effect of training), we let $ u(t)=1 $ during the intervention periods as shown in Figure \ref{fig:doseinputs}A. 
-To estimate the efficiency of training (the effect of training per hour), we let $ u(t) $ to be the number of treatment hours corresponding to the group, as shown in Fig. \ref{fig:doseinputs}B.  
+To estimate the efficiency of training (the effect of training per hour), we let $ u(t) $ to be the number of treatment hours corresponding to the group, as shown in Figure  \ref{fig:doseinputs}B.  
 To investigate how training efficacy and efficiency depends on dosage of training, the mixed effects of $ b_i $ and $ c_i $ are given by:
 \begin{eqnarray}\label{eqn:mixedeffect}
 	b_i &=& \beta_1^b + \beta_2^b D_i + \delta_i^b   \nonumber \\
@@ -218,7 +249,7 @@ Model fits were performed using the \textsf{nlme()} function in \textsf{R} \cite
 For categorical models, the 0 dose group was used as the reference group, such that the group effects for the other three dose groups are represented with respect to the 0 group. 
 For these models, the \textsf{R} function \textsf{intervals()} was used to construct 95\% confidence intervals on parameters.
 
-In addition, because we previously showed that the initial MAL depends on impairment \cite{Winstein2015}, we tested the effect of initial MAL as 
+In addition, because we previously showed that the initial MAL depends on impairment \cite{Winstein2014}, we tested the effect of initial MAL as 
 \begin{equation}
 	x_{0i} = \beta_1^{x_0} + \beta_2^{x_0} \text{FM}_i + \delta_i^{x_0}
 \end{equation}
@@ -240,36 +271,6 @@ In addition, for taking into account a possible testing effect (highly probable 
 \outline{2}{Results}
 \section{Results}
 
-\begin{table}[b]
-	\footnotesize
-	\begin{tabular}{|l|l|l|l|l|}
-		\hline
-		\multicolumn{2}{|l|}{Hypotheses and Models} & Training input & Fixed effects & Random effects \\
-		\hline
-		\multirow{2}{3cm}{1/ Training efficacy increases with dose}  & 1.1 continuous dose & $ u(t) = 1 $ & $ b + c \sim $ dose & $ x_0 + b + c \sim 1 $ \\
-		\cline{2-5}
-		 						& 1.2 categorical dose & $ u(t) = 1 $ & $ b \sim \text{dose}_\text{cat} $ & $ x_0 + b + c \sim 1 $ \\
-		\hline
-		2/ Training efficiency & 2.1 continuous dose & $ u(t) = $ dose & $ b \sim $ dose & $ x_0 + b + c \sim 1 $ \\ \cline{2-5}		
-		decreases with dose & 2.2 categorical dose & $ u(t) = $ dose & $ b \sim \text{dose}_\text{cat} $ & $ x_0 + b + c \sim 1 $ \\
-		\hline
-		3/ Training efficiency & 3.1 continuous time & $ u(t) = $ dose & $ b_0 + b_t \sim $ dose & $ x_0 + b_0 + c \sim 1 $ \\ \cline{2-5}
-		decreases with time & 3.2 categorical time & $ u(t) = $ dose & $ b_1 + b_2 + b_3 \sim 1 $ & $ x_0 + c \sim 1 $ \\
-		\hline
-		\multicolumn{2}{|l|}{4/ Forgetting decreases with time post-training} & $ u(t)=1 $ & $ b \sim $ dose & $ x_0+b+c_1+c_2 \sim 1 $\\		
-		\multicolumn{2}{|l|}{} && $ c_3 + c_4 + c_5 \sim 1 $ & \\ 		
-		\hline
-		\multicolumn{2}{|l|}{5/ MAL and dose modulate forgetting post-training} & $ u(t)=1 $ & $ b \sim $ dose & $ x_0 + c_1 + c_2 \sim 1 $\\	
-		\multicolumn{2}{|l|}{} && $ c_3 \sim \text{dose} + \text{MAL}_\text{av} $ & \\ 
-		\hline
-		\multicolumn{2}{|l|}{6/ Best fitting model} & $ u(t)=1 $ & $ b_0 \sim $ dose & $ x_0 + b_0 + c \sim 1 $\\	
-		\multicolumn{2}{|l|}{} && $ b_t \sim 1 $ & \\ 
-		\multicolumn{2}{|l|}{} && $ c \sim \text{dose} + \text{MAL}_\text{av} $ & \\ 
-		\hline
-	\end{tabular}
-	\caption[Final models selected for all hypotheses tested.]{Final models selected for all hypotheses tested. Note that the fixed effects $ x_0 \sim $ FM are not shown because they are included in all models.}
-	\label{tab:models}
-\end{table}
 
 \subsection{Modeling MAL dynamics}
 Results presented in Table \ref{tab:models} show the final models selected for all hypotheses tested as well as the best fitting model. 
@@ -332,7 +333,7 @@ Similarly, the efficiency of training decreases with the number of bouts of trai
 The effect is strong with more than a two-fold reduction in gain for the second and third bout compared to the first bout. 
 Interestingly, the b3 coefficients (learning rate for the third bout) is not significantly different from 0 (supplementary table 3). 
 Thus, the increase due to the third bout of training is small, even for larger doses. 
-Such small effects of later bouts of training can be seen in plots of the individual fitted response with this model (Figure 5), notably for the 60 hour group. 
+Such small effects of later bouts of training can be seen in plots of the individual fitted response with this model (Figure \ref{fig:indtimingefficiencybc}), notably for the 60 hour group. 
 The first session of training largely increases the MAL. 
 However, the second and in particular the third session have reduced effect. 
 Similarly, it can be seen that for the 15 hour groups, very few subjects benefit from the additional training. 
@@ -343,11 +344,19 @@ In motor learning research, it is commonly observed that forgetting following tr
 Here, using a model in which the forgetting over the six months post-training are estimated over three intervals of 2 months (model 4 in Table \ref{tab:models}), we show that following the last session of training, forgetting is initially relatively rapid, but by 2 months post-training, forgetting tampers off, which allow patients to maintain some of the gains due to therapy. 
 Accordingly, the forgetting parameter immediately training is significantly negative, but the next two parameters are not different from 0 (c3 = -0.003, p = 0.0069, c4 = 0.002, p = 0.1020, c5 = -0.00, p = 1).
 
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/Ind_timing_efficiency_b_c}
+	\caption[Individual fitted response showing the decrease of training with increasing number of sessions.]{Individual fitted response showing the decrease of training with increasing number of sessions. The first session of training largely increases the MAL, but the second and the third session have reduced effect. Note: In this model, and unlike that in Figure \ref{fig:dosebest}, we only used random effects to model “forgetting”.}
+	\label{fig:indtimingefficiencybc}
+\end{figure}
+
+
 \subsection{Forgetting is modulated by use}
 As we saw earlier, the higher the dose of training, the more the forgetting. 
 However, as has been suggested in previous work \cite{Schweighofer2009}, and as seem to be indicated in Figure \ref{fig:doseefficiency} (in which forgetting is only modeled with random effects), spontaneous use of the affected arm in daily activities may act as “self-training”, and reduce forgetting, or even continues to increase use, in a virtuous cycle. 
 Thus, here we test the hypothesis that forgetting in the 6 months following training depends not only on dose but also on the average MAL during these 6 months, with greater MAL leading to less forgetting. 
-Figure 6 shows that this in indeed the case; the forgetting coefficient depends monotonically on the average MAL, with a threshold near MAL = 3. 
+Figure \ref{fig:forgettingthreshold} shows that this in indeed the case; the forgetting coefficient depends monotonically on the average MAL, with a threshold near MAL = 3. 
 Above this threshold, the forgetting parameters is positive, that is, MAL keeps increasing in a spontaneous manner, without external training.
 
 \begin{figure}
@@ -357,7 +366,7 @@ Above this threshold, the forgetting parameters is positive, that is, MAL keeps 
 	\label{fig:forgettingthreshold}
 \end{figure}
 
-
+\outline{2}{Discussion and Conclusion}
 \section{Discussion and Conclusion}
 A 1997 research agenda that emanated from a workshop focused on facilitating patient learning during medical rehabilitation, proposed that “the effectiveness and efficiency of learning-oriented practices will likely be enhanced by well-formulated investigations grounded in available learning theory and research” \cite{Fuhrer1998}, p560. 
 Here, we believe that, in a combination of a novel dynamical models with mixed effects and a novel rehabilitation design following a wait-train-wait approach, allowed us to dissociate the effects dose and duration of training on the efficacy and efficiency of neurorehabilitation.
@@ -379,9 +388,9 @@ Here, fitting dose-efficacy dynamical models that include all the data, in parti
 Because the learning rates with such inputs represent the gain in MAL for each training bout, the dose versus learning rates plot represent a dose-response curve; this results thus confirm our previous finding of a significant dose response relationship (Figure \ref{fig:doseefficacy}). 
 This dose response curve is only true during training however. 
 Indeed, results show that there is no differences in response accross doses when the median of the first three MAL tests (before training) are compared the median of the last three (ANOVA, p = XX). 
-The main cause for this lack of overall efficacy is the very significant dose relationship in the decay following training (Figure \ref{fig:doseefficacy}B), with many participants in large doses showing reduction in the MAL following training (see Figure 2B). 
+The main cause for this lack of overall efficacy is the very significant dose relationship in the decay following training (Figure \ref{fig:doseefficacy}B), with many participants in large doses showing reduction in the MAL following training (see Figure \ref{fig:dosebest}B). 
 In addition, participants in the low doses often show a “spontaneous” increase in the MAL following training – we will discuss this phenomenon below. 
-Although it is unclear  what causes this dose-dependent forgetting, it resembles decay in motor adaptation (REF), because 1) it is initially fast in the two first month following training before tempering to zero in the last 4 months (see results) and 2) it is greater following greater gains, as seen with adaptation to larger perturbation. 
+Although it is unclear  what causes this dose-dependent forgetting, it resembles decay in motor adaptation, because 1) it is initially fast in the two first month following training before tempering to zero in the last 4 months (see results) and 2) it is greater following greater gains, as seen with adaptation to larger perturbation. 
 Although this may be taken with caution, it is therefore possible that training given in the chronic state post-stroke is similar to motor adaptation, which is defined as return of the system to baseline performance in face of perturbation. 
 So here, training can be seen as the perturbation, and upon the discontinuation of training, the system returns to its baseline “chronic” state. 
 
@@ -411,7 +420,7 @@ Accordingly, the goal of rehabilitation is therefore to bring the patient above 
 
 But how can we explain the increase in the MAL in the 0 group even for lower MAL values? A possibility is a learning effect of the MAL itself, but if this effect exists, it is probably small because the increase is not seen in most participants in large dose groups. 
 An alternative is that assessment, which contains between 100 to 200 movements (depending on subject choice to use their arm, as our test contained both forced and free choice trials) plus the WMFT test, increases the MAL. 
-This increase in MAL due to this test would be stronger in the 0 dose group, and still somewhat present in the 15 hour dose group (see Figure 2), but not in the larger dose group because of the reduced efficiency of training in these groups. 
+This increase in MAL due to this test would be stronger in the 0 dose group, and still somewhat present in the 15 hour dose group (see Figure \ref{fig:dosebest}), but not in the larger dose group because of the reduced efficiency of training in these groups. 
 Thus, in the large dose group, the efficiency of these same tests is reduced, and participants in the 30 hours and 60 hours group show decay post-training on average, (although variability is large and in part explained by arm use post-training - see above). 
 
 Taken together these results support a rehabilitation strategy in which the same amount of training is distributed over months not only to increase the MAL during training, but also to maintain the gains. 
@@ -424,11 +433,12 @@ Further, it can be truly long-lasting, as (Bahrick, 1987) found enhanced retenti
 Although our results need to be confirmed, they point to the need of a change in policy and rehabilitation methods: the intensity of training in the chronic state can be relatively small for each bout, but training should be continuously distributed over a life-time. 
 Here, please note that “small” is relative, and we do not believe that the amount of training  given in a single session of clinical practice is sufficient, as patients perform only 32 movements session on average (Lang et al., 2009). 
 Our assessments contain between 100 to 200 movements plus the WMFT test. 
-In addition, we previously showed (REF Park and Schweighofer), that most gains in reaching movements were achieved with approximately 300 movements. 
+In addition, we previously showed \cite{Park2017}, that most gains in reaching movements were achieved with approximately 300 movements. 
 Thus, our results suggest that intensive bouts of training of a few hundred movements should be given at regular intervals. 
-Delivering such training will probably be well suited via technological devices that can assess and train the movements, such the device we proposed previously (REF han et al. and REF, Park et al.). 
+Delivering such training will probably be well suited via technological devices that can assess and train the movements, such the device we proposed previously \cite{Park2016}. 
 
 
+\outline{2}{Supplementary Materials}
 \section{Supplementary Materials}
 \subsection{State Space Model to Nonlinear Mixed Effect Model}\label{sec:SM1}
 In the field of motor perturbation adaptation, state space model is adopted to model learning behavior [cite]. 
@@ -438,91 +448,99 @@ x_{k+1} = Ax_k + Bu_k
 \end{equation}
 Where $ A $ represents retention, and often takes a value slightly smaller than 1; 
 where as B, slightly bigger than 0, represents learning due to input $ u_k $ {often indicating the error in motor perturbation adaptation).
-	This formula can be written as a differential equation:
-	\begin{equation}
-	\frac{\Delta x_k}{\Delta t} = \frac{x_{k+1}-x_k}{\Delta t} = \frac{(A-1)x_k}{\Delta t} + \frac{Bu_k}{\Delta t}
-	\end{equation}
-	Omit index $ k $ and let $ a = (A-1)/\Delta t $, $ b = B/\Delta t $ and $ \Delta t\rightarrow 0 $, we have
-	\begin{equation}\label{oode}
-	\frac{dx(t)}{dt} = ax(t)+bu(t)
-	\end{equation}
-	The solution to this differential equation is in general
-	\begin{equation}\label{generalsolution}
-	x = x_0e^{at} + b\int_0^t e^{a(t-\tau)}u(\tau)d\tau
-	\end{equation}
-	If $ a $ is small comparing to the time scale concerned (that is to say $ |at_{\text{max}}| \ll 1 $) and $ b $ is comparibly small to $ a $ (that is to say $ \text{lim}\frac{bu_\text{max}}{ax_\text{max}} \leqslant \text{const.} $), then the first order approximation to this solution is
-	\begin{equation}\label{specialsolution}
-	x = x_0 + x_0at + b \int_0^t u(\tau)d\tau
-	\end{equation}
-	Let $ c=x_0 a $, the original differential equation \ref{oode} becomes
-	\begin{equation}
-	\frac{dx(t)}{dt} = bu(t) + c
-	\end{equation}
-	To isolate the effect of training input $ u(t) $, we further assume that c can be ignored when $ u(t) \neq 0 $, i.e.
-	\begin{equation}\label{eqn:finalode2}
-	\frac{dx(t)}{dt} = bu(t) + cv(t)
-	\end{equation}
-	where
-	\begin{equation}
-	v(t) = 
-	\begin{cases}
-	1, & \text{if}\ u(t) = 0 \\
-	0, & \text{otherwise}
-	\end{cases}
-	\end{equation}
-	Or, in logical notation, $ v(t) = \sim u(t) $. 
-	This assumption would be further justified later when we show $ bu(t) $ is much larger than $ c $.
-	
-	Denote the solution to Eqn. \ref{eqn:finalode} as nonlinear function $ x=f(x_0,b,c,t) $, we estimate the mixed effect model as
-	\begin{equation}
-	x_i (t)=f(x_{0i},b_i,c_i,t) + \epsilon_i (t)
-	\end{equation}
-	where $ x_{0i} $, $ b_i $, $ c_i $ are the mixed effect parameters which can vary from individual to individual (cite Bates).
-	$ \epsilon_i (t) $ is the residual. 
-	We choose different mixed effects on $ b_i $ and $ c_i $ to investigate different aspects of training mentioned above.
-	
-	\textbf{Training Efficacy and Efficiency.}
-	To estimate the efficacy of training (the overall effect of training), we let $ u(t)=1 $ during the intervention periods as shown in Fig. \ref{fig:doseinputs}A. 
-	To estimate the efficiency of training (the effect of training per hour), we let $ u(t) $ to be the number of treatment hours corresponding to the group, as shown in Fig. \ref{fig:doseinputs}B. 
-	
-	To investigate how training efficacy and efficiency depends on dosage of training, we use a linear formula for the mixed effects of $ b_i $ and $ c_i $:
-	\begin{eqnarray}\label{eqn:mixedeffectinSM}
-	b_i &=& \beta_1^b + \beta_2^b D_i + \delta_i^b   \nonumber \\
-	c_i &=& \beta_1^c + \beta_2^c D_i + \delta_i^c   \\
-	x_{0i} &=& \beta_1^{x_0} + \beta_2^{x_0} A_i + \delta_i^{x_0} \nonumber
-	\end{eqnarray}
-	where $ D_i $ is the dosage of training (number of hours per week) participant $ i $ received, 
-	$ A_i $ is certain clinical assessment before the training, e.g the initial FM score and/or CST of participant $ i $, 
-	$ \beta $ are fixed effects and $ \delta_i $ are random effects. 
-	Indexes on the shoulder indicates the parameter to which this fixed or random effect belongs.
-	
-	In the case when we take the dosage of training as categorical variable, i.e. how efficacy and efficiency depends on the four groups, the formula becomes
-	\begin{equation}
-	b_i = \beta_1^b + \beta_2^b D_{i2} + \beta_3^b D_{i3} + \beta_4^b D_{i4} + \delta_i^b
-	\end{equation}
-	Where $ D_{ij} $ is 1 when participant i belongs to group j, 0 otherwise. The formula for $ c_i $ is in the same structure.
-	
-	\textbf{The Timing of Training}
-	To look at the effect of training at different period, we further assume $ b $ and $ c $ can take different values at different intervention periods. 
-	We applied this assumption in two ways: 1) A linear dependence of $ b $ (and $ c $) on training period $ k (k=1,2,3) $, namely
-	\begin{eqnarray}\label{eqn:timingcat2}
-	b(k) &=& b_0 + b_t (k-1) \nonumber  \\
-	c(k) &=& c_0 + c_t (k-1)
-	\end{eqnarray}
-	So that we have two more parameters than Eqn. \ref{eqn:finalode}. 
-	
-	Due to insufficient data points (too few data points at each training period), we simplify the mixed effects of $ b(k) $ and $ c(k) $:
-	\begin{eqnarray}
-	b_0 &=& \beta_1^b + \delta_i^b \\
-	b_t &=& \beta_2^b
-	\end{eqnarray}
-	The formula for $ c_0 $ and $ c_t $ is in the same structure.
-	
-	2) Independent values of $ b $ and $ c $ at different training period, namely
-	\begin{equation}
-	b = b_k, c = c_k, k = 1,2,3
-	\end{equation}
-	So that we have four more parameters than Eqn. \ref{eqn:finalode}. 
-	
-	We use maximum likelihood to estimate parameters.
+This formula can be written as a differential equation:
+\begin{equation}
+\frac{\Delta x_k}{\Delta t} = \frac{x_{k+1}-x_k}{\Delta t} = \frac{(A-1)x_k}{\Delta t} + \frac{Bu_k}{\Delta t}
+\end{equation}
+Omit index $ k $ and let $ a = (A-1)/\Delta t $, $ b = B/\Delta t $ and $ \Delta t\rightarrow 0 $, we have
+\begin{equation}\label{oode}
+\frac{dx(t)}{dt} = ax(t)+bu(t)
+\end{equation}
+The solution to this differential equation is in general
+\begin{equation}\label{generalsolution}
+x = x_0e^{at} + b\int_0^t e^{a(t-\tau)}u(\tau)d\tau
+\end{equation}
+If $ a $ is small comparing to the time scale concerned (that is to say $ |at_{\text{max}}| \ll 1 $) and $ b $ is comparibly small to $ a $ (that is to say $ \text{lim}\frac{bu_\text{max}}{ax_\text{max}} \leqslant \text{const.} $), then the first order approximation to this solution is
+\begin{equation}\label{specialsolution}
+x = x_0 + x_0at + b \int_0^t u(\tau)d\tau
+\end{equation}
+Let $ c=x_0 a $, the original differential equation \ref{oode} becomes
+\begin{equation}
+\frac{dx(t)}{dt} = bu(t) + c
+\end{equation}
+To isolate the effect of training input $ u(t) $, we further assume that c can be ignored when $ u(t) \neq 0 $, i.e.
+\begin{equation}\label{eqn:finalode2}
+\frac{dx(t)}{dt} = bu(t) + cv(t)
+\end{equation}
+where
+\begin{equation}
+v(t) = 
+\begin{cases}
+1, & \text{if}\ u(t) = 0 \\
+0, & \text{otherwise}
+\end{cases}
+\end{equation}
+Or, in logical notation, $ v(t) = \sim u(t) $. 
+This assumption would be further justified later when we show $ bu(t) $ is much larger than $ c $.
 
+Denote the solution to Eqn. \ref{eqn:finalode} as nonlinear function $ x=f(x_0,b,c,t) $, we estimate the mixed effect model as
+\begin{equation}
+x_i (t)=f(x_{0i},b_i,c_i,t) + \epsilon_i (t)
+\end{equation}
+where $ x_{0i} $, $ b_i $, $ c_i $ are the mixed effect parameters which can vary from individual to individual (cite Bates).
+$ \epsilon_i (t) $ is the residual. 
+We choose different mixed effects on $ b_i $ and $ c_i $ to investigate different aspects of training mentioned above.
+
+\textbf{Training Efficacy and Efficiency.}
+To estimate the efficacy of training (the overall effect of training), we let $ u(t)=1 $ during the intervention periods as shown in Figure  \ref{fig:doseinputs}A. 
+To estimate the efficiency of training (the effect of training per hour), we let $ u(t) $ to be the number of treatment hours corresponding to the group, as shown in Figure  \ref{fig:doseinputs}B. 
+
+To investigate how training efficacy and efficiency depends on dosage of training, we use a linear formula for the mixed effects of $ b_i $ and $ c_i $:
+\begin{eqnarray}\label{eqn:mixedeffectinSM}
+b_i &=& \beta_1^b + \beta_2^b D_i + \delta_i^b   \nonumber \\
+c_i &=& \beta_1^c + \beta_2^c D_i + \delta_i^c   \\
+x_{0i} &=& \beta_1^{x_0} + \beta_2^{x_0} A_i + \delta_i^{x_0} \nonumber
+\end{eqnarray}
+where $ D_i $ is the dosage of training (number of hours per week) participant $ i $ received, 
+$ A_i $ is certain clinical assessment before the training, e.g the initial FM score and/or CST of participant $ i $, 
+$ \beta $ are fixed effects and $ \delta_i $ are random effects. 
+Indexes on the shoulder indicates the parameter to which this fixed or random effect belongs.
+
+In the case when we take the dosage of training as categorical variable, i.e. how efficacy and efficiency depends on the four groups, the formula becomes
+\begin{equation}
+b_i = \beta_1^b + \beta_2^b D_{i2} + \beta_3^b D_{i3} + \beta_4^b D_{i4} + \delta_i^b
+\end{equation}
+Where $ D_{ij} $ is 1 when participant i belongs to group j, 0 otherwise. The formula for $ c_i $ is in the same structure.
+
+\textbf{The Timing of Training}
+To look at the effect of training at different period, we further assume $ b $ and $ c $ can take different values at different intervention periods. 
+We applied this assumption in two ways: 1) A linear dependence of $ b $ (and $ c $) on training period $ k (k=1,2,3) $, namely
+\begin{eqnarray}\label{eqn:timingcat2}
+b(k) &=& b_0 + b_t (k-1) \nonumber  \\
+c(k) &=& c_0 + c_t (k-1)
+\end{eqnarray}
+So that we have two more parameters than Eqn. \ref{eqn:finalode2}. 
+
+Due to insufficient data points (too few data points at each training period), we simplify the mixed effects of $ b(k) $ and $ c(k) $:
+\begin{eqnarray}
+b_0 &=& \beta_1^b + \delta_i^b \\
+b_t &=& \beta_2^b
+\end{eqnarray}
+The formula for $ c_0 $ and $ c_t $ is in the same structure.
+
+2) Independent values of $ b $ and $ c $ at different training period, namely
+\begin{equation}
+b = b_k, c = c_k, k = 1,2,3
+\end{equation}
+So that we have four more parameters than Eqn. \ref{eqn:finalode}. 
+
+We use maximum likelihood to estimate parameters.
+
+
+\subsection{Statistical Results of All Models}\label{sec:SM2}
+\input{1efficacy}
+\input{2efficiency}
+\input{3TimingEff}
+\input{4forgetting}
+\input{5threshold}
+\input{6bestfittingmodel}

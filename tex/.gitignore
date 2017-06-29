@@ -22,5 +22,6 @@
 *.brf
 *.run.xml
 *.bib.bak
+*.bib.sav
 armeospring.bib
 references_backup.bib
